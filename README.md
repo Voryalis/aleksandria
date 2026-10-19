@@ -1,7 +1,7 @@
 
-# Alexandria — Big Data & Connectionist AI
+# Aleksandria — Big Data & Connectionist AI
 
-An educational project by **Team Alexandria** exploring Big Data and Connectionist AI, with a focus on neural networks, data-driven learning, real-world applications, and ethical challenges.
+An educational project by **Team Aleksandria** exploring Big Data and Connectionist AI, with a focus on neural networks, data-driven learning, real-world applications, and ethical challenges.
 
 ## Project Overview
 
