@@ -7,7 +7,9 @@ An educational project by **Team Aleksandria** exploring Big Data and Connection
 
 This project develops beginner-friendly learning resources explaining what Big Data is, how artificial neural networks learn, and how data and connectionist approaches are used together in AI systems.
 
-**Target audience:** University students with little or no prior experience in AI.
+## Target Learners
+
+University students with little or no prior experience in AI.
 
 ## Learning Objectives
 
