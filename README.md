@@ -62,6 +62,8 @@ Some files are planned and will be added as work progresses.
 5. Request review before merging into `main`.
 6. Document completed work in the appropriate project log.
 
+Google drive: https://drive.google.com/drive/folders/1Itr4fr4STo3VSAMMnOjuk-1wPruCGBS3?usp=drive_link
+
 See `CONTRIBUTING.md` for detailed guidelines once it is added.
 
 ## Current Status
