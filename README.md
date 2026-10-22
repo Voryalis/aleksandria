@@ -64,7 +64,7 @@ Some files are planned and will be added as work progresses.
 
 Google drive: https://drive.google.com/drive/folders/1Itr4fr4STo3VSAMMnOjuk-1wPruCGBS3?usp=drive_link
 
-See `CONTRIBUTING.md` for detailed guidelines once it is added.
+See `CONTRIBUTING.md` for detailed guidelines.
 
 ## Current Status
 
