@@ -164,3 +164,55 @@ AI-assisted drafting of these QA documents is significant use. The supplied priv
 - **Decision-maker and date:** `<fill after actual review>`
 
 The checklist-creation task can be completed after the updated checklist is accepted. The other tasks require genuine content checks and evidence. Stage 2 and Stage 3 work is tracked separately; completing this issue is not approval of the full course project.
+
+## Reference review — PR #14 — 2026-10-22
+
+- **Project:** Aleksandria — Big Data & Connectionist AI.
+- **Stage:** Stage 1.
+- **Material:** `references.md`.
+- **Version reviewed:** PR #14, commit `6197140`.
+- **Author:** @loauyhf.
+- **Reviewer:** @Tamer088.
+- **Related issues:** #5 and #11.
+- **Review status:** IN REVIEW.
+- **Approval status:** CHANGES REQUIRED.
+- **Scope:** Reference-list completeness and selected bibliographic metadata.
+- **Method:** Read the proposed reference list and compare the IBM, Picton, and Mining of Massive Datasets entries with the source pages listed below.
+- **AI assistance:** ChatGPT/Codex helped identify candidate findings, locate source pages, and draft the review. Human verification for this entry is limited to the comparisons described here.
+
+### Evidence
+
+- [PR #14](https://github.com/Voryalis/aleksandria/pull/14)
+- [IBM article](https://www.ibm.com/think/topics/big-data)
+- [Picton publisher record](https://link.springer.com/book/10.1007/978-1-349-13530-1)
+- [Mining of Massive Datasets publisher record](https://www.cambridge.org/core/books/mining-of-massive-datasets/9CFE54DDEC0DA5F9558597816E5848C3)
+
+### Findings
+
+The identifiers below are specific to this review.
+
+| ID | Location | Observation | Required action | Owner | Status |
+|---|---|---|---|---|---|
+| REF14-01 | Lines 4–11 | General notes such as “MIT open courses”, “YouTube”, and “etc” do not identify specific resources. | Replace them with traceable references or retain unselected ideas in `sorz.md`. | @loauyhf | OPEN |
+| REF14-02 | Line 12 | The IBM entry lacks a direct article URL. The linked IBM page identifies Annie Badman and Matthew Kosinski as authors. | Add the direct URL and use the agreed citation format. | @loauyhf | OPEN |
+| REF14-03 | Line 20 | The entry says “Springer”; the publisher record lists “Red Globe Press London” and notes an earlier Palgrave imprint. | Reconcile the publisher information with the edition actually consulted. | @loauyhf | OPEN |
+| REF14-04 | Line 38 | The edition and publication year are not identified. The linked publisher page describes the third edition from 2020. | Identify the edition actually used and complete its publication details. | @loauyhf | OPEN |
+
+### Checks not completed in this review
+
+- Full bibliographic verification of the remaining references.
+- Verification that cited passages support specific teaching claims.
+- Review of developed `docs/` explanations and learning objectives.
+- Reproduction of examples, calculations, or model outputs.
+- Testing of instructional Markdown navigation and diagrams.
+- Verification of significant AI-derived teaching claims.
+
+These checks remain NOT CHECKED. No instructional chapter is approved by this entry.
+
+### Follow-up and closure
+
+- The content owner should address the findings before the Stage 1 source-list review is completed.
+- @Tamer088 should inspect the revised version and record the actual retest result.
+- Findings remain OPEN until the required corrections are verified.
+- Claim-to-source checks should begin as soon as the relevant teaching sections are available.
+- Issue #5 remains open: this reference-list review does not complete the independent review of the Stage 1 teaching material.
