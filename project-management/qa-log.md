@@ -268,3 +268,63 @@ On 2026-10-23, @Tamer088 asked Codex to review the two video documents in branch
 
 This entry records assistant-performed checks. It does not claim that @Tamer088 has already carried out a learner test, watched a produced video, approved the draft, posted a GitHub review or completed Issue #4.
 
+## Outline review — PR #19 — 2026-10-23
+
+- **Project:** Aleksandria — Big Data & Connectionist AI.
+- **Material:** `chapters.md`, all 96 lines, source and rendered GitHub preview.
+- **Branch:** `content-leads-request`.
+- **Commit:** `48815cb5ceeae654130b85f8c55a6dec414e4b81`.
+- **Uploader:** @Voryalis. The PR description attributes the request to the Content Lead; this does not establish individual authorship of every line.
+- **QA owner:** @Tamer088.
+- **Review performed by:** Codex at the QA owner's request.
+- **Human verification:** Not recorded by this entry.
+- **Recommendation:** Request changes to the outline. This is not approval of developed instructional content.
+- **Publication:** This entry and the review draft were prepared locally; no GitHub comment, review or change was submitted by the assistant.
+
+### Findings
+
+| ID | Location in chapters.md | Evidence and effect | Requested change |
+| --- | --- | --- | --- |
+| CH19-01 | Lines 11–26 | The announced five-V outline repeats Variety at lines 17 and 23, omits Veracity and labels Value as security at line 26. This misstates the planned foundational topic. | List Volume, Velocity, Variety, Veracity and Value. Describe Veracity as accuracy/reliability and Value as benefits/usefulness obtained from data. Cover security separately. |
+| CH19-02 | Lines 87–96 | Applications and integration lead directly to the conclusion. No explicit bias, privacy or limitations coverage is planned, although README objective 4 and its Applications & Ethics chapter promise those topics. | Add an explicit ethics and limitations subsection, covering data quality/representativeness, bias, privacy and responsible use. Explain where this meets objective 4. |
+| CH19-03 | Lines 1–96, notably 9–26 and 50–83 | Only three Part/Chapter labels have Markdown heading syntax. The numbered subsections are plain text and child topics are not lists. GitHub Preview collapses them into long paragraphs; subsection navigation is absent. | Add one document title, consistent part headings, subsection headings and nested Markdown lists. Recheck Preview after editing. |
+| CH19-04 | Whole outline | The file has no explicit development status, prerequisites, planned concrete activity/worked example, or mapping to the established docs/ chapter files. README has general learning objectives, but the outline neither links to nor maps them. | Label the document and sections Outline only where appropriate. Add a compact map of sections to learning objectives, existing docs/ files, planned examples/activities and current status; state prerequisites. Explicitly plan the handwritten-digit example required by Issue #3. |
+
+### Minor editorial corrections
+
+- Line 11: replace the informal complaint about the five Vs with a neutral label.
+- Line 31: clarify the intended scope as data quality and preprocessing; identify planned handling of missing/noisy data and conversion to model input.
+- Line 40: correct `Sprcific` to `Specific`.
+- Line 43: use a clear label such as `Interpreting and communicating analysis results`.
+- Line 56: correct `working principals` to `working principles`.
+- Use consistent Part/Chapter naming and heading capitalization.
+
+### Confirmations and limits
+
+- The broad sequence from Big Data to artificial neurons, layers, training, applications and integration is a usable starting point.
+- The Connectionist AI outline names inputs, weights, bias, activation functions, loss, backpropagation and model evaluation. No developed explanations are present to validate those concepts in depth.
+- The first three findings also appear in the existing automated review. They were checked against the actual file, its rendered preview, README at the same commit, and the technical source below; the bot's comments were not treated as proof by themselves.
+- No worked calculations, learner activities, explained answers, diagrams or citations are present in this outline to test.
+- It is reasonable to merge a corrected planning outline as incremental work. This PR alone cannot establish completion of Markdown V1.0 or Issues #3/#5.
+- The teacher's supplied Markdown V1.0 assignment requires substantive material alongside the overall outline. Issue #3 additionally records a 23 October clarification requiring at least one fully developed non-introductory section/chapter. This review did not independently verify that clarification with the teacher.
+- This review did not re-audit every repository chapter or assess later commits, videos or learner comprehension.
+
+### Evidence
+
+- [PR #19](https://github.com/Voryalis/aleksandria/pull/19)
+- [Reviewed chapters.md](https://github.com/Voryalis/aleksandria/blob/48815cb5ceeae654130b85f8c55a6dec414e4b81/chapters.md)
+- [README at the reviewed commit](https://github.com/Voryalis/aleksandria/blob/48815cb5ceeae654130b85f8c55a6dec414e4b81/README.md)
+- [Issue #3 — scope and chapter mapping](https://github.com/Voryalis/aleksandria/issues/3)
+- [IBM — What is Big Data?, section The V's of big data](https://www.ibm.com/think/topics/big-data)
+- Teacher-supplied assignment: **GitHub Repository and Markdown Content V1.0**, sections B–D. The outline must identify outcomes, prerequisites, planned activities and section status; the submission also requires substantive learning material and a recorded review.
+
+### Follow-up
+
+1. Content Lead/uploader corrects the outline and records the new commit.
+2. QA checks each correction and the rendered hierarchy, then records the actual retest result.
+3. Review the developed teaching section separately, including its sources, worked example and learner answer.
+4. Keep findings open until corrected and rechecked. Do not mark unexamined content as approved.
+
+### AI-use record
+
+On 2026-10-23, @Tamer088 supplied a screenshot of PR #19 and asked Codex to check `chapters.md`. Codex read the complete file and preview, compared README and Issue #3, consulted the teacher's Markdown V1.0 assignment and IBM's five-V definitions, and prepared the findings and review draft. The QA owner should record personal verification and any decision to publish separately.
