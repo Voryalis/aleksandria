@@ -328,3 +328,43 @@ This entry records assistant-performed checks. It does not claim that @Tamer088 
 ### AI-use record
 
 On 2026-10-23, @Tamer088 supplied a screenshot of PR #19 and asked Codex to check `chapters.md`. Codex read the complete file and preview, compared README and Issue #3, consulted the teacher's Markdown V1.0 assignment and IBM's five-V definitions, and prepared the findings and review draft. The QA owner should record personal verification and any decision to publish separately.
+
+## QA Review — PR #14: Reference List Update
+
+- Review date: 2026-10-23
+- QA owner: @Tamer088
+- Review method: AI-assisted inspection of the updated file and selected publication records.
+- Pull request: https://github.com/Voryalis/aleksandria/pull/14
+- Reviewed version: f8e7aa7ab977a205369959d8bca1e9924b13d257
+- File: references.md
+- Related issues: #5, #11
+
+### Scope
+
+Inspect the revised reference list for source identification, citation completeness, and duplicate removal. This review does not establish that every source supports the claims in the instructional content.
+
+### Confirmed improvements
+
+- Direct links were added to several source entries.
+- The duplicate Mining of Massive Datasets entry was removed.
+- The IBM entry now includes a direct article link.
+
+### Outstanding findings
+
+1. The Picton entry lists Springer, while the linked publication record identifies Red Globe Press London. Align the citation with the edition consulted.
+2. Mining of Massive Datasets still needs the publication year and edition consulted.
+3. Entries labelled "google" and "Past projects" need specific resource titles and authors or organizations.
+4. Verification of references against specific instructional claims remains pending.
+
+### Decision
+
+The QA owner has decided to accept the current changes as a preliminary reference list. Remaining corrections and claim-to-source verification are deferred to Issue #11.
+
+This acceptance is not a finding that all references are correct or fully verified. Merge status must be confirmed separately in GitHub.
+
+### Follow-up
+
+- Complete the outstanding citation corrections in #11.
+- Compare key instructional claims with the actual cited sources.
+- Record the reviewed sections, supporting evidence, and outcomes.
+- Retest corrected entries and update this log.
