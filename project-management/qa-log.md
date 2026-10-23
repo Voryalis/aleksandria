@@ -216,3 +216,55 @@ These checks remain NOT CHECKED. No instructional chapter is approved by this en
 - Findings remain OPEN until the required corrections are verified.
 - Claim-to-source checks should begin as soon as the relevant teaching sections are available.
 - Issue #5 remains open: this reference-list review does not complete the independent review of the Stage 1 teaching material.
+
+
+## Video planning review — PR #16 — 2026-10-23
+
+- **Material:** `videos/first-video-storyboard.md` and `videos/video-plan.md`.
+- **Branch / version:** `MiradKapiz-patch-1`, commit `90fd2f355a10509dcefcce1b99ab109cc1873411`.
+- **Author:** @MiradKapiz.
+- **QA owner:** @Tamer088.
+- **Review performed by:** Codex, at the QA owner's request.
+- **Human verification:** NOT RECORDED in this entry. The QA owner must record actual personal checks separately.
+- **Related work:** PR #16; issues #4 and #5.
+- **Scope:** Full text of both planning files, arithmetic, numerical illustration, cross-file consistency, cited technical documentation and applicable teacher requirements.
+- **Status:** IN REVIEW.
+- **Recommendation:** CHANGES REQUIRED for the contradictory pixel-value instruction; shared Markdown alignment remains BLOCKED.
+
+### Concrete findings and confirmations
+
+| ID | Check / exact location | Result and evidence | Next action |
+|---|---|---|---|
+| VID16-01 | `video-plan.md` line 53 and line 63 versus `first-video-storyboard.md` lines 19–39 | ISSUE: the plan includes 128 inside the 5 × 5 example; the storyboard uses only 0 and 255 and introduces 128 separately. | @MiradKapiz: align the table and asset request with the binary matrix; retest the revised files. |
+| VID16-02 | Shared `docs/` chapters in the reviewed branch | BLOCKED: all five chapter files display 0 lines / 0 Bytes. | Content Lead: provide the developed, checked chapter. QA: record section/version comparison before Issue #4 completion. |
+| VID16-C1 | Storyboard bitmap and matrix | PASS: all 25 cells agree; 16 values are 255 and nine are 0. | Preserve this mapping in the graphics. |
+| VID16-C2 | Storyboard dimension and normalization examples | PASS: 28 × 28 = 784; 128/255 = 0.5019607843..., rounding to 0.50. Endpoints are 0.00 and 1.00. | Preserve the rounding explanation. |
+| VID16-C3 | MNIST dimensions, range and image/label separation | PASS against Keras and TensorFlow Datasets documentation. | Carry the verified distinctions into the visuals. |
+| VID16-C4 | Scene timings | PASS for arithmetic: seven scenes total 150 seconds, with contiguous boundaries. Actual delivery pace remains untested. | Rehearse, especially Scene 7's 54 words plus the three-second pause. |
+
+### Evidence
+
+- [PR #16](https://github.com/Voryalis/aleksandria/pull/16)
+- [Plan at reviewed commit](https://github.com/Voryalis/aleksandria/blob/90fd2f355a10509dcefcce1b99ab109cc1873411/videos/video-plan.md)
+- [Storyboard at reviewed commit](https://github.com/Voryalis/aleksandria/blob/90fd2f355a10509dcefcce1b99ab109cc1873411/videos/first-video-storyboard.md)
+- [Chapter directory at reviewed commit](https://github.com/Voryalis/aleksandria/tree/90fd2f355a10509dcefcce1b99ab109cc1873411/docs)
+- [Keras MNIST](https://keras.io/api/datasets/mnist/)
+- [TensorFlow Datasets MNIST](https://www.tensorflow.org/datasets/catalog/mnist)
+- [TensorFlow normalization / flattening example](https://www.tensorflow.org/tutorials/quickstart/beginner)
+
+### Remaining checks
+
+- Add later production constraints: maximum eight MP4 videos, maximum 250 MB each, individual Lexue uploads and the required tutorial guide.
+- Rehearse narration and explicitly mark the learner pause.
+- Personally check the assistant's findings and record the outcome.
+- Test beginner comprehension with an actual participant.
+- Compare the revised script with the checked educational Markdown.
+- Inspect actual visual assets and, later, every final compressed video.
+- Record corrections and retest evidence before closing findings.
+
+### AI-use disclosure
+
+On 2026-10-23, @Tamer088 asked Codex to review the two video documents in branch `MiradKapiz-patch-1`. Codex read the files through GitHub, checked primary technical documentation, compared the numerical illustration, recalculated examples and drafted this record. Preserve relevant prompt/output excerpts in the actual project/personal logs.
+
+This entry records assistant-performed checks. It does not claim that @Tamer088 has already carried out a learner test, watched a produced video, approved the draft, posted a GitHub review or completed Issue #4.
+
