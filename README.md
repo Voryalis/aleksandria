@@ -51,7 +51,7 @@ Some files are planned and will be added as work progresses.
 | Grigory | Content Lead | [@loauyhf](https://github.com/loauyhf) |
 | Mirad | Video Lead | [@MiradKapiz](https://github.com/MiradKapiz) |
 | Tamerlan | Quality Lead | [@Tamer088](https://github.com/Tamer088) |
-| Arseniy | Visual Design Lead | [@17sen](https://github.com/17sen) |
+| Arseny | Visual Design Lead | [@17sen](https://github.com/17sen) |
 
 ## Collaboration
 
