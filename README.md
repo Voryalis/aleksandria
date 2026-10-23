@@ -46,7 +46,7 @@ Some files are planned and will be added as work progresses.
 
 | Member | Role | GitHub |
 | --- | --- | --- |
-| Aleksandr | CEO / Project Coordination | [destra12344321](https://github.com/destra12344321) |
+| Aleksandr | CEO / Project Coordination | [@destra825](https://github.com/destra825) |
 | Kamran | CIO / Repository & Technical Workflow | [@voryalis](https://github.com/voryalis) |
 | Grigory | Content Lead | [@loauyhf](https://github.com/loauyhf) |
 | Mirad | Video Lead | [@MiradKapiz](https://github.com/MiradKapiz) |
