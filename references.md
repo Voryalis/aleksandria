@@ -40,4 +40,3 @@ Marz, N., & Warren, J. (2015). Big Data: Principles and Best Practices of Scalab
 Leskovec, J., Rajaraman, A., & Ullman, J. D. Mining of Massive Datasets. A strong academic reference for extracting patterns and useful information from large datasets.https://www.mmds.org
 
 
-Leskovec, J., Rajaraman, A., & Ullman, J. D. Mining of Massive Datasets. A strong academic reference for extracting patterns and useful information from large datasets.
