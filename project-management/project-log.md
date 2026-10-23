@@ -32,6 +32,32 @@
 
 ## Meeting and contribution evidence awaiting confirmation
 
-- Actual meetings: date/time, attendance, decisions and action owners **not entered here without confirmed evidence**.
+- One **partially completed** first-meeting summary was found in the team's Google Drive; its date, time, location, recorded discussion and unresolved decision are transcribed below. Attendance and approval are not independently established.
 - Individual work/AI use: request verified entries and screenshots from each member for the self-contained formal submissions.
 - Submission state: **Not verified**. Keep this record separate from final formatted project/personal log documents.
+
+## 21 October 2026 — First team meeting (M-01; Drive source)
+
+- **Source record:** [Aleksandria_Meeting_01_Summary.docx](https://docs.google.com/document/d/1LIlcDzUl-MeqrWfbR48fY7sLYEdLsI9R/edit), located under shared Drive `01_Project_Management/Meeting_Summaries`. This record is partially completed and states it was drafted with ChatGPT; note-taker verification is pending.
+- **Date, time and location recorded in source:** Wednesday, 21 October 2026, 16:30–20:00 UTC+08:00, Wencui I503.
+- **Note-taker recorded in source:** Kamran Abdullayev. **Attendee list:** not confirmed, so all six roster members are **not** assumed present.
+- **Topics the notes report:** shared Drive and GitHub collaboration workflow; minor README error corrections; disagreement over narrowing the broad Big Data & Connectionist AI module.
+- **Decision/status from the notes:** A sufficiently narrow **specific project focus was not agreed** and remained **TBD at that meeting**. The notes do not establish that a later discussion has or has not resolved it. No detailed collaboration conventions or attendee approvals are verified by the meeting summary.
+- **Proposed follow-up in notes:** compare narrower topic options and document a final decision; the responsible facilitator and meeting date were not specified.
+- **Evidence limitations:** the source contains a reported README correction but no corresponding commit link, attendance record or meeting screenshot. These should be added only if they can be verified.
+- **AI-use note:** meeting summary states ChatGPT helped draft/update the notes; Kamran should check this record against the actual discussion and add an accurate AI-use entry/evidence if needed.
+
+## 23 October 2026 — CEO's filled project-log draft received for reconciliation
+
+- **Source:** `Aleksandria_Stage1_ProjectLog_FILLED_DRAFT.docx` provided to this conversation by the team; its entry P-01 and AI-01 concern drafting the Stage 1 project plan/task list with AI assistance.
+- **What the document supports:** a planning draft was prepared using project details and ChatGPT; individual contributions to that specific drafting action were not independently confirmed. It explicitly leaves meeting evidence, contributions scores and human verification pending.
+- **What GitHub independently shows:** `project-management/project-plan.md` and `project-management/task-list.md` contain draft text on main as checked on 23 October, whereas the CEO's Word log says their commit/PR status was unconfirmed **at the time that draft was created**. The Word draft is therefore a historical snapshot, not proof the files remain uncommitted.
+- **Unresolved discrepancies to reconcile:** the Word draft's meeting table says no completed meeting summary was supplied, but the shared Drive now contains a **partially completed** M-01 summary. CEO's student ID and the formal submission lead are marked unconfirmed in the Word draft; do not substitute a number or approval without checking. Relative contribution scores are not established and must not be fabricated.
+- **Required follow-up:** @Voryalis and @destra825 confirm actual actions, approve/correct planning and meeting entries, collect evidence screenshots and leave unsupported claims clearly pending.
+
+## AI-use record — Drive/Word source reconciliation
+
+- **Tool:** ChatGPT (this conversation).
+- **Purpose:** Compare the shared Drive meeting record, the CEO's filled Word project-log draft and GitHub planning/issue records; draft the present reconciliation entry for review.
+- **Material retained:** Meeting facts specifically reported by the Drive document, the Word draft's qualified claims, and independently checked repository artifacts; outstanding claims are explicitly labeled.
+- **Verification limitations:** No direct interviews, attendee confirmations, classroom attendance records, or independent meeting/media evidence were available. This entry has not been personally approved by the note-taker or coordinator.
