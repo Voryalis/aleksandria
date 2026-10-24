@@ -176,4 +176,4 @@ Large collections can also increase storage and processing costs. Before adding 
 3. [Google Machine Learning Crash Course — Numerical-data normalization](https://developers.google.com/machine-learning/crash-course/numerical-data/normalization) — scaling and consistent preprocessing.
 4. [Google Machine Learning Crash Course — Neural networks](https://developers.google.com/machine-learning/crash-course/neural-networks) — input features, network components, and learning.
 
-The 5 × 5 image, records A–E, questions, and numbers are constructed instructional examples, not historical observations or measured model results. The explanatory introduction builds on the original Content Lead draft in PR #35.
+The 5 × 5 image, records A–E, questions, and numbers are constructed instructional examples, not historical observations or measured model results. 
