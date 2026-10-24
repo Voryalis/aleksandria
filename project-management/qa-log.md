@@ -528,3 +528,85 @@ The snapshot shows the five numbered docs/ chapter files as empty. docs/Chapters
 ### Current readiness conclusion
 
 QA setup and multiple review contributions are complete and traceable. The team's decision to close Issue #5 is confirmed. Final evidence of developed instructional-content verification, unresolved source corrections, file placement and personal-log submission remains incomplete in the inspected records. Completed findings, pending actions and later production checks are kept separate.
+
+## Status update and review reconciliation — 2026-10-24
+
+- Project: Aleksandria — Big Data & Connectionist AI
+- QA owner: @Tamer088
+- Record prepared with: ChatGPT/Codex assistance
+- Scope: confirmed GitHub review and merge events, storyboard recheck and remaining Stage 1 checks
+
+This dated update supersedes the original template-only status paragraph and earlier statements that PR #14, #24 or #27 were awaiting a merge. Historical review records remain valid for the versions and dates they identify. Approval of a working draft does not resolve every finding or establish final submission readiness.
+
+### Confirmed contributions and GitHub status
+
+| Item | Confirmed outcome | Remaining scope |
+|---|---|---|
+| PR #7 | Initial QA checklist, log, requirements and peer-review template contributed; merged | Apply the checklist to developed learning content |
+| PR #15 | Reference-review findings added to this log; merged | Complete citation corrections and claim-to-source checks |
+| PR #14 | Preliminary reference list accepted and merged by @Tamer088 | Outstanding reference findings remain to be resolved or explicitly deferred |
+| PR #24 | docs/Chapters.md outline approved and merged by @Tamer088 | Correct the recorded outline findings and review developed explanations separately |
+| PR #27 | Visual guide, two SVG diagrams and slide outline reviewed, approved by @Tamer088 and merged | Check source-PPTX agreement and final placement/readability during production |
+| PR #29 | Both storyboards and the video plan reviewed, approved and merged by @Tamer088 | Correct root-level placement and verify alignment with developed Markdown |
+| Issue #5 | Closed as completed by @Voryalis on 2026-10-24 | Closure is a team status decision; the unperformed checks below remain visible |
+
+Evidence: [PR #7](https://github.com/Voryalis/aleksandria/pull/7), [PR #15](https://github.com/Voryalis/aleksandria/pull/15), [PR #14](https://github.com/Voryalis/aleksandria/pull/14), [PR #24](https://github.com/Voryalis/aleksandria/pull/24), [PR #27](https://github.com/Voryalis/aleksandria/pull/27), [PR #29](https://github.com/Voryalis/aleksandria/pull/29), [Issue #5](https://github.com/Voryalis/aleksandria/issues/5).
+
+### PR #29 storyboard recheck
+
+- Review date: 2026-10-24
+- Reviewed commit: ad503f38aacf120339c87b99769ba24dbbb753c7
+- Author: @MiradKapiz
+- QA owner and published decision: @Tamer088; approved and merged
+- Technical inspection and calculations: performed by Codex at the QA owner's request
+- Files in the reviewed PR: first-video-storyboard.md, second-video-storyboard.md, video-plan.md at the repository root
+- Intended destination: videos/
+
+| Check | Observed evidence | Result |
+|---|---|---|
+| Previous miniature-grid inconsistency | The Scene 3 grid and asset request now use only 0 and 255. The 128 gray swatch is separately introduced in Scene 4. | PASS for the earlier numeric-consistency finding |
+| Bitmap and matrix | All 25 cells correspond to the displayed five-row illustration. | PASS |
+| Image dimensions | 28 × 28 = 784 pixel positions. Flattening is described as one possible representation. | PASS |
+| Normalization | 0/255 = 0; 128/255 = 0.5019608, rounded to 0.50; 255/255 = 1. Normalization is identified as optional preprocessing. | PASS |
+| Illustrative probabilities | 60% + 30% + 10% = 100%. The other eight digits share the final 10%; digit 3 has the highest individual probability. | PASS |
+| Cross-entropy inset | The correct class receives probability 0.30; −ln(0.30) = 1.2039728, rounded to 1.20. | PASS |
+| Independent optimizer example | 0.40 − 0.10 × 0.20 = 0.38. The scalar example is explicitly separate from the invented classifier output. | PASS |
+| Conceptual sequence | Input → prediction → loss → gradients via backpropagation → optimizer update → repeated training, followed by evaluation on separate data. | PASS within storyboard scope |
+| Prediction and label | The correct label is separate from pixel input and is used during supervised training; no known label is required for inference on an unknown image. | PASS |
+| Truthfulness | Invented outputs are labelled; no actual training run, accuracy improvement or finished video is claimed. | PASS |
+| Narration timing and learner test | Timings are editorial targets. No trial recording or learner session was observed in this review. | NOT CHECKED |
+| Developed chapter alignment | The numbered docs/ teaching files were empty in the inspected main snapshot. | BLOCKED pending substantive content |
+| File placement | The merged files are at the repository root; videos/ contains only .gitkeep in the inspected snapshot. | OPEN follow-up VID29-01 |
+
+Selected factual references checked: [Keras MNIST dataset API](https://keras.io/api/datasets/mnist/) and [TensorFlow beginner quickstart](https://www.tensorflow.org/tutorials/quickstart/beginner). These support image dimensions, pixel ranges, separate labels, example scaling, model training and evaluation. The displayed arithmetic was recalculated independently of the draft text by the assistant.
+
+**Outcome:** The previous 0/128/255 storyboard inconsistency is corrected in the PR #29 version. No blocking technical-content error was identified in this planning review. Root-level placement remains a concrete repository correction. This result does not establish final-video quality or completed human learner testing.
+
+### Outstanding actions and retest conditions
+
+| ID | Action | Suggested responsible person | Current status | Evidence needed to finish |
+|---|---|---|---|---|
+| VID29-01 | Move the three PR #29 files into videos/ and update any affected links | @MiradKapiz, coordinated with @Voryalis | OPEN | New commit, correct paths, working links, no competing outdated copies |
+| QA-CONTENT-01 | Review developed teaching Markdown against objectives, technical claims, worked examples, answers and sources | @Tamer088 after @loauyhf supplies content through #3 | BLOCKED | Actual file/version, specific checks, findings or confirmations, and documented retests |
+| QA-REF-01 | Reconcile Picton's publisher, complete MMDS year/edition, identify vague resource labels, and map sources to claims | @loauyhf with @Tamer088 reviewing | OPEN findings; #11 is closed | Corrected entries and actual source comparisons; retain or move the follow-up to an active task |
+| QA-OUTLINE-01 | Address the recorded five-V and outline-coverage findings in docs/Chapters.md | @loauyhf | OPEN findings | Revised outline and recorded recheck |
+| QA-VISUAL-01 | Verify final diagram captions, placement, source-PPTX consistency and readability in the finished presentation | Visual and Content Leads with QA | PENDING production/content integration | Actual exported resource, version and review result |
+| QA-DOC-01 | Replace the stale opening template status and record PR #29 and merged PR #27 status | @Tamer088 | Prepared in this update; repository publication pending | This dated update is committed to main and the opening status is revised |
+| QA-PERSONAL-01 | Finish and privately submit the personal log with authentic course-learning and verification evidence | @Tamer088 | UPDATED DOCUMENT PREPARED; final personal check and submission not confirmed | Actual personal entries, readable evidence and confirmation from the submission lead |
+
+The snapshot shows the five numbered docs/ chapter files as empty. docs/Chapters.md is an outline, not a substitute for developed instructional content. Content development is coordinated under [Issue #3](https://github.com/Voryalis/aleksandria/issues/3). Owners above describe proposed follow-up responsibility, not new assignments made by the assistant.
+
+### Significant AI use for this update
+
+- Date and person: 2026-10-24, @Tamer088
+- Tool: ChatGPT/Codex
+- Purpose: Recheck PR #29, audit remaining QA tasks, update the public QA record and prepare the private personal log.
+- Relevant user requests, translated from Russian: “Check this commit quickly”; “Go and check whether I have finished all my tasks”; “Do everything related to qa-log.md and personal log now.”
+- Assistant actions: Read the GitHub records, inspected the storyboard text, recalculated examples, consulted the cited technical documentation, reconciled historical review and merge statuses, and drafted these updates.
+- Human actions substantiated by GitHub: @Tamer088 published review feedback and approved/merged the identified PRs. Separate personal recalculations, a beginner test, narration rehearsal and final-video viewing were not established by this audit.
+- Decision: Keep confirmed improvements and acceptance decisions in the record while preserving outstanding findings. Do not turn closed Issues or merged PRs into a blanket claim that all content is correct.
+- Publication: This file is a prepared update. It becomes part of the repository only after the QA owner commits it. Private personal details and reflections belong in the submitted personal log, not this public record.
+
+### Current readiness conclusion
+
+QA setup and multiple review contributions are complete and traceable. The team's decision to close Issue #5 is confirmed. Final evidence of developed instructional-content verification, unresolved source corrections, file placement and personal-log submission remains incomplete in the inspected records. Completed findings, pending actions and later production checks are kept separate.
