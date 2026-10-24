@@ -4,7 +4,7 @@ This learning material introduces two important areas of modern technology: **Bi
 
 To be more specific:
 Part 1: Big Data
-In this part, we explore how large amounts of data are collected, stored, processed, and analyzed. You will learn about the different types of data, the challenges described by the **5 Vs of Big Data**, and how data filtration and analysis help turn raw data into useful information.
+In this part, we explore how large amounts of data are collected, stored, processed, and analyzed. You will learn about the different types of data, the challenges encountered in working with it, and how data filtration and analysis help turn raw data into useful information.
 
 Part 2: Connectionist AI
 In this part, we introduce Connectionist AI and the artificial neural networks behind it. You will discover how artificial neurons work, how neural networks are structured, and how they learn from data through training, optimization, and evaluation.
