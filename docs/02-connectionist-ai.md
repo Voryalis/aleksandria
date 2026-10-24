@@ -1,7 +1,7 @@
 # Chapter 2 — Artificial neurons and connected networks
 
 **Status:** Fully developed Stage 1 *non-introductory* teaching sample; pending Content Lead and QA review.  
-**Prerequisite:** [Chapter 1 — From raw data to model inputs](01-big-data.md) · [Module structure](Chapters.md)
+**Prerequisite:** [Chapter 1 — From raw data to model inputs](01-big-data.md) · [Module structure](chapters.md)
 
 ## Learning objectives
 

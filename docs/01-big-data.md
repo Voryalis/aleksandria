@@ -1,7 +1,7 @@
 # Chapter 1 — Big Data: from raw data to neural-network inputs
 
 **Audience:** First-year students new to AI. **Stage 1 status:** Developed draft; subject to team review.  
-**Next:** [Chapter 2 — Artificial neurons and connected networks](02-connectionist-ai.md) · [Full content map](Chapters.md)
+**Next:** [Chapter 2 — Artificial neurons and connected networks](02-connectionist-ai.md) · [Full content map](chapters.md)
 
 ## What you will learn
 

@@ -63,7 +63,7 @@
 
 **Confirmed repository outcomes:**
 
-- The repository contains a README, contribution instructions, a project plan/task list, the [chapter outline](../docs/Chapters.md), references, video storyboards, a slide outline, a visual style guide, two SVG diagrams, and QA templates/records.
+- The repository contains a README, contribution instructions, a project plan/task list, the [chapter outline](../docs/chapters.md), references, video storyboards, a slide outline, a visual style guide, two SVG diagrams, and QA templates/records.
 - The five intended main teaching files — [01-big-data](../docs/01-big-data.md), [02-connectionist-ai](../docs/02-connectionist-ai.md), [03-neural-networks](../docs/03-neural-networks.md), [04-integration](../docs/04-integration.md), and [05-applications](../docs/05-applications.md) — were **empty on `main` at inspection**. The outline, storyboard, diagrams, and administrative documents are not equivalent to completed teaching chapters.
 - The [QA log](qa-log.md) explicitly described itself as a review template without completed independent learning-material reviews at the inspected version.
 - Video scripts and diagrams existed as working resources, but an approved and reviewed teaching chapter was not confirmed.

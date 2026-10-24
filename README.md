@@ -27,7 +27,7 @@ By the end of the materials, learners should be able to:
 3. **How Neural Networks Learn** — Loss, backpropagation, parameter updates, and limitations.
 4. **Handwritten-Digit Case Study** — From image data to prediction, evaluation, and responsible use.
 
-The four-chapter teaching plan is documented in [docs/Chapters.md](docs/Chapters.md).
+The four-chapter teaching plan is documented in [docs/chapters.md](docs/chapters.md).
 
 ## Repository Structure
 
@@ -71,7 +71,7 @@ See `CONTRIBUTING.md` for detailed guidelines.
 
 **Stage 1 — Markdown V1.0 drafted; Live Status Report in preparation (24 October 2026)**
 
-- **Developed learning content:** [Chapter 1 — Big Data](docs/01-big-data.md) and [Chapter 2 — Artificial Neurons](docs/02-connectionist-ai.md) include explanations, worked examples, questions, answers, and references. The [module content map](docs/Chapters.md) outlines the complete four-chapter learning sequence.
+- **Developed learning content:** [Chapter 1 — Big Data](docs/01-big-data.md) and [Chapter 2 — Artificial Neurons](docs/02-connectionist-ai.md) include explanations, worked examples, questions, answers, and references. The [module content map](docs/chapters.md) outlines the complete four-chapter learning sequence.
 - **Not yet complete:** Chapters 3 and 4 remain outlined; `docs/03-neural-networks.md`, `docs/04-integration.md`, and `docs/05-applications.md` are empty legacy placeholders. Final content review and later-stage production remain outstanding.
 - **Supporting work:** Diagram assets, slide planning, tutorial storyboards, the project plan/log, and QA records are available in their respective directories. These are Stage 1 materials, not finished study-guide/slides/video deliverables.
 - **Next assignment:** [Live Status Report — Issue #37](https://github.com/Voryalis/aleksandria/issues/37), coordinated by @destra825 with visuals/slides owned by @17sen; deadline **30 October 2026** (Beijing time), **4 minutes maximum**. The assignment page lists 23:26 and the detailed instructions list 23:59; follow the earlier time unless clarified.
