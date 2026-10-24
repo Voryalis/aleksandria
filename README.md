@@ -5,7 +5,7 @@ An educational project by **Team Aleksandria** exploring Big Data and Connection
 
 ## Project Overview
 
-This project develops beginner-friendly learning resources explaining what Big Data is, how artificial neural networks learn, and how data and connectionist approaches are used together in AI systems.
+This project develops beginner-friendly learning resources explaining what Big Data is, how artificial neural networks learn, and how data and connectionist approaches are used together in AI systems. The shared teaching example is handwritten-digit recognition, from image data and preprocessing to neural-network predictions and evaluation.
 
 ## Target Learners
 
@@ -22,11 +22,12 @@ By the end of the materials, learners should be able to:
 
 ## Planned Content
 
-1. **Introduction to Big Data** — Definitions, characteristics, examples, and data preparation.
-2. **Connectionist AI** — Artificial neurons and the connectionist approach.
-3. **Neural Networks** — Layers, weights, activation functions, and training.
-4. **Big Data & AI** — How datasets support model development and evaluation.
-5. **Applications & Ethics** — Examples, limitations, bias, and privacy.
+1. **Big Data and Data Preparation** — Data characteristics, quality, image pixels, labels, and preprocessing.
+2. **Artificial Neurons and Connected Networks** — Weighted inputs, bias, activation, layers, and predictions.
+3. **How Neural Networks Learn** — Loss, backpropagation, parameter updates, and limitations.
+4. **Handwritten-Digit Case Study** — From image data to prediction, evaluation, and responsible use.
+
+The four-chapter teaching plan is documented in [docs/Chapters.md](docs/Chapters.md).
 
 ## Repository Structure
 
@@ -40,7 +41,7 @@ By the end of the materials, learners should be able to:
 | `references.md` | Research sources and citations |
 | `CONTRIBUTING.md` | Contribution guidelines |
 
-Some files are planned and will be added as work progresses.
+Some files remain placeholders pending further development.
 
 ## Team
 
@@ -68,6 +69,10 @@ See `CONTRIBUTING.md` for detailed guidelines.
 
 ## Current Status
 
-**Stage 1 — In Progress**
+**Stage 1 — Markdown V1.0 drafted; Live Status Report in preparation (24 October 2026)**
 
-Repository setup and task assignments have begun. Educational content and supporting materials are being developed.
+- **Developed learning content:** [Chapter 1 — Big Data](docs/01-big-data.md) and [Chapter 2 — Artificial Neurons](docs/02-connectionist-ai.md) include explanations, worked examples, questions, answers, and references. The [module content map](docs/Chapters.md) outlines the complete four-chapter learning sequence.
+- **Not yet complete:** Chapters 3 and 4 remain outlined; `docs/03-neural-networks.md`, `docs/04-integration.md`, and `docs/05-applications.md` are empty legacy placeholders. Final content review and later-stage production remain outstanding.
+- **Supporting work:** Diagram assets, slide planning, tutorial storyboards, the project plan/log, and QA records are available in their respective directories. These are Stage 1 materials, not finished study-guide/slides/video deliverables.
+- **Next assignment:** [Live Status Report — Issue #37](https://github.com/Voryalis/aleksandria/issues/37), coordinated by @destra825 with visuals/slides owned by @17sen; deadline **30 October 2026** (Beijing time), **4 minutes maximum**. The assignment page lists 23:26 and the detailed instructions list 23:59; follow the earlier time unless clarified.
+- **Stage 2 deadline:** **7 November 2026**.
