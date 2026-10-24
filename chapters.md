@@ -8,7 +8,6 @@
 
 1.2 Big Data Collection and storage
     types of data 
- (The so annoying 5 v's)
 
 (Collection problems) 
 Velocity
@@ -37,7 +36,7 @@ Value (security)
 
  Why and how
 
- Sprcific Data Analysis Methods
+ Specific Data Analysis Methods
     hardware
     software
  Data Interpretation (how to make it chewable for humans)
@@ -84,7 +83,7 @@ Value (security)
 
 
 
-### Chapter 3: Applications
+### Chapter 3: Grounding in reality.
 
 3.1 Applications of Big Data
 
@@ -92,5 +91,6 @@ Value (security)
 
 3.3 Big Data and Connectionist AI Integration
 
+3.4 **ETHICS** of it all
 
 Conclusion/ credit/ overview/ glossary
