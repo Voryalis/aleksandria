@@ -610,3 +610,36 @@ The snapshot shows the five numbered docs/ chapter files as empty. docs/Chapters
 ### Current readiness conclusion
 
 QA setup and multiple review contributions are complete and traceable. The team's decision to close Issue #5 is confirmed. Final evidence of developed instructional-content verification, unresolved source corrections, file placement and personal-log submission remains incomplete in the inspected records. Completed findings, pending actions and later production checks are kept separate.
+
+## 2026-11-05 — PR #63: Handwritten-Digit Case Study
+
+- PR: https://github.com/Voryalis/aleksandria/pull/63
+- Reviewed commit: be22cfac7169620b4dc60873397eb430b8fcacb6
+- Scope: All 502 lines of docs/04-case-study.md, removal of the empty
+  docs/04-integration.md, GitHub Preview, and the existing chapter map.
+- Method: AI-assisted content review, arithmetic recalculation, and
+  comparison with Keras, TensorFlow, and Google documentation.
+
+### Confirmed checks
+
+- MNIST dataset size, image dimensions, and labels are correctly described.
+- Pixel normalization examples and the 90% accuracy calculation are correct.
+- The illustrative output table correctly selects digit 7.
+- Backpropagation and optimizer updates are distinguished.
+- Training, validation, test data, and inference are clearly explained.
+- Illustrative values are not presented as measured experimental results.
+
+### Findings requiring follow-up
+
+- Correct the reversed description of MNIST foreground/background values.
+- Fix math delimiters so formulas render correctly on GitHub.
+- Add learner questions with explained answers.
+- Update the chapter map, chapter status, and chapter-count references.
+- Add an accessible MNIST documentation source; the LeCun and Nielsen
+  pages could not be retrieved during this check.
+
+### Outcome
+
+Review completed with changes requested. Approval remains pending
+corrections and a follow-up check. No model training or runtime testing
+was performed.
