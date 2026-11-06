@@ -643,3 +643,62 @@ QA setup and multiple review contributions are complete and traceable. The team'
 Review completed with changes requested. Approval remains pending
 corrections and a follow-up check. No model training or runtime testing
 was performed.
+
+## 2026-11-06 — Chapter 3 Review and Proposed Revision
+
+- File: `docs/03-neural-networks.md`
+- Reviewed repository file version: `fb184e005e2566cee31cd2930c3f05cbc7a215a2`.
+- Method: AI-assisted full-text review, arithmetic recalculation, exercise-answer checks before removal, and selected source verification.
+
+### Confirmed Checks
+
+- Squared-error calculations correctly produce 0.16 and 0.01.
+- The worked update `0.50 − 0.10 × 0.40` correctly produces 0.46.
+- The original Activity C correctly produces 0.78; original answer guidance A–D was consistent with the explanations.
+- Backpropagation calculates gradients; the optimizer applies parameter updates.
+- Training, validation, test data, and overfitting are distinguished correctly.
+
+### Findings and Proposed Corrections
+
+- Replace the obsolete Stage 1 skeleton description with an accurate revised-draft status.
+- Convert editorial instructions into learner explanations or remove production-only instructions.
+- Use digit 5 consistently with the video example, without confusing toy-grid dimensions with MNIST dimensions.
+- Correct the Gradient Descent reference URL and add source links near relevant explanations.
+- Remove Activities A–D and their answer guidance from this chapter as requested by the Quality Lead. Keep worked examples. Required learner practice must still be covered in the submitted learning materials; its presence elsewhere was not verified in this check.
+
+### Outcome
+
+The original core explanations and arithmetic passed this review. A replacement Markdown draft was prepared locally. Upload, team acceptance, final cross-resource checks, and any learner trial remain unconfirmed. No model execution or independent human review is claimed.
+
+## 2026-11-06 — Chapter 4: PR #63 Follow-up Review
+
+- PR: https://github.com/Voryalis/aleksandria/pull/63
+- Reviewed follow-up commit: `4add1816d10daba041118ad00958d4a28592a406`.
+- Parent commit: `be22cfac7169620b4dc60873397eb430b8fcacb6`.
+- File: `docs/04-case-study.md`.
+- Method: AI-assisted inspection of the follow-up diff and comparison with the previously reviewed complete chapter.
+
+### Findings
+
+- The second commit changes only eight formula-delimiter lines: `\[` and `\]` were replaced with `&&`.
+- `&&` does not create a GitHub math block, so the formatting issue remains unresolved.
+- The arithmetic itself is unchanged: `28 × 28 = 784`, pixel scaling examples, and `90 / 100 = 90%` are correct.
+- The commit does not address the original MNIST/display-polarity distinction, the reference to an unplanned fifth chapter, or skipped section numbering.
+- The original probability-style table selects digit 7 correctly. A replacement draft instead uses the digit-5 target and digit-3 prediction from Tutorial 2; these are proposed changes rather than repository changes confirmed here.
+
+### Proposed Revision
+
+- Use plain-text formulas in fenced blocks to avoid unsupported delimiters.
+- Explain white-background display separately from original MNIST intensities.
+- Use the recurring digit-5 example and clearly mark invented probabilities and the standalone weight update.
+- Correct section numbering and remove the promise of a fifth chapter.
+- Include accessible Keras, TensorFlow, and Google sources with topic-specific attribution.
+- Keep the chapter without a standalone Activities section, consistent with the requested chapter format.
+
+### Outcome
+
+Changes are still needed before final acceptance. A corrected replacement Markdown draft was prepared locally; this entry does not claim it has been uploaded, merged, accepted by the team, or tested with learners. Recheck the actual committed revision and GitHub Preview after upload.
+
+### AI Assistance
+
+ChatGPT assisted with reviewing both chapters, checking arithmetic, drafting revisions, and preparing these QA records on 6 November 2026. Team decisions, upload actions, and any independent checks should be recorded separately when they actually occur.
