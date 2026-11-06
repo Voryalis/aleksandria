@@ -53,9 +53,9 @@ For MNIST, the preparation steps are relatively straightforward.
 
 Every standard MNIST image is 28 × 28 pixels. That means it has:
 
-\[
+&&
 28 \times 28 = 784
-\]
+&&
 
 individual pixel values.
 
@@ -69,9 +69,9 @@ Each of the 784 pixels has a brightness value from 0 to 255. The values describe
 
 **Normalization** is a preprocessing method that changes numerical values to a more suitable scale while preserving the information needed for the task. Here, we divide every pixel value by 255.
 
-\[
+&&
 \text{normalized pixel} = \frac{\text{original pixel}}{255}
-\]
+&&
 
 The result is a value between 0 and 1. A black pixel remains 0, a white pixel becomes 1, and a grey pixel becomes a value between them.
 
@@ -315,17 +315,17 @@ This separation matters. If we repeatedly use the test set to choose settings, i
 
 **Accuracy** is the proportion of predictions that are correct out of all predictions made.
 
-\[
+&&
 \text{Accuracy} =
 \frac{\text{number of correct predictions}}
 {\text{total number of predictions}}
-\]
+&&
 
 For example, suppose a model correctly classifies 90 out of 100 images in a small illustrative evaluation. Its accuracy is:
 
-\[
+&&
 \frac{90}{100} = 0.90 = 90\%
-\]
+&&
 
 This is a made-up example to explain the calculation, not a reported MNIST model result.
 
