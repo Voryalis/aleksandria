@@ -1,502 +1,304 @@
 # Chapter 4 — Case Study: Teaching a Neural Network to Recognize Handwritten Digits
 
-## 4.1 From individual ideas to one complete system
+**Version:** Stage 2 revised draft, 6 November 2026. Pending team acceptance.
 
-In the previous chapters, we built the pieces needed to understand a neural network:
+**Audience:** University beginners with no previous machine-learning experience.
 
-- Chapter 1 showed that data must be collected, checked, and prepared before it can be useful.
-- Chapter 2 introduced artificial neurons, weights, bias, activation functions, and layers. These are the parts a network uses to turn numerical inputs into an output.
-- Chapter 3 explained how a network learns: it makes a prediction, compares that prediction with the correct answer, measures the error, and adjusts its parameters.
+**Prerequisites:** [Chapter 1 — Big Data](01-big-data.md) · [Chapter 2 — Artificial Neurons](02-connectionist-ai.md) · [Chapter 3 — How a Neural Network Learns](03-neural-networks.md)
 
-Now we can put those ideas together in one practical case study.
+## 4.1 From Individual Ideas to a Complete System
 
-Our task is simple to describe: **given an image of a handwritten digit, predict which digit it shows.** The possible answers are the ten digits from 0 to 9.
+The previous chapters introduced the parts of a learning system:
 
-A person can usually recognize a familiar handwritten digit almost instantly. A computer, however, does not begin by seeing a “seven” or a “three”. It receives data. In this example, the data is a grid of pixel values. The neural network must learn which patterns of values tend to belong to each digit.
+- Chapter 1 explained data quality and preparation.
+- Chapter 2 introduced inputs, weights, biases, activation functions, and layers.
+- Chapter 3 explained predictions, loss, gradients, and parameter updates.
 
-We will use the MNIST dataset, a widely used collection of handwritten-digit images. The purpose of this chapter is not to claim that we have trained a particular model or achieved a particular score. Instead, we will follow the full process and use clearly marked illustrative examples to understand what happens at each stage.
+Now we connect these ideas through one task: **given an image of a handwritten digit, predict which digit it shows**. The possible classes are the digits 0 through 9.
 
-## 4.2 Meet the MNIST dataset
+We use the format of the MNIST dataset and a recurring illustrative digit **5**, matching Tutorials 1 and 2. Dataset facts are distinguished from invented examples. No trained-model accuracy or experimental result is claimed.
 
-**MNIST** is a dataset of handwritten digits used to study and test image-recognition methods. It contains 70,000 labelled images:
+After reading this chapter, learners should be able to trace image preparation, explain a prediction, describe the training cycle, and interpret basic evaluation methods.
 
-- 60,000 images are provided as the standard training set.
-- 10,000 images are provided as the standard test set.
-- Each image is a grayscale image measuring 28 pixels wide and 28 pixels high.
-- Each image represents one digit, from 0 to 9, and has a label identifying that digit.
+## 4.2 Meet the MNIST Dataset
 
-A **label** is the correct answer attached to an example. If an image shows a handwritten 6, its label is `6`. The image provides the input; the label tells us what the model is supposed to learn to predict.
+MNIST contains **70,000 labelled grayscale images**:
 
-Why use MNIST? It gives us a manageable task with a clear answer. The images are small, the possible classes are easy to understand, and the labels make supervised learning possible. It is also useful for comparing methods because many learners and researchers have used the same dataset.
+- 60,000 images in the standard training set;
+- 10,000 images in the standard test set;
+- 28 × 28 pixels per image;
+- one digit label, from 0 to 9, associated with each image.
 
-MNIST is not a perfect representation of every kind of handwriting. Its images have a particular size, style, and format. A system trained on MNIST should not automatically be expected to work equally well on photographs of notebook pages, writing from every country, or digits written with unusual pens and layouts. We will return to this limitation later.
+These dataset properties are documented in the [Keras MNIST API](https://keras.io/api/datasets/mnist/).
 
-### What does one image contain?
+A **label** is the target answer associated with an example. If a checked image shows a 5, its label is 5. The image supplies the input; the label supplies the target used during supervised training.
 
-A grayscale image stores a brightness value for each pixel. In the standard MNIST representation, a pixel value ranges from 0 to 255:
+MNIST is useful because the task and image format are manageable. However, its isolated digit images are not representative of every handwriting style or every kind of real document.
 
-- `0` represents black.
-- `255` represents white.
-- Values between them represent shades of grey.
+### Pixel Values and the White-Background Display
 
-For example, a dark stroke in a handwritten digit may have low pixel values, while the light background may have values close to 255. The exact pattern depends on the handwriting.
+Original 8-bit MNIST pixel values range from 0 to 255. The background is near 0, while digit strokes have higher values. Under a standard grayscale display, 0 appears black and 255 appears white.
 
-The network does not receive the image as a human-readable drawing. It receives the numerical values that describe the image. This connects directly to Chapter 1: an image may look like a picture to us, but for a learning system it is data in a particular representation.
+**Our educational visuals use dark digits on a white background.** They can display the same information using an inverted grayscale palette. This is a presentation choice; it does not require changing the values used for training.
 
-## 4.3 Preparing an image for the network
+If values are explicitly inverted instead of changing only the display palette, the transformation is `inverted pixel = 255 − original pixel`. Such preprocessing must be documented and applied consistently to training and later inputs.
 
-Before an image can be used as input, it must have a consistent format. **Preprocessing** means changing or checking raw data so that it is suitable for a particular task. We met this idea in Chapter 1 when we discussed missing values, inconsistent formats, incorrect labels, and normalization.
+The image is a numerical grid, not a digit label already understood by the network. The network must learn relationships between the input patterns and the target classes.
 
-For MNIST, the preparation steps are relatively straightforward.
+## 4.3 Preparing the Image
 
-### Step 1: Check the image dimensions
+### Step 1: Check Dimensions
 
-Every standard MNIST image is 28 × 28 pixels. That means it has:
+Every standard MNIST image has 28 rows and 28 columns:
 
-&&
-28 \times 28 = 784
-&&
+```text
+28 × 28 = 784 pixel values
+```
 
-individual pixel values.
+A model designed to receive 784 input values expects a consistent input format. A different image size would require an appropriate preparation step or a different model design.
 
-A consistent image size matters because the network expects inputs with a fixed number of values. If one image contained 784 values and another contained 900, a network designed for 784 input features could not accept both in the same way without an additional resizing or formatting step.
+### Step 2: Check the Data
 
-### Step 2: Use the pixel values
+Check that images are readable, labels correspond to the intended digits, and preprocessing does not accidentally remove useful strokes. A blurry or ambiguous image should be reviewed rather than silently assigned a different label.
 
-Each of the 784 pixels has a brightness value from 0 to 255. The values describe the image, but their original scale is not always the most convenient scale for training.
+### Step 3: Normalize Pixel Values
 
-### Step 3: Normalize the values
+One common preparation step is scaling the original 0–255 values into the 0–1 range:
 
-**Normalization** is a preprocessing method that changes numerical values to a more suitable scale while preserving the information needed for the task. Here, we divide every pixel value by 255.
+```text
+normalized pixel = original pixel ÷ 255
+```
 
-&&
-\text{normalized pixel} = \frac{\text{original pixel}}{255}
-&&
-
-The result is a value between 0 and 1. A black pixel remains 0, a white pixel becomes 1, and a grey pixel becomes a value between them.
-
-For example:
-
-| Original pixel value | Calculation | Normalized value |
-|---:|---:|---:|
-| 0 | 0 ÷ 255 | 0 |
+| Original value | Calculation | Normalized value |
+|---:|---|---:|
+| 0 | 0 ÷ 255 | 0.00 |
 | 64 | 64 ÷ 255 | approximately 0.25 |
 | 128 | 128 ÷ 255 | approximately 0.50 |
 | 192 | 192 ÷ 255 | approximately 0.75 |
-| 255 | 255 ÷ 255 | 1 |
+| 255 | 255 ÷ 255 | 1.00 |
 
-This is the same basic idea introduced in Chapter 1. We are not changing a digit from one class into another; we are expressing its pixel brightness on a consistent scale. A smaller, consistent numerical range can make the values easier for a neural network to work with during training.
+These are numerical intensity conversions. Their on-screen colours depend on the chosen display palette. Dividing by 255 does not change a digit's class.
 
-### Step 4: Flatten the image into a vector
+This is one preprocessing choice, not a requirement that every model must use this exact method. The [TensorFlow beginner example](https://www.tensorflow.org/tutorials/quickstart/beginner) applies this scaling to MNIST.
 
-A neural network made from ordinary fully connected layers needs an ordered list of input numbers. We therefore turn the 28 × 28 grid into a single list containing 784 values. This operation is called **flattening**.
+### Step 4: Flatten for This Model
 
-Flattening does not mean removing pixels or changing their brightness. It means arranging the existing values in a fixed order: for example, reading the first row from left to right, then the second row, and continuing until all rows have been read.
+For the simple fully connected model considered here, arrange the image into an ordered list of 784 values. This is **flattening**.
 
-The result is a **vector**: an ordered list of numbers. In this case, the vector has 784 entries.
+For example, read the first row left to right, then the second row, and continue through all 28 rows. The same ordering must be used for every image.
 
-The original image has a two-dimensional arrangement, but the flattened vector is one-dimensional. The order must remain consistent for every image. If the first pixel represents the top-left corner in one example, it must represent the same position in every other example.
+Flattening rearranges the values; it does not remove pixels. Other architectures, such as convolutional networks, can retain spatial dimensions rather than use this initial flattened representation.
 
-The network can now receive the image as 784 numerical input features. A **feature** is an individual piece of information used by a model to make a prediction. Here, each pixel value is one feature.
+### Step 5: Keep the Label Separate
 
-### Step 5: Keep the label separate
+```text
+Image of 5
+    |
+    v
+28 × 28 grayscale grid
+    |
+    v
+Normalize the 784 pixel values
+    |
+    v
+Flatten into an ordered vector → network input
 
-The image vector is the input. Its digit label is the target answer used during supervised training. We must not mix the label into the input vector: otherwise, the model could be given the answer it is meant to predict.
+Correct label: 5 → separate target for the training loss
+```
 
-For example, an image of a handwritten 4 is represented by 784 pixel values, while the label `4` is stored separately. During training, the network receives the pixel values and its prediction is compared with the label.
+The label is not appended as an extra pixel or a 785th input value. Doing so would give the model the answer it is supposed to predict.
 
-<figure>
-<pre>
-Handwritten image
-      |
-      v
-28 × 28 grayscale pixels
-      |
-      v
-784 pixel values (0–255)
-      |
-      v
-Normalize: divide each value by 255
-      |
-      v
-784 values between 0 and 1
-      |
-      v
-Flatten into an ordered input vector
+## 4.4 How the Network Makes a Prediction
 
-Correct digit label -----------------> kept separately
-</pre>
-</figure>
+Consider an **illustrative architecture**:
 
-This process brings together several ideas from Chapter 1: consistent representation, preprocessing, numerical data, normalization, and the separation of input data from its label.
+- 784 input values;
+- one hidden layer with 128 neurons and a nonlinear activation such as ReLU;
+- 10 output scores, one for each digit class.
 
-## 4.4 How the network makes a prediction
+The input passes numerical information into the network. Each hidden neuron combines its inputs using weights, adds a bias, and applies an activation function. The output layer calculates class scores.
 
-The prepared vector is ready to enter the neural network. To make the example concrete, imagine a simple fully connected network with:
+```text
+784 pixel values → 128 hidden neurons → 10 class scores
+```
 
-- 784 input units, one for each pixel value;
-- one hidden layer containing 128 neurons;
-- 10 output units, one for each possible digit.
+Weights control contributions between connected units. Biases shift a neuron's calculation. Nonlinear activation functions allow the network to represent relationships that a stack of purely linear transformations cannot express. See Google's [neural-network introduction](https://developers.google.com/machine-learning/crash-course/neural-networks).
 
-We will call this an **illustrative architecture**. It is a teaching example, not a claim that this exact architecture was trained for this chapter or that it achieves a particular level of accuracy. Other network designs are possible.
+A hidden neuron does not necessarily correspond to a clear human concept such as “the top of a 5”. It responds to learned numerical combinations, which may be difficult to interpret.
 
-### The input layer
+### Scores, Probabilities, and the Predicted Class
 
-The input layer receives the 784 normalized pixel values. It does not need to decide what the digit is. Its role is to pass the numerical information into the network.
+Raw output scores are not automatically probabilities. A suitable transformation, such as softmax, can produce class probabilities. A training loss may instead accept raw scores and perform the required conversion internally.
 
-This connects to Chapter 2: the input features are the numbers that the network will process. The pixels are not yet meaningful labels such as “top curve” or “vertical line”; they are simply numerical inputs.
+For an image whose correct label is 5, imagine the following **invented probabilities**:
 
-### The hidden layer
-
-The 128 neurons in the hidden layer receive values from the preceding layer. Each neuron calculates a weighted sum, adds a bias, and applies an activation function.
-
-Recall the terms from Chapter 2:
-
-- A **weight** is a numerical parameter that controls how strongly one input contributes to a neuron's calculation.
-- A **bias** is a numerical parameter added to the weighted sum, allowing the neuron to shift the point at which it activates.
-- An **activation function** is a rule applied to a neuron's calculation to produce its output. It helps the network represent more complex relationships than a stack of purely linear calculations could represent.
-
-For example, a neuron may respond strongly to a particular combination of dark and light pixels. Another may respond to a different combination. During training, the network adjusts its weights and biases so that useful patterns can contribute to better digit predictions.
-
-We should be careful with the word “recognize”. A hidden neuron does not necessarily correspond to a neat human concept such as “the top of a 7”. The network learns numerical patterns that help it solve the task. We can sometimes inspect what a neuron responds to, but we should not assume that every neuron has one simple, human-readable meaning.
-
-### The output layer
-
-The output layer contains 10 units, corresponding to the ten possible digits:
-
-`0, 1, 2, 3, 4, 5, 6, 7, 8, 9`
-
-Each output unit produces a **score** for its digit class. A score is a numerical value used to compare how strongly the model supports one possible answer relative to the others.
-
-For an illustrative image, the output might look like this:
-
-| Digit | Illustrative score |
+| Digit | Illustrative probability |
 |---:|---:|
-| 0 | 0.02 |
-| 1 | 0.01 |
-| 2 | 0.03 |
-| 3 | 0.04 |
-| 4 | 0.05 |
-| 5 | 0.08 |
-| 6 | 0.03 |
-| 7 | 0.69 |
-| 8 | 0.02 |
-| 9 | 0.03 |
+| 0 | 1% |
+| 1 | 1% |
+| 2 | 1% |
+| 3 | 60% |
+| 4 | 1% |
+| 5 | 30% |
+| 6 | 1% |
+| 7 | 2% |
+| 8 | 1% |
+| 9 | 2% |
 
-In this example, the largest score belongs to digit 7, so the model's predicted class is 7.
+The probabilities sum to 100%. Digit 3 has the highest individual probability, so the predicted digit is **3**. The correct label remains **5**: the prediction is wrong for this example.
 
-The numbers in this table are invented solely to demonstrate the decision. They are not measured MNIST results. Also, raw output scores are not automatically probabilities. A model may use a separate output transformation to turn scores into probabilities. The important point here is that the largest score can be selected as the predicted class.
+Tutorial 2 groups the eight remaining digits as “Others combined: 10%”. Their individual allocation here is also invented. Neither version reports a trained model's output.
 
-The operation of choosing the class with the largest score is often called **argmax**. In simple terms, it means “find the position of the largest value”. If the highest score is in the output position for digit 7, the prediction is 7.
+Choosing the class with the largest score or probability is called **argmax**. It selects the position of the maximum value; it does not establish that the answer is correct or certain.
 
-### A complete forward pass
+The complete calculation from input through the layers to output is a **forward pass**.
 
-A **forward pass** is the process of sending input data through a network, layer by layer, to produce an output. It is called “forward” because information moves from the input layer towards the output layer.
+## 4.5 How the Network Learns
 
-For our digit example:
+Producing a prediction is different from learning. Learning requires a procedure that uses examples to adjust the model's parameters.
 
-1. The network receives 784 normalized pixel values.
-2. The input values are passed to the hidden layer.
-3. Each hidden neuron calculates its weighted sum, adds its bias, and applies its activation function.
-4. The hidden-layer outputs are passed to the output layer.
-5. The 10 output units produce scores.
-6. The model selects the digit with the highest score as its prediction.
+### Calculate Loss
 
-This is the prediction process described in Chapter 2, now applied to a real dataset format.
+During supervised training, a loss function compares model outputs with the target. For the invented probability of 0.30 assigned to the correct digit 5, single-example cross-entropy is:
 
-## 4.5 How the network learns from MNIST
+```text
+loss = −ln(probability assigned to the correct class)
+     = −ln(0.30)
+     ≈ 1.20
+```
 
-Making a prediction is not the same as learning. A network can produce an answer even when its weights and biases are not yet useful. Learning happens when training examples are used to improve those parameters.
+This is one chosen classification loss. It is not the universal definition of error for every model or task. The [TensorFlow example](https://www.tensorflow.org/tutorials/quickstart/beginner) explains classification scores, probabilities, and cross-entropy.
 
-MNIST provides images and their correct labels, so it supports **supervised learning**. Supervised learning is a method in which a model learns from examples that include both input data and the correct target answer. The model makes a prediction, compares it with the target, and uses the difference to guide improvement.
+### Calculate Gradients
 
-### Prediction and target
+**Backpropagation** works backward through the network's calculations to determine loss gradients with respect to parameters. Gradients describe how small parameter changes would locally affect loss.
 
-Imagine that the network receives an image whose correct label is 7.
+Backpropagation supplies information for an update; it does not itself apply the update.
 
-- The input is the image represented by 784 pixel values.
-- The target is the label 7.
-- The prediction is the class selected by the network.
+### Update Parameters
 
-If the network predicts 7, its predicted class matches the target. If it predicts 1, the prediction is incorrect. During training, the model needs a numerical way to measure how well its output matches the target.
+An **optimizer** uses gradients to update weights and biases. In a basic gradient-descent example, the learning rate controls the size of the step in the direction opposite to the gradient.
 
-### Loss: measuring how wrong a prediction is
+As a separate toy calculation:
 
-A **loss function** is a mathematical rule that calculates a number representing how poorly a model's prediction matches the correct target. The number is used during training to guide the model towards better predictions.
+```text
+old weight = 0.40
+learning rate = 0.10
+gradient = 0.20
 
-A smaller loss generally indicates a better match under the chosen loss function. A larger loss indicates a worse match. Loss is useful because “that answer looks wrong” is not precise enough for a learning algorithm: the training process needs a numerical signal.
+new weight = 0.40 − (0.10 × 0.20) = 0.38
+```
 
-For classification tasks such as digit recognition, one commonly used choice is **cross-entropy loss**. It evaluates the model's output in relation to the correct class. In a typical classification setup, it uses predicted class probabilities, or raw scores supplied to a compatible loss calculation that handles the required conversion internally.
+This gradient is supplied for illustration. It was not calculated from the displayed digit model, and the update does not establish new classifier probabilities or a measured improvement.
 
-The main idea is more important than the formula at this stage: the loss function gives the network a measurable training signal. It does not itself change the weights. It tells us how well the current model is doing on the example or batch being considered.
+### Repeat Across Examples
 
-### Backpropagation: finding how parameters affect the loss
+```text
+Select a batch of training images and labels
+                    |
+                    v
+Forward pass → loss → backpropagation → optimizer update
+                    |
+                    +----> repeat with further batches
+```
 
-The next question is: how can the network know which weights and biases should change?
+A **batch** is a group of training examples processed together. An **epoch** is one full pass through the training set. If 60,000 images are used for parameter updates, an epoch processes those 60,000 examples once. If some are reserved for validation, the actual training set is smaller.
 
-**Backpropagation** is the method used to calculate how changes in a network's parameters affect the loss. It works backwards from the output towards earlier layers, calculating information that can be used to adjust the parameters.
+A learning rate that is too large can make training unstable; one that is too small can slow progress. One update does not guarantee a correct next prediction or better performance for every input.
 
-Chapter 3 introduced this idea through gradients. A **gradient** describes how a quantity changes when one or more parameters change. In neural-network training, gradients indicate how the loss would change if particular weights or biases changed slightly.
+## 4.6 Evaluating the Model
 
-An intuitive way to think about it is to imagine adjusting the controls on a machine. If the result is not right, we want to know which controls have the greatest effect on the error and in which direction they should move. Backpropagation calculates this guidance for the network's parameters.
+The standard MNIST split supplies 60,000 training images and 10,000 test images. A validation set can be reserved from the training portion.
 
-Backpropagation calculates gradients; it does not, by itself, perform the parameter update. These are connected but different operations.
+| Split | Role |
+|---|---|
+| Training | Adjust parameters. |
+| Validation | Monitor development and compare model choices. |
+| Test | Evaluate the selected model after development decisions. |
 
-### The optimizer: updating the parameters
-
-An **optimizer** is the method or algorithm that uses gradients to update a model's parameters during training. It takes the information calculated during backpropagation and changes weights and biases in an attempt to reduce the loss.
-
-One important setting is the **learning rate**. The learning rate controls the size of the parameter updates.
-
-- If the learning rate is too large, updates may overshoot useful values and training can become unstable.
-- If it is too small, learning may be very slow.
-- A suitable learning rate helps the model make useful progress.
-
-This links directly to Chapter 3: backpropagation calculates gradients, while the optimizer uses them to update the parameters. The network then makes another prediction with its updated parameters.
-
-### Repeating the process: batches and epochs
-
-Training does not usually stop after one image. The network needs to process many labelled examples so that its parameters can improve across a range of handwriting styles.
-
-A **batch** is a group of training examples processed together before a parameter update. Instead of updating the network after every single image, a training procedure may calculate loss and gradients using a batch of images, then update the parameters.
-
-An **epoch** is one complete pass through the training dataset. If the training set contains 60,000 images, one epoch means that the training procedure has processed all 60,000 training examples once. The examples may be divided into many batches.
-
-A simplified training cycle looks like this:
-
-<pre>
-Training images + labels
-          |
-          v
-      Select a batch
-          |
-          v
-   Forward pass: predict
-          |
-          v
- Compare prediction with label
-          |
-          v
-       Calculate loss
-          |
-          v
- Backpropagation: calculate gradients
-          |
-          v
- Optimizer: update weights and biases
-          |
-          v
-     Process next batch
-          |
-          v
- Repeat until an epoch is complete
-          |
-          v
- Repeat for further epochs as needed
-</pre>
-
-The network is not storing a list of handwritten examples and looking up the answer each time. Training changes numerical parameters so that the model can apply what it has learned to images it has not seen before.
-
-## 4.6 How do we know whether the model works?
-
-A model can perform well on the examples it has already used for learning and still make mistakes on new examples. We therefore need a careful evaluation process.
-
-Chapter 3 introduced three useful dataset splits:
-
-- The **training set** is used to adjust the model's parameters.
-- The **validation set** is used during development to compare choices and monitor performance. It is commonly created by setting aside part of the available training data.
-- The **test set** is held back until final evaluation. It provides an estimate of how well the model performs on data that was not used to train or tune it.
-
-For the standard MNIST dataset, the supplied split contains 60,000 training images and 10,000 test images. If we need a validation set, we can reserve part of the 60,000 training images for that purpose. The test set should remain separate from decisions made during training and model selection.
-
-This separation matters. If we repeatedly use the test set to choose settings, it gradually becomes part of the development process. The final test result may then give an overly optimistic picture of performance on genuinely unseen data.
+Do not repeatedly tune settings against the test set. Otherwise, it becomes part of model selection and provides a less independent evaluation. Google's [overfitting module](https://developers.google.com/machine-learning/crash-course/overfitting) discusses data splitting and generalization.
 
 ### Accuracy
 
-**Accuracy** is the proportion of predictions that are correct out of all predictions made.
+```text
+accuracy = correct predictions ÷ total predictions
+```
 
-&&
-\text{Accuracy} =
-\frac{\text{number of correct predictions}}
-{\text{total number of predictions}}
-&&
+If a hypothetical model correctly classifies 90 of 100 images:
 
-For example, suppose a model correctly classifies 90 out of 100 images in a small illustrative evaluation. Its accuracy is:
+```text
+90 ÷ 100 = 0.90 = 90%
+```
 
-&&
-\frac{90}{100} = 0.90 = 90\%
-&&
+This demonstrates arithmetic; it is not a measured MNIST result.
 
-This is a made-up example to explain the calculation, not a reported MNIST model result.
+### Confusion Matrix
 
-Accuracy is easy to understand, but it does not tell us everything. It tells us how many predictions were correct overall, not which digits were confused with which other digits.
+A **confusion matrix** compares true classes with predicted classes. With rows representing true digits and columns representing predicted digits, correct predictions fall on the diagonal and mistakes fall elsewhere.
 
-### Confusion matrix
+For a ten-class digit task, the full matrix has ten rows and ten columns. It can reveal which digits the model confuses, rather than showing only the overall proportion correct. No particular confusion pattern is claimed without measured results.
 
-A **confusion matrix** is a table that compares the true classes with the classes predicted by a model. It helps us see which kinds of mistakes the model makes.
+### Loss and Accuracy Are Different
 
-For digit recognition, a confusion matrix has ten true-digit categories and ten predicted-digit categories. A correct prediction appears where the true digit and predicted digit match. An incorrect prediction appears in a different column from the true digit's row.
+Accuracy records how often the selected class is correct. Loss evaluates outputs using the chosen mathematical rule and can reflect how much probability is assigned to the correct class.
 
-For example, a model might sometimes confuse handwritten 4s with 9s, or 3s with 5s. These are illustrative possibilities, not claims about a measured MNIST model. Looking at the confusion matrix helps us ask more useful questions than “What was the accuracy?” We can ask which digits are difficult and whether certain handwriting styles cause repeated errors.
+Two models can have identical accuracy and different loss values. Lower training loss does not, by itself, establish better performance on new data.
 
-### Loss and accuracy are not the same
+## 4.7 What Can Change the Result?
 
-Loss and accuracy both help us evaluate a model, but they describe different things.
+- **Data quantity:** More relevant examples can expose the model to additional handwriting variations, but more data do not guarantee improvement.
+- **Data quality:** Incorrect labels, damaged images, or preprocessing that removes strokes can make training less useful.
+- **Representativeness:** A narrow range of handwriting styles may not prepare the model for its intended users.
+- **Class balance:** All ten classes being present does not mean they have equal numbers of examples. Inspect their distribution.
+- **Consistent preparation:** Image dimensions, normalization, inversion choices, and flattening order must match the model's expected format.
+- **Architecture and training choices:** Layers, activation functions, optimizer, learning rate, and training duration all matter. A larger model is not automatically better.
 
-- **Loss** measures the quality of predictions according to a chosen mathematical loss function. It can reflect how strongly the model supports the correct answer.
-- **Accuracy** counts how many predicted classes are correct.
+**Overfitting** occurs when the model fits training data too specifically and performs less well on new examples. Improving training results alongside worsening validation performance can indicate this problem.
 
-A model can predict the correct class but still have a relatively high loss if its output does not match the target as strongly as desired. Conversely, two models can have the same accuracy but different loss values.
+## 4.8 From Classroom Illustration to Real Use
 
-That is why training often monitors loss as well as accuracy. They provide different information about model behaviour.
+Digit recognition connects to reading numbers from forms, postal codes, and scanned documents. However, a classifier for isolated MNIST images is not a complete document-reading system.
 
-## 4.7 What can change the result?
+Real documents may contain shadows, coloured backgrounds, several digits together, unusual pens, or unfamiliar handwriting. Additional preparation, segmentation, testing, and error handling may be necessary.
 
-A neural network's performance depends on more than the choice of algorithm. The data, its preparation, and the training process all matter. This connects the three earlier chapters: data quality from Chapter 1, network structure from Chapter 2, and the learning process from Chapter 3.
+Images can also contain personal information. Collect only appropriate data, respect access and consent requirements, and avoid exposing sensitive documents in examples. Where errors could affect people, provide suitable human review rather than treating a model prediction as an unquestionable fact.
 
-### The amount of data
+## 4.9 The Complete Process
 
-More training examples can expose a model to more variations in handwriting. For example, the digit 2 can be written with a rounded top, a straight diagonal, or a long base. Seeing many examples may help the network learn that these different shapes can still represent the same digit.
+```text
+DATA          Labelled images
+                    |
+PREPARATION   Check format and quality; normalize if appropriate
+                    |
+MODEL INPUT   Numerical pixel values; label kept separate
+                    |
+PREDICTION    Network outputs → selected digit class
+                    |
+TRAINING      Compare outputs with label → loss
+                    |
+              Backpropagation → gradients
+                    |
+              Optimizer → parameter update → repeat
 
-However, more data does not automatically guarantee better results. If many examples are incorrectly labelled, duplicated, or unlike the examples the system will later encounter, simply increasing the dataset size may not solve the problem.
+EVALUATION    Check the selected model on separate data
+```
 
-### The quality of data
+**Inference** uses the model to predict from an input, normally without updating parameters or receiving the correct answer in advance. **Training** uses examples and targets to guide parameter updates.
 
-Incorrect labels teach the wrong relationship. If an image of a 5 is labelled as 3, the network is asked to associate that image with the wrong answer. Repeated label errors can make learning more difficult.
+## 4.10 Chapter Summary
 
-Poor image quality can also matter. A digit may be faint, partly missing, blurred, or cropped. A preprocessing step that accidentally removes part of a digit can damage useful information.
+An image becomes numerical input through a consistent preparation process. A network processes those values and produces class scores. The model's prediction can disagree with the correct label.
 
-This is why Chapter 1 treated data checking as an essential step rather than an optional cleanup task.
+During supervised training, loss measures mismatch, backpropagation calculates gradients, and an optimizer updates parameters. Training repeats over examples. Separate evaluation is needed to assess whether the learned patterns work on new inputs.
 
-### Variation in handwriting
+The central lesson is that useful results depend on the data, representation, network, learning procedure, and evaluation together.
 
-People write digits differently. Some write an open-top 4; others close it. Some write 1 with a small base or a top stroke. A useful dataset should include enough variation to help the model handle the kinds of handwriting it is expected to encounter.
+## Sources and Example Disclosure
 
-A model trained on one narrow style may struggle when the writing style changes. This is an example of why the data used for training should be representative of the intended task.
+1. [Keras — MNIST Digits Classification Dataset](https://keras.io/api/datasets/mnist/): dataset size, dimensions, pixel range, and labels.
+2. [TensorFlow — MNIST Dataset Catalog](https://www.tensorflow.org/datasets/catalog/mnist): dataset structure and example images.
+3. [TensorFlow — Quickstart for Beginners](https://www.tensorflow.org/tutorials/quickstart/beginner): normalization, flattened model inputs, scores, probabilities, cross-entropy, training, and evaluation.
+4. [Google Machine Learning Crash Course — Neural Networks](https://developers.google.com/machine-learning/crash-course/neural-networks): network components and computation.
+5. [Google Machine Learning Crash Course — Datasets, Generalization, and Overfitting](https://developers.google.com/machine-learning/crash-course/overfitting): data quality, splitting, and generalization.
 
-### Class balance
-
-A **class** is one of the categories a classification model is asked to choose from. In MNIST, the ten classes are the digits 0 through 9.
-
-A dataset is **class-balanced** when its categories have similar numbers of examples. If one digit appears much more often than the others, a model may receive more training exposure to that digit. It is therefore useful to inspect how examples are distributed across classes rather than assume that a dataset is perfectly balanced.
-
-The presence of all ten digits is necessary, but it does not by itself prove that the number of examples in each class is equal.
-
-### Image preparation
-
-The network expects inputs in a consistent format. If training images are normalized one way but later images are prepared differently, the model may receive values unlike those it learned from.
-
-For example, suppose training images use pixel values between 0 and 1, but new images are supplied with values between 0 and 255. The numerical scale is now different. The system may behave poorly because its inputs no longer follow the same preparation process.
-
-The same issue can arise if images have different dimensions, are cropped inconsistently, or are flattened in a different order.
-
-### Network and training choices
-
-The number of layers, number of neurons, activation functions, optimizer, learning rate, and number of epochs can all influence training. These are design and training choices, not magic settings that guarantee success.
-
-A larger network is not automatically better. It may require more computation and can learn patterns that do not generalize well. A smaller network may be faster but may not capture enough useful patterns for a difficult task.
-
-The right choices depend on the task, the data, and how the model will be evaluated.
-
-### Overfitting
-
-**Overfitting** happens when a model learns the training examples too specifically and performs less well on new examples. It may learn details or noise that happen to appear in the training data rather than patterns that generalize.
-
-Imagine a learner who memorizes the answers to a practice sheet but cannot solve a slightly different question. The learner has remembered the examples without learning the broader idea. Overfitting is similar: the model performs well on familiar training data but struggles with unseen data.
-
-The training, validation, and test split helps us notice this problem. If training performance keeps improving while validation performance stops improving or becomes worse, that can be a warning sign.
-
-## 4.8 From a classroom example to real use
-
-Handwritten-digit recognition is a useful demonstration because the input and expected output are easy to understand. Similar ideas can be used in systems that read numbers from forms, process postal codes, or recognize characters in scanned documents.
-
-However, success on MNIST does not prove that a system is ready for every real-world use. Real documents may contain coloured backgrounds, lines, shadows, unusual fonts, low-resolution images, or several digits close together. A system designed for isolated 28 × 28 images may need substantial changes before it can process a full page.
-
-A model should also be used with an understanding of its limitations. If a prediction is uncertain or incorrect, there should be a suitable way to detect or handle that situation. In applications where an error could affect a person, automated predictions may need human review.
-
-This chapter introduces these points only briefly. The next chapter is reserved for a fuller discussion of ethics, responsible use, resources, and the glossary.
-
-## 4.9 The complete process
-
-We can now connect the main ideas from all four chapters in one sequence:
-
-<pre>
-DATA
-MNIST images and their digit labels
-        |
-        v
-PREPARATION
-Check dimensions, use pixel values,
-normalize, flatten, keep labels separate
-        |
-        v
-MODEL
-Input layer → hidden layer → output layer
-Weights, biases, and activation functions
-        |
-        v
-PREDICTION
-Scores for digits 0–9
-Choose the class with the highest score
-        |
-        v
-COMPARISON
-Compare prediction with the correct label
-        |
-        v
-LOSS
-Calculate how well the prediction matches
-the target under the chosen loss function
-        |
-        v
-IMPROVEMENT
-Backpropagation calculates gradients
-Optimizer updates weights and biases
-        |
-        v
-EVALUATION
-Use separate data to check performance
-Accuracy, loss, and confusion matrix
-</pre>
-
-The process has two related modes:
-
-- **Inference** is using a trained model to make a prediction for an input. For example, we provide an image of a handwritten digit and the model returns its predicted class.
-- **Training** is the process of using labelled examples, loss, gradients, and optimizer updates to improve the model's parameters.
-
-During inference, the model normally does not update its weights. During training, it repeatedly uses examples and feedback to adjust them.
-
-The central lesson is that a neural network does not learn from an image simply because the image is shown to it. The image must be represented as data; the network must process that data; and training must provide a way to compare predictions with correct answers and improve the model.
-
-
-
-## 4.11 Chapter summary
-
-In this case study, we followed a handwritten digit from an image to a neural-network prediction.
-
-- MNIST contains 70,000 labelled grayscale images of handwritten digits, with a standard split of 60,000 training images and 10,000 test images.
-- Each image is 28 × 28 pixels, giving 784 pixel values.
-- Normalization changes pixel values from the 0–255 range to the 0–1 range by dividing by 255.
-- Flattening arranges the 784 values into one ordered input vector.
-- The label is kept separate and provides the target during supervised training.
-- A neural network processes the input through layers and produces scores for the ten digit classes.
-- The predicted class can be selected by choosing the largest output score.
-- During training, loss measures the mismatch with the target, backpropagation calculates gradients, and an optimizer updates the parameters.
-- Separate training, validation, and test data help us train and evaluate the model responsibly.
-- Accuracy, loss, and a confusion matrix provide different views of model performance.
-- Data quality, handwriting variation, class balance, preprocessing, and training choices can all affect results.
-- Overfitting occurs when a model fits training examples too specifically and performs less well on new data.
-
-The journey from image to prediction brings together the foundations from the previous chapters: data must be prepared, a model must process it, and a learning method must improve it.
-
-## Notes on examples and results
-
-The dataset facts in this chapter describe the standard MNIST dataset. The 784–128–10 network is an illustrative architecture. The output scores, accuracy calculation, possible digit confusions, and activity scenarios are invented teaching examples. No trained-model accuracy or experimental result is claimed here.
-
-## Sources
-
-- [MNIST database of handwritten digits — Yann LeCun, Corinna Cortes, and Christopher J. C. Burges](http://yann.lecun.com/exdb/mnist/)
-- [Google Machine Learning Crash Course — Datasets and their characteristics](https://developers.google.com/machine-learning/crash-course/overfitting/data-characteristics)
-- [Google Machine Learning Crash Course — Numerical-data normalization](https://developers.google.com/machine-learning/crash-course/numerical-data/normalization)
-- [Google Machine Learning Crash Course — Neural networks](https://developers.google.com/machine-learning/crash-course/neural-networks)
-- [Michael Nielsen — Neural Networks and Deep Learning](https://neuralnetworksanddeeplearning.com/)
+**Disclosure:** The architecture, digit predictions, probability table, weight update, and accuracy example are illustrative. They are not results of a model trained for this chapter. Display colours are chosen for the educational presentation and must not be confused with the original dataset encoding.
