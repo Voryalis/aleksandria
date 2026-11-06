@@ -1,173 +1,1093 @@
-# Chapter 1 — Big Data: from raw data to neural-network inputs
 
-**Audience:** First-year students new to AI. **Stage 1 status:** Developed draft; subject to team review.  
-**Next:** [Chapter 2 — Artificial neurons and connected networks](02-connectionist-ai.md) · [Full content map](chapters.md)
+## Study guide --- working skeleton
 
-## What you will learn
+> **Scope note:** The supplied brief contains the outline for the **Big
+> Data** section and identifies Connectionist AI as part of the wider
+> study guide, but it does not include the Connectionist AI outline.
+> This document therefore develops the complete Big Data section without
+> inventing the missing second part.
 
-By the end of this chapter, you should be able to:
+# note to ppt it is NOT reqiered to cover everything in this doc. A bunch of it is FOR PDF study guide.
+# note to video A LOT of it is not for video. 
 
-1. Describe Big Data using the five V's and explain why more records are not automatically better.
-2. Distinguish raw data, a prepared input, and a label.
-3. Identify errors, duplicates, missing values, unrepresentative samples, and label mistakes.
-4. Trace an invented handwritten-digit image into a vector of numerical inputs.
+------------------------------------------------------------------------
 
-## 1.1 So, what is Big Data?
+# 1. Big Data
 
-Think about the photographs, messages, and searches created every day, and then imagine collecting records from many people and devices. Big Data is not just a large pile of files: it refers to datasets whose **size, speed, or complexity** make them difficult to manage and analyze efficiently with conventional methods. The point is to extract useful, reliable information—not simply to collect more of it. [1]
+## 1.1 Introduction
 
-Big Data is commonly introduced through five properties:
+Computers collect and store information whenever people use digital
+services, devices, and systems. A single action may create a small
+record: a search, a payment, a GPS location, a photo, or a sensor
+reading. Across millions of users and devices, these records add up
+quickly.
 
-| Property | Beginner-friendly meaning | Possible difficulty |
-| --- | --- | --- |
-| **Volume** | How much data exists | Storing, searching, and processing many records |
-| **Velocity** | How quickly data arrives or needs processing | Incoming records may exceed processing capacity |
-| **Variety** | Different kinds and structures of data | Images, text, tables, and audio need different handling |
-| **Veracity** | How trustworthy or reliable the data is | Noise, errors, ambiguous measurements, wrong labels |
-| **Value** | Whether the data helps answer a useful question | Large datasets may add cost without useful insight |
+**Big Data** describes datasets whose size, speed of growth, or
+complexity makes them difficult to handle effectively with traditional
+data-processing methods. The challenge is not simply having a lot of
+files. It is being able to collect, store, organise, process, and
+analyse information at a useful speed and with acceptable reliability.
 
-*The five V's describe characteristics and challenges, not five independent tests that every dataset must pass.* [1]
+Big Data is used in many areas: transport systems can study traffic
+patterns, hospitals can analyse large collections of medical records,
+and online shops can estimate what customers may want next. The value
+comes from finding useful patterns or supporting better decisions---not
+from collecting information for its own sake.
 
-For this module, **volume, variety, and veracity** matter most. They determine how we collect examples, represent them as numbers, and decide whether a neural network can learn useful patterns.
+### Elaboration --- why "big" is more than size
 
-### Data can have different forms
+Imagine the Library of ALEKSANDRIA receiving one million new books. That
+is a volume problem. Now imagine that books arrive every second, in
+hundreds of formats, written by people whose reliability varies. The
+library must also decide which books are relevant and how to make their
+contents searchable. The problem is no longer just shelf space: it
+includes speed, variety, trust, and usefulness.
 
-A **structured** catalogue might store an image ID, digit label, and acquisition date in rows and columns. A **semi-structured** record might contain named fields but allow optional ones. An image file is not itself a row of ready-to-use numbers in the same sense as a spreadsheet, though software can decode it into numerical pixel values. This variety affects preparation.
+A dataset can therefore be challenging even when it is not the largest
+dataset in the world. A stream of time-sensitive sensor readings may be
+difficult because it arrives too quickly. A collection of videos, audio,
+and text may be difficult because the formats differ. The term *Big
+Data* refers to this combination of practical challenges.
 
-**Connection to AI:** Some image-recognition systems are trained on examples. An image is input data, and the correct digit supplied during supervised learning is its **label**. The training process uses many such examples to adjust model parameters. These ideas are developed in Chapters 2 and 3. [2][4]
+> **Definition --- Big Data**\
+> Big Data is data whose volume, speed of generation or transfer, and/or
+> variety require specialised methods and technologies for effective
+> storage, processing, and analysis.
 
-## 1.2 Why should we care about data quality?
+**Key distinction:** Big Data is not a particular file type, database,
+or software product. It is a data-management challenge and the set of
+approaches used to address it.
 
-A city analyzing traffic might learn more from measurements across many roads and times than from asking three people about traffic. But millions of measurements from only one road would still be a poor basis for estimating every road's conditions. **Quantity and representativeness are different.**
+------------------------------------------------------------------------
 
-Likewise, a digit-recognition model trained only on neat, perfectly centered digits may struggle with messy handwriting. Adding more near-identical examples does not guarantee it will handle new styles. Poor labels can also teach a model undesirable associations. [2]
+## 1.2 The 5 V's
 
-Consider the following **invented** records, for an illustrative digit-recognition dataset:
+The **5 V's** are five properties commonly used to describe the
+challenges and opportunities of Big Data:
 
-| Image ID | Supplied digit label | Issue |
-| --- | --- | --- |
-| A | 7 | Clear handwritten image |
-| B | 1 | Image file is unreadable |
-| C | 7 | Exact duplicate of A |
-| D | 2 | Image visibly shows 7: potential label error |
-| E | 7 | Image differs substantially from training examples |
+1.  **Volume** --- how much data exists.
+2.  **Velocity** --- how quickly data is generated, received, and
+    processed.
+3.  **Variety** --- the different forms and structures of data.
+4.  **Veracity** --- how reliable and accurate the data is.
+5.  **Value** --- whether the data can produce useful results.
 
-The records show several *different* problems:
+The 5 V's are a framework, not five steps that every dataset must pass
+through. They help us ask different questions about the same data
+system.
 
-- **Missing or unreadable data:** The image cannot be decoded; investigate and recover it if possible, or exclude it with a recorded reason.
-- **Duplicates:** An accidental duplicate can distort counts and, if the same underlying image appears in both training and evaluation sets, inflate apparent performance. Check how duplicates arose before deleting.
-- **Incorrect labels:** A label of 2 attached to an image of 7 can mislead supervised training. Ask for verification rather than silently changing uncertain labels.
-- **Coverage gaps:** One unusual writing style should not automatically be discarded; it may represent real users the model needs to serve.
-- **Privacy and provenance:** Confirm that an image may be used and record where it came from; avoid collecting unnecessary personal details.
+### 1.2.1 Velocity and Variety
 
-This is an example of the idea often called **garbage in, garbage out**: models cannot reliably compensate for every defect in the data they receive. Better data preparation can improve the *conditions* for learning; it cannot guarantee accuracy. [2]
+Data is generated by many sources: people, websites, mobile
+applications, industrial machines, cameras, scientific instruments, and
+other computers. These sources send information through networks to
+systems that receive and store it.
 
-### Prepare data with a clear purpose
+The **velocity** of data describes how quickly it is generated,
+transmitted, and made ready for use. Some data arrives in occasional
+batches---for example, a shop may send its sales records to a central
+system once each night. Other data arrives continuously, such as GPS
+positions from moving vehicles or readings from industrial sensors. In
+the second case, a system may need to process information almost
+immediately.
 
-A practical beginner workflow is:
+The **variety** of data describes the different forms in which it
+appears. Data may be numbers in a table, text in a document, images,
+audio, video, or records produced by devices. These forms do not all fit
+naturally into the same structure, so a data system must be able to
+handle different formats.
 
-1. **Define the task:** Here, predict which digit (0–9) a handwritten image represents.
-2. **Collect and inspect examples:** Check that images open, have appropriate permissions, and cover plausible handwriting variations.
-3. **Check labels:** A label must correspond to the actual image, including ambiguous cases needing human review.
-4. **Choose a consistent representation:** Decide image dimensions, grayscale convention, and numerical range.
-5. **Separate evaluation examples:** Keep examples for checking performance out of the model's fitting process. For a real project, prevent duplicate or closely related examples from crossing the split.
-6. **Apply preprocessing consistently:** The same input representation used for training must be used when making later predictions. [2][3]
+#### Data collection: a basic path
 
-**Important:** Preparation rules must fit the task. Removing every unusual image would make the dataset look tidy but could hide precisely the handwriting variation the model should recognize.
+1.  **Generation:** a source creates data, such as a temperature sensor
+    recording a reading.
+2.  **Transmission:** the data is sent through a connection, often a
+    wired or wireless network.
+3.  **Reception:** another system receives the data.
+4.  **Storage:** the data is saved so it can be accessed later or
+    processed immediately.
+5.  **Processing:** software checks, organises, combines, or transforms
+    the data for its intended use.
 
-## 1.3 Worked example — turn a handwritten image into model inputs
+The exact arrangement depends on the system. Some devices process
+information locally; others send it to a nearby server or a remote data
+centre.
 
-This section is a complete worked teaching example, not the output of a real digit-recognition model.
+#### Main data types
 
-Imagine a tiny **5 × 5 grayscale image** intended to resemble the digit 7. Each value is an image pixel. In this toy convention, 0 means dark background, 255 means bright ink, and values between them mean intermediate brightness.
+  -----------------------------------------------------------------------
+  Data type               Meaning                 Example
+  ----------------------- ----------------------- -----------------------
+  Structured data         Data organised          A table of customer IDs
+                          according to a defined  and purchase dates
+                          format, often rows and  
+                          columns                 
 
-```text
-255 255 255 255 255
-  0   0   0 128   0
-  0   0 255   0   0
-  0 255   0   0   0
-  0 255   0   0   0
-```
+  Semi-structured data    Data with some          A JSON record or an XML
+                          organisation or labels, document
+                          but without one fixed   
+                          table structure         
 
-**Step A — Treat the image as numerical data.** The image has 25 pixels. In a simple feed-forward model, one possible representation is a vector of 25 numbers, produced by reading the grid row by row. The first five values are `[255, 255, 255, 255, 255]`. Pixel position matters: shuffling the values would alter the image.
+  Unstructured data       Data that does not      Photos, audio
+                          follow a simple         recordings, videos, and
+                          predefined table        free-form text
+                          structure               
+  -----------------------------------------------------------------------
 
-**Step B — Normalize to a common numeric scale.** Here, every pixel is known to be between 0 and 255. Divide each value by 255:
+These categories describe how data is organised, not whether it is
+useful or reliable.
 
-- `0 / 255 = 0`
-- `128 / 255 ≈ 0.502`
-- `255 / 255 = 1`
+#### Hardware and software involved
 
-The first 10 elements of the normalized vector are therefore:
+-   **Hardware** is the physical equipment that receives, moves, stores,
+    and processes data. Examples include sensors, network equipment,
+    storage drives, and computers.
+-   **Software** is the set of programs that instructs hardware what to
+    do. It can collect data, transfer it, store it, organise it, and
+    process it.
 
-```text
-[1, 1, 1, 1, 1,  0, 0, 0, 0.502, 0, ...]
-```
+A sensor may produce a reading, network hardware may carry it, and
+software may record it in a database. The parts work together; neither
+hardware nor software alone describes the whole data system.
 
-There are still **25 features**: normalization changes their numeric scale, not their count. This fixed 255-based scaling is appropriate to this specified 8-bit grayscale convention. Other feature types may require other transformations. [3]
+> **Definition --- Data**\
+> Data is a representation of facts, observations, or measurements that
+> can be stored and processed by a computer.
 
-**Step C — Attach the training label.** If a human has verified that the image depicts 7, the example is:
+> **Definition --- Structured data**\
+> Structured data is data organised according to a predefined format or
+> schema, making its fields and relationships predictable.
 
-```text
-Input features: 25 normalized pixels
-Target label:   7
-```
+> **Definition --- Semi-structured data**\
+> Semi-structured data is data that uses labels, tags, keys, or other
+> markers to provide organisation without requiring a fixed
+> relational-table structure.
 
-The label is the known answer used during **supervised training**. It is *not* a pixel value, a learned weight, or a prediction. A model later produces its own predicted digit by processing the pixel inputs. [2][4]
+> **Definition --- Unstructured data**\
+> Unstructured data is data that does not follow a predefined tabular
+> structure, such as an image, video, audio recording, or free-form
+> text.
 
-**Step D — Keep the distinction clear.** This is one *toy training example*. It is not a large dataset, not a trained neural network, and not evidence that a classifier will correctly predict 7.
+> **Definition --- Data collection**\
+> Data collection is the process of obtaining observations or records
+> from one or more sources for storage, processing, or analysis.
 
-### Visual workflow
+### Elaboration --- choosing how quickly to process data
 
-```text
-Raw image + checked label
-         |
-         v
-Check legibility / dimensions / correct label
-         |
-         v
-Numerical pixel grid (5 x 5)
-         |
-         v
-Normalize pixels (divide by 255)
-         |
-         v
-Ordered vector of 25 features --------> neural-network input
-Known digit label (7) ----------------> training target
-```
+Think of the Library receiving new books. If a delivery arrives once a
+week, staff can catalogue the books in a planned batch. If urgent
+documents arrive every minute, waiting until the end of the week may
+make them useless. The second situation needs a faster workflow.
 
-This diagram can be adapted into the first video tutorial. The same prepared input will be reused when we introduce neurons in [Chapter 2](02-connectionist-ai.md).
+In computing, **batch processing** handles a group of records together,
+while **stream processing** handles data as it arrives. A system may use
+both: daily sales can be processed in batches, while a machine's safety
+readings may need continuous monitoring.
 
-## 1.4 Bigger datasets: what changes?
+> **Definition --- Batch processing**\
+> Batch processing is the processing of a collected group of data
+> records as one scheduled or defined job.
 
-Suppose a team has two hypothetical collections. Collection A has many copies of the same neat handwriting. Collection B includes fewer examples but covers several writing styles and carefully checked labels. Without testing a particular model on unseen examples, **we cannot determine which collection will produce better predictions**. Dataset size, quality, and diversity all matter, as do the task and training method. [2]
+> **Definition --- Stream processing**\
+> Stream processing is the continuous or near-continuous processing of
+> data as it is received.
 
-Large collections can also increase storage and processing costs. Before adding data, ask whether it adds relevant examples, resolves a known coverage gap, or improves evaluation. The question is not merely “How many images do we have?” but “What can the model learn and how will we test it?”
+### 1.2.2 Veracity
 
-## 1.5 Try it yourself
+Having a large amount of data does not guarantee that it is correct.
+Records may contain typing mistakes, missing values, duplicated entries,
+outdated information, faulty measurements, or misleading observations.
+Data may also reflect the preferences or limitations of the people and
+systems that produced it.
 
-**Question 1 — Apply scaling.** A different pixel has value 64 on the same 0–255 scale. What is its normalized value, to three decimal places?
+**Veracity** concerns the reliability, quality, and trustworthiness of
+data. Before analysis, data often needs to be checked and prepared.
 
-**Question 2 — Find the error.** A folder contains 300 copies of an identical image labeled 3 and only five images showing different styles of 8. Why might collecting another 300 copies of the image of 3 be unhelpful?
+A typical preparation process can include:
 
-**Question 3 — Explain the objects.** For the worked example, identify: (a) the 25 features, (b) the target label, and (c) the thing a network must produce before we can compare it with the target.
+1.  **Validation:** checking whether records follow expected rules. For
+    example, a date field should contain a valid date.
+2.  **Filtering:** removing records that do not meet the purpose of the
+    analysis, such as irrelevant or clearly invalid entries.
+3.  **Deduplication:** identifying and handling repeated records.
+4.  **Handling missing values:** deciding whether to remove incomplete
+    records, fill gaps, or keep an explicit "unknown" value.
+5.  **Transformation:** changing data into a form suitable for storage
+    or analysis, such as converting units or standardising date formats.
+6.  **Verification:** checking data against a trusted source,
+    independent measurement, or other evidence where possible.
 
-**Question 4 — Make a choice.** A rare but legitimate handwriting style looks unlike the other images. Should it be deleted automatically as an outlier? Explain.
+These actions are not interchangeable. Filtering selects records;
+validation checks whether they meet rules; transformation changes their
+representation; verification checks whether the information is supported
+by evidence.
 
-### Explained answers
+#### Bias
 
-1. `64 / 255 ≈ 0.251`. This is scaling from the specified 8-bit pixel range.
-2. Exact duplicates add little new handwriting variation and can skew the dataset; collecting more varied, correctly labeled examples would address a different problem.
-3. (a) The normalized pixel values in their fixed positions. (b) The digit `7`. (c) The model's predicted digit or scores from which a predicted digit is selected.
-4. No. The style might occur in real use. Verify the image and label, then decide whether and how it belongs in the dataset; do not treat every unusual example as erroneous.
+Data can be technically valid and still give a misleading picture.
+**Bias** is a systematic distortion that causes data or results to
+represent some cases better than others.
 
-## Key terms
+For example, a survey about public transport that is shared only through
+a smartphone application may miss people who do not use that
+application. The answers may be recorded correctly, but the sample does
+not represent everyone equally.
 
-- **Raw data:** Data before the preparation required for a particular task.
-- **Feature:** An input quantity supplied to the model (here, a pixel value at a specified position).
-- **Label:** The known target associated with an example during supervised learning.
-- **Normalization:** Transforming feature values to a chosen numerical scale.
-- **Representativeness:** The extent to which examples reflect the population or situations of interest.
-- **Inference:** Using a trained model to produce an output for an input.
+Bias can enter during data collection, selection, measurement,
+labelling, or analysis. Cleaning data does not automatically remove
+bias. In some cases, removing unusual records may even remove important
+members of the group being studied.
+
+#### Hardware and software involved
+
+-   Hardware can affect reliability: a damaged sensor may repeatedly
+    record incorrect temperatures; a failing storage device may corrupt
+    files.
+-   Software can detect or reduce some problems through validation
+    rules, duplicate detection, format checks, and data-cleaning
+    procedures.
+-   Human decisions remain important. People choose what to measure,
+    which records to keep, and how to interpret the results.
+
+> **Definition --- Veracity**\
+> Veracity is the degree to which data is accurate, reliable, complete,
+> consistent, and suitable for the purpose for which it is used.
+
+> **Definition --- Data validation**\
+> Data validation is the process of checking whether data meets defined
+> rules or constraints.
+
+> **Definition --- Data filtering**\
+> Data filtering is the selection or removal of records according to
+> specified conditions.
+
+> **Definition --- Data transformation**\
+> Data transformation is the process of changing the format, structure,
+> or values of data so that it can be used in another system or
+> processing step.
+
+> **Definition --- Bias**\
+> Bias is a systematic distortion in data collection, measurement,
+> selection, or analysis that causes results to differ from a fair or
+> representative account.
+
+### Elaboration --- a catalogue is not proof
+
+Imagine that the Library receives ten copies of the same book, each with
+a slightly different title, and one book whose temperature-sensitive ink
+has faded. A catalogue system can detect repeated titles and missing
+information, but a librarian may still need to check the original source
+to know which edition is correct.
+
+Data preparation works in a similar way. Software can find suspicious
+patterns, but it cannot always determine what is true. A value that
+looks unusual may be an error---or it may be the most important
+observation in the dataset. Decisions about removing or changing data
+should therefore be based on the purpose of the analysis and documented
+rules.
+
+### 1.2.3 Volume
+
+**Volume** refers to the amount of data that must be stored and managed.
+It may be measured in bytes and their larger units:
+
+  Unit                   Relationship
+  --------------- -------------------
+  Kilobyte (KB)     About 1,000 bytes
+  Megabyte (MB)        About 1,000 KB
+  Gigabyte (GB)        About 1,000 MB
+  Terabyte (TB)        About 1,000 GB
+  Petabyte (PB)        About 1,000 TB
+  Exabyte (EB)         About 1,000 PB
+
+These are decimal approximations commonly used for storage capacities.
+In some computing contexts, binary units (KiB, MiB, GiB, and so on) are
+used instead, where each step is 1,024 units.
+
+Large volumes require enough storage capacity and a way to find and
+process records efficiently. A small project may use a laptop and an
+external drive. A larger project may use many storage devices connected
+to several servers. Software is needed to organise the data, manage
+access, and make it available for processing.
+
+The type of data also affects storage needs. A text record may be small,
+while a high-resolution video can require much more space. The number of
+records alone does not tell us how much storage is needed.
+
+> **Definition --- Volume (in Big Data)**\
+> Volume is the quantity of data that a system must collect, store,
+> manage, or process.
+
+> **Definition --- Byte**\
+> A byte is a unit of digital information consisting of eight bits.
+
+### Elaboration --- storage capacity and organisation
+
+A library does not solve its storage problem by building shelves without
+a catalogue. In the same way, adding storage devices does not
+automatically make a large dataset manageable. The system must also
+track where information is stored, how it is protected, who can access
+it, and how it can be retrieved.
+
+### 1.2.4 Value
+
+**Value** describes the useful outcome that can be gained from data.
+Data may help an organisation understand a situation, answer a question,
+improve a process, predict demand, or make a decision.
+
+Collecting and storing data costs time, money, energy, and effort. Data
+becomes valuable when the benefit of using it justifies those costs. A
+huge dataset that is never used---or that cannot answer a meaningful
+question---may have little practical value.
+
+The value of data depends on its context and purpose. The same
+information may be useful to one organisation and irrelevant to another.
+It can also lose value when it becomes outdated.
+
+> **Definition --- Value (in Big Data)**\
+> Value is the practical benefit obtained by turning data into useful
+> information, knowledge, or action.
+
+### Elaboration --- information is not automatically insight
+
+The Library may own thousands of books, but the collection becomes
+useful when readers can find the right information and apply it to a
+question. Similarly, a data system creates value when analysis helps
+someone understand or do something better.
+
+**The 5 V's at a glance**
+
+  Property   Main question
+  ---------- ------------------------------------------------------
+  Volume     How much data is there?
+  Velocity   How quickly does it arrive and need to be processed?
+  Variety    What forms and structures does it take?
+  Veracity   How reliable is it?
+  Value      What useful result can be gained from it?
+
+After this introductory section, use the specific property name only
+when it is relevant. In other sections, prefer direct descriptions such
+as *data quantity*, *arrival rate*, *format differences*, *data
+quality*, and *practical benefit*.
+
+------------------------------------------------------------------------
+
+# 2. Hardware and Software Used for Big Data
+
+A Big Data system is built from physical equipment and the programs that
+control it. The scale can range from one computer with an external drive
+to a large facility containing thousands of servers.
+
+The right design depends on the task. Important factors include how much
+data must be stored, how quickly it must be read or written, how many
+users or programs need access, how long the information must be kept,
+and how much failure the system can tolerate.
+
+## 2.1 From a small data carrier to larger storage systems
+
+At a small scale, data can be stored on devices connected directly to a
+computer.
+
+  -----------------------------------------------------------------------
+  Device                  How it is used          Main consideration
+  ----------------------- ----------------------- -----------------------
+  Hard disk drive (HDD)   Stores data             Usually offers high
+                          magnetically on         capacity at a
+                          rotating disks          relatively low cost;
+                                                  moving parts can limit
+                                                  speed and physical
+                                                  durability
+
+  Solid-state drive (SSD) Stores data in flash    Faster access and no
+                          memory                  moving parts; cost per
+                                                  unit of capacity may be
+                                                  higher
+
+  USB flash drive         Portable flash storage  Convenient for
+                          connected through USB   transferring files; not
+                                                  usually the best choice
+                                                  for large, continuously
+                                                  used systems
+
+  Memory card             Small removable flash   Useful for local
+                          storage used in cameras recording; capacity,
+                          and devices             speed, and endurance
+                                                  depend on the card
+
+  Optical disc            Stores data using       Can be useful for
+                          optical technology      distribution or
+                                                  archival purposes, but
+                                                  has limited capacity
+                                                  and slower access
+                                                  compared with modern
+                                                  storage
+  -----------------------------------------------------------------------
+
+A device's **capacity** tells us how much information it can hold. Its
+**speed** describes how quickly it can read or write data. Its
+**endurance** describes how much use it can withstand before failure or
+wear becomes a concern. These are different properties.
+
+### Elaboration --- choosing a storage device
+
+Think of the Library's storage as a set of different rooms. A frequently
+used reference book should be easy to reach; a large archive can be kept
+in a more economical storage area; a fragile historical document needs
+special protection. Computer storage follows similar trade-offs.
+
+For example, an SSD is often useful when fast access matters. An HDD can
+be attractive when a large amount of data must be stored economically.
+Neither is universally "better": the right choice depends on workload,
+budget, capacity, speed, and reliability requirements.
+
+> **Definition --- HDD (Hard Disk Drive)**\
+> An HDD is a data-storage device that records information magnetically
+> on rotating disks and uses moving mechanical parts to read and write
+> it.
+
+> **Definition --- SSD (Solid-State Drive)**\
+> An SSD is a data-storage device that stores information in solid-state
+> memory, usually flash memory, and has no moving mechanical parts.
+
+> **Definition --- Storage capacity**\
+> Storage capacity is the maximum amount of data a storage device or
+> system can hold.
+
+> **Definition --- Read/write speed**\
+> Read/write speed describes how quickly a storage device can retrieve
+> data or save data.
+
+> **Definition --- Endurance**\
+> Endurance is the ability of a storage device to withstand repeated use
+> over time, such as repeated write operations.
+
+## 2.2 Server computers
+
+When many users or programs need shared data or computing services, one
+personal computer may not be suitable. A **server** is a computer system
+that provides resources or services to other computers, called clients,
+over a network.
+
+A server may store files, manage a database, host a website, or perform
+calculations. A server is not necessarily a special type of machine: it
+is defined mainly by the role it performs. In practice, servers are
+often designed for continuous operation, remote management, expansion,
+and reliable hardware.
+
+Several servers can work together. One may manage a database, another
+may handle incoming requests, and others may store files or perform
+calculations.
+
+> **Definition --- Server**\
+> A server is a computer or software system that provides data,
+> resources, or services to other systems over a network.
+
+> **Definition --- Client**\
+> A client is a computer or software application that requests or uses a
+> service provided by a server.
+
+### Elaboration --- the Library's service desks
+
+A large library does not ask one person to handle every task. One desk
+may help visitors find books, another may manage borrowing, and an
+archive team may protect stored materials. Servers can be organised in a
+similar way: different machines handle different jobs, while working as
+one larger service.
+
+## 2.3 Racks and server rooms
+
+A **server rack** is a frame or cabinet designed to hold multiple pieces
+of equipment in an organised way. Servers, switches, storage systems,
+and other devices can be mounted in the rack.
+
+Racks help use floor space efficiently and make it easier to organise
+power, network connections, and cooling. Equipment in a rack produces
+heat, so airflow and temperature control are important. Power
+distribution and cable management also matter.
+
+A room containing multiple racks and supporting equipment is commonly
+called a **server room**. As the number of systems grows, the
+organisation must plan for electricity, cooling, physical security,
+network connections, and maintenance.
+
+> **Definition --- Server rack**\
+> A server rack is a standardised frame or cabinet used to mount and
+> organise servers and related IT equipment.
+
+## 2.4 Data centres
+
+A **data centre** is a facility that houses computer systems and related
+infrastructure used to store, process, and distribute data. It may
+contain many racks of servers and storage devices, together with
+networking equipment, power systems, cooling, fire protection, and
+physical security.
+
+A data centre is more than a large room full of computers. It is a
+facility designed to keep services operating reliably. This requires
+backup power, temperature management, controlled access, monitoring, and
+plans for equipment failure.
+
+Data centres can be operated by a company for its own needs or by a
+provider that offers computing and storage services to customers.
+
+> **Definition --- Data centre**\
+> A data centre is a facility containing computing, storage, networking,
+> power, cooling, and security infrastructure used to operate
+> information systems.
+
+### Elaboration --- scaling up gradually
+
+The progression can be understood as a change in scale:
+
+1.  **One device:** a computer stores and processes its own files.
+2.  **Shared storage:** several devices access a common storage system.
+3.  **Server:** a dedicated system provides services to other computers.
+4.  **Rack:** multiple servers and network devices are organised
+    together.
+5.  **Server room:** several racks operate in a dedicated room.
+6.  **Data centre:** a purpose-built facility supports large-scale
+    computing and storage.
+
+This is a useful conceptual progression, not a rule that every
+organisation must follow. A business may use a cloud provider without
+owning any server racks or data centre.
+
+## 2.5 Hardware and software work together
+
+Hardware provides the physical resources. Software manages those
+resources and performs tasks with them.
+
+Examples of software used in data systems include:
+
+-   **Operating systems:** manage a computer's hardware and provide
+    services for applications.
+-   **Database management systems (DBMS):** organise data and provide
+    ways to store, retrieve, and update it.
+-   **Data-processing tools:** clean, combine, transform, or calculate
+    results from data.
+-   **Monitoring tools:** observe system health, performance, and
+    failures.
+-   **Security software:** helps control access and protect systems and
+    information.
+
+> **Definition --- Software**\
+> Software is a set of programs and related instructions that tell a
+> computer how to perform tasks.
+
+> **Definition --- Database**\
+> A database is an organised collection of data designed for storage,
+> retrieval, and management.
+
+> **Definition --- Database management system (DBMS)**\
+> A DBMS is software used to create, manage, query, and control access
+> to databases.
+
+------------------------------------------------------------------------
+
+# 3. Big Data in Industry
+
+Organisations do not all build and operate their own data
+infrastructure. They may buy equipment, hire specialist providers, share
+services, or use storage and computing resources supplied over a
+network.
+
+## 3.1 Diversified and outsourced solutions
+
+A **diversified solution** uses different systems or providers for
+different needs. For example, an organisation may keep sensitive records
+on its own servers while using an external provider for website hosting.
+
+**Outsourcing** means paying another organisation to perform a task or
+provide a service that could otherwise be handled internally. Data
+storage, server maintenance, security monitoring, and cloud computing
+are examples of services that may be outsourced.
+
+Outsourcing can reduce the need to buy and maintain equipment, and it
+can provide access to specialist knowledge. However, it also creates
+dependence on the provider. Organisations must consider cost,
+reliability, security, legal requirements, and control over their data.
+
+> **Definition --- Outsourcing**\
+> Outsourcing is the practice of contracting an external organisation to
+> provide a service or perform a task on behalf of another organisation.
+
+## 3.2 LAN, MAN, and WAN
+
+Networks connect computers and allow them to exchange data. They are
+often described by the geographical area they cover.
+
+  -----------------------------------------------------------------------
+  Network                 Full name               General coverage
+  ----------------------- ----------------------- -----------------------
+  LAN                     Local Area Network      A limited area, such as
+                                                  a home, office,
+                                                  laboratory, or campus
+
+  MAN                     Metropolitan Area       A city or a large urban
+                          Network                 area
+
+  WAN                     Wide Area Network       A large geographical
+                                                  area, potentially
+                                                  spanning countries or
+                                                  continents
+  -----------------------------------------------------------------------
+
+A network's coverage area does not, by itself, tell us how fast or
+secure it is. Those properties depend on the technology, design,
+equipment, and services used.
+
+> **Definition --- LAN (Local Area Network)**\
+> A LAN is a network that connects devices within a limited geographical
+> area, such as a building or campus.
+
+> **Definition --- MAN (Metropolitan Area Network)**\
+> A MAN is a network that connects devices or smaller networks across a
+> metropolitan area.
+
+> **Definition --- WAN (Wide Area Network)**\
+> A WAN is a network that connects devices or networks across a large
+> geographical area.
+
+## 3.3 NAS
+
+A **Network Attached Storage (NAS)** device is a storage system
+connected to a network. It allows authorised users and devices to access
+shared files without connecting a storage drive directly to each
+computer.
+
+A NAS is commonly used for shared folders, backups, and centralised file
+storage in homes, laboratories, and businesses. It can contain one or
+more drives and may support features such as user permissions and data
+redundancy.
+
+NAS is a storage solution, not a type of network. It uses a
+network---often a LAN---to make storage available to multiple devices.
+
+> **Definition --- NAS (Network Attached Storage)**\
+> NAS is a dedicated storage device or system connected to a network
+> that provides file access to authorised network users and devices.
+
+## 3.4 Cloud storage
+
+**Cloud storage** is a service in which data is stored on infrastructure
+operated by a provider and accessed over a network, commonly the
+internet. The provider manages the underlying storage equipment and much
+of the supporting infrastructure.
+
+Cloud storage can make data accessible from different locations and can
+reduce the need for an organisation to own and maintain all its storage
+hardware. Capacity can often be adjusted as needs change.
+
+However, cloud storage still depends on physical data centres. It also
+requires attention to internet access, service costs, provider
+reliability, data protection, and the location and legal treatment of
+stored information.
+
+> **Definition --- Cloud storage**\
+> Cloud storage is a service that stores data on provider-managed
+> infrastructure and makes it accessible over a network.
+
+### Elaboration --- renting shelves instead of building an archive
+
+The Library could build and maintain every storage room itself, or it
+could rent space in a professionally managed archive. Cloud storage is
+similar to renting storage capacity from a provider. The Library still
+needs to decide what to store, who may access it, and how to protect it;
+it simply does not own all the physical storage equipment.
+
+**Important distinction:** "The cloud" is not a place without computers.
+Cloud services run on real servers, storage devices, networks, and data
+centres.
+
+## 3.5 B2B and B2C
+
+The terms **B2B** and **B2C** describe the relationship between a
+business and its customer.
+
+-   **B2B (Business-to-Business):** a business provides products or
+    services to another business. For example, a cloud provider sells
+    storage services to a company.
+-   **B2C (Business-to-Consumer):** a business provides products or
+    services directly to individual consumers. For example, an online
+    store sells products to a person.
+
+These terms describe the customer relationship, not the technical
+structure of the data system. A company may use Big Data in either
+model.
+
+> **Definition --- B2B (Business-to-Business)**\
+> B2B is a business model in which a company provides products or
+> services to another company.
+
+> **Definition --- B2C (Business-to-Consumer)**\
+> B2C is a business model in which a company provides products or
+> services directly to individual consumers.
+
+------------------------------------------------------------------------
+
+# 4. Data Analysis
+
+Collecting and storing data is only part of the process. To use it, data
+must be prepared, examined, interpreted, and often presented in a form
+that helps people make decisions.
+
+A typical analysis workflow includes:
+
+1.  **Define a question:** decide what needs to be understood.
+2.  **Obtain data:** collect relevant records from suitable sources.
+3.  **Prepare data:** check quality, handle missing or repeated records,
+    and make formats consistent.
+4.  **Process data:** organise, combine, calculate, or transform
+    records.
+5.  **Analyse data:** look for patterns, relationships, differences, or
+    unusual cases.
+6.  **Visualise and communicate:** present the results so that other
+    people can understand them.
+7.  **Evaluate:** check whether the results answer the original question
+    and whether their limitations are clear.
+
+These stages may overlap or repeat. Analysis is often iterative: a
+result can reveal that more data is needed or that the original question
+must be refined.
+
+## 4.1 Data processing
+
+**Data processing** is the set of operations used to turn collected data
+into a more useful form. It may include sorting, filtering, combining,
+grouping, calculating, formatting, and converting records.
+
+For example, a transport system may collect individual vehicle-location
+readings. Processing could organise the readings by time and route,
+remove invalid records, and calculate average travel times.
+
+Processing does not necessarily explain what the results mean. It
+prepares and organises the data so that analysis can be performed.
+
+> **Definition --- Data processing**\
+> Data processing is the performance of operations on data to organise,
+> transform, calculate, or prepare it for storage, analysis, or use.
+
+## 4.2 Data analysis
+
+**Data analysis** is the process of examining data to answer questions,
+identify patterns, test ideas, or support decisions.
+
+Different questions require different methods:
+
+-   **Descriptive analysis:** What happened? For example, how many
+    orders were placed last month?
+-   **Diagnostic analysis:** Why might it have happened? For example,
+    which factors are associated with a fall in orders?
+-   **Predictive analysis:** What may happen next? For example, how many
+    orders might arrive next week?
+-   **Prescriptive analysis:** What action should be considered? For
+    example, how should staff levels be adjusted to meet expected
+    demand?
+
+These categories describe common purposes. Real projects may combine
+several of them.
+
+> **Definition --- Data analysis**\
+> Data analysis is the systematic examination of data to obtain
+> information, identify patterns, answer questions, or support
+> decisions.
+
+### Elaboration --- from records to a useful answer
+
+Suppose the Library records how often each book is borrowed. Processing
+can count the loans and group them by month. Analysis can reveal that
+some subjects become more popular before examinations. A further step
+may use that pattern to plan staffing or decide which books should be
+available in additional copies.
+
+The count is a result of processing. The pattern is an analytical
+finding. The decision is an action informed by that finding. Keeping
+these stages distinct helps avoid treating every calculated number as an
+explanation.
+
+## 4.3 Data visualisation
+
+**Data visualisation** presents data or analytical results in a visual
+form, such as a chart, graph, map, or dashboard. A good visualisation
+helps people notice patterns, compare values, and understand
+relationships.
+
+Common examples include:
+
+  -----------------------------------------------------------------------
+  Visualisation                       Often useful for
+  ----------------------------------- -----------------------------------
+  Bar chart                           Comparing values across categories
+
+  Line chart                          Showing change over time
+
+  Pie chart                           Showing parts of a whole when there
+                                      are few categories
+
+  Scatter plot                        Showing the relationship between
+                                      two numerical variables
+
+  Map                                 Showing where events or
+                                      measurements occur
+
+  Dashboard                           Bringing several indicators
+                                      together for monitoring
+  -----------------------------------------------------------------------
+
+A visualisation can also mislead. Truncated axes, unclear labels,
+unsuitable chart types, missing context, or selective data can make
+differences look larger or smaller than they are. A chart should include
+enough information for the reader to understand what is being shown.
+
+> **Definition --- Data visualisation**\
+> Data visualisation is the representation of data or analytical results
+> in visual forms to help people explore, interpret, and communicate
+> information.
+
+### Elaboration --- the Library's map
+
+A catalogue can list every book, but a map of the Library helps visitors
+understand where subjects are located and how the collection is
+arranged. A chart plays a similar role: it does not replace the
+underlying data, but it can make important relationships easier to see.
+
+## 4.4 Use cases
+
+Big Data methods are used wherever large or complex collections of
+information can support a useful task.
+
+  -----------------------------------------------------------------------
+  Area                    Example use             Possible benefit
+  ----------------------- ----------------------- -----------------------
+  Transport               Analysing GPS and       Understanding
+                          traffic-sensor records  congestion and planning
+                                                  routes
+
+  Healthcare              Studying medical        Supporting research and
+                          records and research    service planning
+                          data                    
+
+  Retail                  Analysing purchases and Understanding demand
+                          browsing activity       and managing stock
+
+  Manufacturing           Analysing machine and   Detecting faults and
+                          sensor readings         planning maintenance
+
+  Education               Analysing               Understanding
+                          learning-platform       participation and
+                          activity                identifying where
+                                                  support may be needed
+
+  Science                 Combining measurements  Finding patterns and
+                          from experiments and    supporting research
+                          instruments             
+  -----------------------------------------------------------------------
+
+These examples do not mean that data alone makes a decision. Results
+need to be interpreted in context, and the people responsible for a
+decision must consider limitations and consequences.
+
+------------------------------------------------------------------------
+
+# 5. Ethics
+
+Big Data systems can affect people even when the data is collected
+indirectly. Information about location, purchases, health,
+communication, or online activity can reveal details about individuals
+and groups.
+
+Ethical data use considers not only what an organisation *can* collect
+or analyse, but also what it *should* do. Important questions include:
+
+-   **Privacy:** Is personal information being collected or used in a
+    way people would reasonably expect?
+-   **Consent and transparency:** Do people understand what information
+    is collected and how it will be used?
+-   **Security:** Is data protected against unauthorised access, loss,
+    or misuse?
+-   **Fairness:** Could the data or analysis disadvantage particular
+    people or groups?
+-   **Purpose limitation:** Is information being used for the reason it
+    was collected, or for a new purpose that needs further
+    justification?
+-   **Data minimisation:** Is the organisation collecting only the
+    information it actually needs?
+-   **Retention:** How long should information be kept, and when should
+    it be deleted?
+-   **Accountability:** Who is responsible when a data system causes
+    harm or produces an unfair result?
+
+Ethical questions are connected. For example, collecting more personal
+information than necessary can increase privacy risks and the damage
+caused by a security breach. Biased data can also lead to unfair
+decisions, even if the analysis is performed correctly.
+
+> **Definition --- Data privacy**\
+> Data privacy concerns the appropriate collection, use, sharing, and
+> control of information relating to individuals.
+
+> **Definition --- Data security**\
+> Data security is the protection of data against unauthorised access,
+> alteration, disclosure, destruction, or loss.
+
+> **Definition --- Informed consent**\
+> Informed consent is permission given after a person has been provided
+> with understandable information about what they are agreeing to.
+
+> **Definition --- Data minimisation**\
+> Data minimisation is the principle of collecting and retaining only
+> the data necessary for a clearly defined purpose.
+
+### Elaboration --- the Library's access rules
+
+A library may hold valuable and sensitive documents. Not every visitor
+should be able to read every record, and not every document should be
+copied or kept forever. The Library therefore needs rules about access,
+purpose, protection, and responsibility.
+
+Data systems need similar rules. Technical access controls can help
+enforce them, but ethical use also requires good decisions about what
+information should be collected and why. A system can follow its
+technical rules and still be used in a harmful or unfair way.
+
+------------------------------------------------------------------------
+
+# 6. Quick Review
+
+## 6.1 Core terms
+
+  -----------------------------------------------------------------------
+  Term                                Short meaning
+  ----------------------------------- -----------------------------------
+  Big Data                            Data that requires specialised
+                                      methods to manage effectively
+
+  Volume                              Amount of data
+
+  Velocity                            Speed of data generation, transfer,
+                                      or processing
+
+  Variety                             Different data forms and structures
+
+  Veracity                            Reliability and quality of data
+
+  Value                               Practical benefit gained from data
+
+  Structured data                     Data organised by a predefined
+                                      format
+
+  Semi-structured data                Data organised with labels or
+                                      markers, but not a fixed table
+
+  Unstructured data                   Data without a predefined tabular
+                                      structure
+
+  Batch processing                    Processing a group of records
+                                      together
+
+  Stream processing                   Processing data as it arrives
+
+  Validation                          Checking data against rules
+
+  Filtering                           Selecting records according to
+                                      conditions
+
+  Transformation                      Changing data into a suitable
+                                      format or structure
+
+  Bias                                Systematic distortion in data or
+                                      results
+
+  Server                              A system that provides services to
+                                      clients
+
+  Server rack                         Frame or cabinet for mounting IT
+                                      equipment
+
+  Data centre                         Facility that houses computing and
+                                      supporting infrastructure
+
+  LAN                                 Network covering a limited local
+                                      area
+
+  MAN                                 Network covering a metropolitan
+                                      area
+
+  WAN                                 Network covering a large
+                                      geographical area
+
+  NAS                                 Network-connected system for shared
+                                      file storage
+
+  Cloud storage                       Provider-managed storage accessed
+                                      over a network
+
+  Outsourcing                         Contracting an external
+                                      organisation to provide a service
+
+  B2B                                 Business selling to or serving
+                                      another business
+
+  B2C                                 Business selling to or serving
+                                      individual consumers
+
+  Data processing                     Organising or transforming data
+
+  Data analysis                       Examining data to answer questions
+                                      or find patterns
+
+  Data visualisation                  Presenting data or results visually
+  -----------------------------------------------------------------------
+
+## 6.2 Check your understanding
+
+1.  Why is Big Data not defined by size alone?
+2.  What are the 5 V's, and what question does each one help answer?
+3.  What is the difference between structured, semi-structured, and
+    unstructured data?
+4.  How does batch processing differ from stream processing?
+5.  Why does a large dataset still need validation and verification?
+6.  What is the difference between filtering and transformation?
+7.  How can bias enter a dataset even when records are entered
+    correctly?
+8.  What is the difference between storage capacity, speed, and
+    endurance?
+9.  How does a server differ from a client?
+10. What is the relationship between a server, a rack, a server room,
+    and a data centre?
+11. What do LAN, MAN, and WAN describe?
+12. How does NAS differ from cloud storage?
+13. What is outsourcing, and what trade-offs can it create?
+14. How do B2B and B2C differ?
+15. What is the difference between data processing and data analysis?
+16. Which chart type is often suitable for comparing categories? Which
+    is often suitable for showing change over time?
+17. Name three ethical concerns that can arise when organisations
+    collect and analyse personal data.
+
+## 6.3 Distinctions worth remembering
+
+-   **Data vs. information:** data consists of recorded facts or
+    observations; information is data organised or interpreted in a way
+    that is meaningful for a purpose.
+-   **Hardware vs. software:** hardware is the physical equipment;
+    software is the programs and instructions.
+-   **Storage vs. processing:** storage keeps data; processing performs
+    operations on it.
+-   **Validation vs. verification:** validation checks whether data
+    follows rules; verification checks whether it is supported or
+    correct.
+-   **Processing vs. analysis:** processing prepares or changes data;
+    analysis examines it to answer a question.
+-   **NAS vs. cloud storage:** NAS is connected to a network and
+    commonly managed locally; cloud storage is provided through
+    infrastructure managed by an external service provider. Both rely on
+    physical storage devices.
+-   **Privacy vs. security:** privacy concerns appropriate use and
+    control of personal information; security concerns protection
+    against unauthorised access, change, disclosure, or loss.
+
+------------------------------------------------------------------------
 
 ## Sources and attribution
 
