@@ -715,3 +715,11 @@ ChatGPT assisted with reviewing both chapters, checking arithmetic, drafting rev
 | [#71](https://github.com/Voryalis/aleksandria/pull/71/files) | Three answer-key calculations were verified. The explanations of Softmax, evaluation on unseen data, and LSTM gradients need correction. | Revise those explanations and verify the updated text. |
 
 **Status:** Follow-up pending. The video review covered the guide. Full playback and audio checks of the final MP4s are pending. A white background is optional for the videos.
+
+### 2026-11-07 — PR #68 Final Video QA
+
+Reviewed both final MP4s against their scripts and the Stage 2 Video Guide. The explanations, worked examples, and learner answers were accurate in both tutorials. I listened to both exports in full and confirmed that the narration was clear and synchronized with the visuals. I also checked the guide’s resource links and confirmed access to the shared review document.
+
+**Minor documentation issue:** The Video 01 script lists a runtime of 5:00, while the final export runs for 6:55. The on-screen quiz also uses an A/B format. Update the script’s timestamps and quiz wording to match the final export.
+
+**Result:** QA passed with minor documentation follow-up. No blocking issues found. Approval recommended.
