@@ -729,3 +729,10 @@ Reviewed both final MP4s against their scripts and the Stage 2 Video Guide. The 
 Rechecked the chapter structure after the author’s reply. Chapter 3 explains pixel inputs and target labels, and Chapter 4, Section 4.3, contains the worked image preparation example. The original request to restore the example in Chapter 1 is resolved.
 
 **Result:** QA passed with minor documentation follow-up. Update the outdated Chapter 1 references in the Video 01 guide and clarify the opening of Chapter 3. No blocking issues remain. Approval recommended.
+
+### Final QA re-review of PRs #70 and #71
+
+- **PR #70 — Chapter 02 revision.** Verified the corrected worked neuron example and the explanation of how input and weight signs affect each contribution to the weighted sum.
+- **PR #71 — End-of-guide information.** Verified the corrected explanations of Softmax, evaluation on unseen data, and LSTM gradients. Confirmed that the worked calculations in the answer key are correct.
+
+**Result:** Both PRs passed the follow-up QA review. All previously reported issues were resolved. Approval recommended for both PRs.
