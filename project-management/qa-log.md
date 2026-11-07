@@ -736,3 +736,9 @@ Rechecked the chapter structure after the author’s reply. Chapter 3 explains p
 - **PR #71 — End-of-guide information.** Verified the corrected explanations of Softmax, evaluation on unseen data, and LSTM gradients. Confirmed that the worked calculations in the answer key are correct.
 
 **Result:** Both PRs passed the follow-up QA review. All previously reported issues were resolved. Approval recommended for both PRs.
+
+### PR #75 — Stage 2 Classroom Slides QA
+
+Reviewed all 42 PDF pages and the editable PPTX at commit `7469fec`. Confirmed presenter notes on all 42 slides, a consistent light theme, and correct worked examples for ReLU, loss, the parameter update, and the confusion matrix.
+
+**Result:** Approval recommended. Minor follow-up remains for the outdated references in the notes on slides 12 and 17 and the repeated introduction in the closing notes on slide 42. The classroom rehearsal required by #41 has yet to be verified.
