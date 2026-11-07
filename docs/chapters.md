@@ -1,4 +1,4 @@
-# ALEKSANDRIA — Stage 1 Content Structure
+# ALEKSANDRIA — Stage 2 Content Map
 
 **Audience:** Beginners with basic high-school mathematics and no previous machine-learning or programming experience.
 
@@ -19,7 +19,7 @@ After studying the complete module, learners should be able to:
 
 ## Chapter 1 — Big Data: from raw records to usable inputs
 
-**Status:** Developed Stage 1 draft at [01-big-data.md](01-big-data.md).
+**Current source:** [01-big-data.md](01-big-data.md).
 
 - **1.1 What counts as Big Data?** Working definition; the five V's: volume, velocity, variety, veracity, value; why scale alone does not guarantee usefulness.
 - **1.2 Data before learning.** Structured, semi-structured, and unstructured data; collection, storage, labels, and provenance; basic privacy considerations.
@@ -32,7 +32,7 @@ After studying the complete module, learners should be able to:
 
 ## Chapter 2 — Artificial neurons and connected networks
 
-**Status:** Complete non-introductory Stage 1 instructional sample at [02-connectionist-ai.md](02-connectionist-ai.md).
+**Current source:** [02-connectionist-ai.md](02-connectionist-ai.md).
 
 - **2.1 A model that takes numbers as input.** Identify input features, weights, bias, weighted sum, and activation function.
 - **2.2 Worked neuron computation.** Calculate a weighted sum and ReLU activation by hand; change one parameter and recompute.
