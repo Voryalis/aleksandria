@@ -4,7 +4,7 @@
 
 **Audience:** University beginners with no previous machine-learning experience.
 
-**Prerequisites:** [Chapter 1 — Big Data](01-big-data.md) · [Chapter 2 — Artificial Neurons](02-connectionist-ai.md) · [Chapter 3 — How a Neural Network Learns](03-neural-networks.md)
+**Prerequisites:** [Chapter 1 — Big Data](01-big-data.md) · [Chapter 2 — Artificial Neurons](02-connectionist-ai.md) · [Chapter 3 — How a Neural Network Learns](03-neural-networks-learning.md)
 
 ## 4.1 From Individual Ideas to a Complete System
 
