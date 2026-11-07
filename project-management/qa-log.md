@@ -702,3 +702,16 @@ Changes are still needed before final acceptance. A corrected replacement Markdo
 ### AI Assistance
 
 ChatGPT assisted with reviewing both chapters, checking arithmetic, drafting revisions, and preparing these QA records on 6 November 2026. Team decisions, upload actions, and any independent checks should be recorded separately when they actually occur.
+
+### 2026-11-07 — Stage 2 QA review of PRs #68–#71
+
+**Scope:** Reviewed the Video Tutorial Guide, the Big Data and Connectionist AI chapter revisions, and the end-of-guide summary and answer key.
+
+| PR | Finding | Follow-up |
+| --- | --- | --- |
+| [#68](https://github.com/Voryalis/aleksandria/pull/68/files) | The guide names both MP4 files and uses nonstandard markup for resource links. | Convert the resource links to Markdown. Confirm both uploads in Lexue and arrange a teammate playback check of the final exports. |
+| [#69](https://github.com/Voryalis/aleksandria/pull/69/files) | The digit-to-input example was removed, leaving references to it in Chapter 3 and the video guide. | Restore the example and update the video guide’s section reference. |
+| [#70](https://github.com/Voryalis/aleksandria/pull/70/files) | The worked neuron calculation was removed. The explanation of weight signs needs to account for negative inputs. | Restore the calculation and explain each contribution as `input × weight`. |
+| [#71](https://github.com/Voryalis/aleksandria/pull/71/files) | Three answer-key calculations were verified. The explanations of Softmax, evaluation on unseen data, and LSTM gradients need correction. | Revise those explanations and verify the updated text. |
+
+**Status:** Follow-up pending. The video review covered the guide. Full playback and audio checks of the final MP4s are pending. A white background is optional for the videos.
