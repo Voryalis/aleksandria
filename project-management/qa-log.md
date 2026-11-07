@@ -742,3 +742,9 @@ Rechecked the chapter structure after the author’s reply. Chapter 3 explains p
 Reviewed all 42 PDF pages and the editable PPTX at commit `7469fec`. Confirmed presenter notes on all 42 slides, a consistent light theme, and correct worked examples for ReLU, loss, the parameter update, and the confusion matrix.
 
 **Result:** Approval recommended. Minor follow-up remains for the outdated references in the notes on slides 12 and 17 and the repeated introduction in the closing notes on slide 42. The classroom rehearsal required by #41 has yet to be verified.
+
+### Stage 2 QA — Study Guide and Test Bank (#39, #40, #45)
+
+- **Study Guide (#39).** Reviewed all 34 pages for readability, structure, and instructional content. The PDF has a readable white-background layout, diagrams, a glossary, and references. Add a table of contents, explicit learning objectives and prerequisites, and hands-on activities with explained answers. On pages 25 and 27, clarify that backpropagation computes gradients and the optimizer updates parameters by subtracting the scaled gradient, regardless of its sign.
+- **Test Bank (#40).** Reviewed all 15 questions and checked the answer key. The calculations in Q11–Q13 are correct (25 °C, ReLU output of 0, and an updated weight of 0.635). Revise the LSTM explanations in Q6 and Q14 and remove the claim in Q14 that MLP inputs must be independent. The current bank contains 0 True/False, 10 multiple-choice, and 5 free-response questions, including 3 calculations. Expand it to meet the 20/20/6 minimum and submit it as a separate editable Word document.
+- **Status (#45).** Initial review complete. Content revisions, teammate testing, and final ZIP verification are pending.
