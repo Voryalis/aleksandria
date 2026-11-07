@@ -723,3 +723,9 @@ Reviewed both final MP4s against their scripts and the Stage 2 Video Guide. The 
 **Minor documentation issue:** The Video 01 script lists a runtime of 5:00, while the final export runs for 6:55. The on-screen quiz also uses an A/B format. Update the script’s timestamps and quiz wording to match the final export.
 
 **Result:** QA passed with minor documentation follow-up. No blocking issues found. Approval recommended.
+
+### PR #69 — Big Data Chapter QA Re-review
+
+Rechecked the chapter structure after the author’s reply. Chapter 3 explains pixel inputs and target labels, and Chapter 4, Section 4.3, contains the worked image preparation example. The original request to restore the example in Chapter 1 is resolved.
+
+**Result:** QA passed with minor documentation follow-up. Update the outdated Chapter 1 references in the Video 01 guide and clarify the opening of Chapter 3. No blocking issues remain. Approval recommended.
