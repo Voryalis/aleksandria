@@ -1,81 +1,100 @@
-# Aleksandria — Stage 1 Task List
+# ALEKSANDRIA — Project Task List and Submission Tracker
 
-## Status Legend
+**Module:** Big Data & Connectionist AI  
+**Repository:** https://github.com/Voryalis/aleksandria  
+**Updated:** 7 November 2026 (Stage 2 checkpoint)  
+**Coordinator:** Aleksandr (@destra825) · **Repository / submission lead:** Kamran (@Voryalis)
 
-- **Planned:** Work is identified but completion has not been verified.
-- **In progress:** Work has demonstrably started.
-- **Blocked:** Work cannot proceed until a documented dependency is resolved.
-- **In review:** Work has been submitted for review.
-- **Done:** Work is complete and supported by verifiable evidence.
+This register supersedes the obsolete Stage 1-only task statuses previously in this file. Git history retains the earlier planning snapshot. It separates **file existence**, **quality checks**, and **actual Lexue submission**, because a closed GitHub Issue is not evidence of a successful submission.
 
-Do not mark a task Done solely because a file exists or contains a placeholder. Update statuses based on actual work.
+## Status conventions
 
-## Task Register
+- **Available:** The deliverable exists at a verified repository or Drive location; additional checks or submission may remain.
+- **Reviewed:** A review result is documented, but that result covers only the specifically reviewed artifact/version.
+- **Owner-reported ready:** A team member confirms the artifact exists outside the accessible repository/Drive; independent inspection is unavailable.
+- **Needs verification:** A mandatory packaging, learner-testing, final-format, or submission step has not been evidenced here.
+- **Submitted (team-reported):** Team information says Lexue submission occurred; no Lexue receipt has been independently inspected.
+- **Complete:** All relevant acceptance conditions and submission confirmation have been checked. **Do not infer this from issue closure.**
 
-| ID | Task | Owner | Deadline | Status | Dependencies / Acceptance criteria |
-|---|---|---|---|---|---|
-| PM-01 | Confirm project scope, target audience, measurable learning objectives, and chapter sequence. | Iatsenko Aleksandr (Coordinator), with Virin Grigorii (Content Lead) | Before Markdown V1.0; exact internal date pending confirmation | Planned — confirm current state | Objectives must be clear, measurable, and consistent with the five existing chapter files. |
-| PM-02 | Complete `project-management/project-plan.md`. | Iatsenko Aleksandr | Internal deadline pending confirmation | Planned — confirm current state | Include scope, audience, objectives, chapter sequence, roles, deliverables, milestones, dependencies, and pending decisions. |
-| PM-03 | Complete `project-management/task-list.md` and maintain task ownership and status. | Iatsenko Aleksandr | Internal deadline pending confirmation | Planned — confirm current state | Every task must have an owner, deadline or explicit pending deadline, status, and acceptance criteria. |
-| PM-04 | Confirm the roster, task assignments, GitHub access, and unresolved blockers. | Iatsenko Aleksandr, Abdullayev Kamran | As soon as practicable; exact date pending | Planned — confirm current state | Record confirmed decisions and blockers; do not assume access or approval. |
-| PM-05 | Hold or confirm actual team meetings and record decisions and action items. | Iatsenko Aleksandr; Abdullayev Kamran records the verified log | Weekly | Planned — record actual meetings | Use WeChat for coordination. Record actual meeting dates, participants, decisions, actions, and evidence. |
-| PM-06 | Maintain `project-management/project-log.md` with verified activities and evidence. | Abdullayev Kamran (CIO) | Throughout Stage 1 | Planned — confirm current state | Log actual dates, contributors, changes, evidence links, next actions, and relevant AI assistance and verification. |
-| CT-01 | Finalize measurable learning objectives and map them to the five chapter files. | Virin Grigorii | Before Markdown V1.0; exact internal date pending confirmation | Planned — confirm current state | Cover raw-data issues, data preparation, neural-network inputs and weights, error-driven learning, and data quality and representativeness. |
-| CT-02 | Develop `docs/01-big-data.md`. | Virin Grigorii, coordinating substantive contributions from the team | 24 October 2026, 23:55 UTC+8 — Stage 1 milestone | Planned — confirm current state | Explain Big Data, especially volume, variety, and veracity; discuss data quality and preprocessing; include a labeled handwritten-digit example and verified citations. |
-| CT-03 | Develop `docs/02-connectionist-ai.md`. | Virin Grigorii, with contributions coordinated across the team | 24 October 2026, 23:55 UTC+8 — Stage 1 milestone | Planned — confirm current state | Explain connectionism, artificial neurons, and interconnected processing units at beginner level. Include definitions, an example, and citations. |
-| CT-04 | Develop `docs/03-neural-networks.md`. | Virin Grigorii, with contributions coordinated across the team | 24 October 2026, 23:55 UTC+8 — Stage 1 milestone | Planned — confirm current state | Explain inputs, weights, layers, activation functions, predictions, loss, training, and backpropagation at beginner level. |
-| CT-05 | Develop `docs/04-integration.md`. | Virin Grigorii, coordinating with Abdullayev Kamran and relevant contributors | 24 October 2026, 23:55 UTC+8 — Stage 1 milestone | Planned — confirm current state | Trace the handwritten-digit example from raw data and preprocessing to model inputs, training, validation, and evaluation. |
-| CT-06 | Develop `docs/05-applications.md`. | Virin Grigorii, coordinating with Koldas Tamerlan | 24 October 2026, 23:55 UTC+8 — Stage 1 milestone | Planned — confirm current state | Discuss practical applications, limitations, data bias, representativeness, privacy, and responsible use with verified citations. |
-| REF-01 | Consolidate and verify research sources and in-text citations. | Virin Grigorii, coordinating with the designated reference-task owner; owner confirmation pending | Before Markdown V1.0 review | Planned — owner confirmation pending | Complete `references.md`; verify that sources support the claims and are cited in the relevant chapters. Do not treat unchecked URLs as verified citations. |
-| QA-01 | Conduct independent factual and beginner-accessibility review of developed content. | Koldas Tamerlan (Quality Lead) | Before Markdown V1.0 is declared complete | Planned — confirm current state | Record specific findings, supporting evidence, required changes, and review outcomes. |
-| QA-02 | Resolve review findings and record actual changes. | Relevant content owner; Koldas Tamerlan verifies corrections | Before Markdown V1.0 is declared complete | Planned — depends on QA-01 | Each finding must be addressed, explicitly left open with a reason, or tracked as a blocker. |
-| VIS-01 | Prepare supporting diagrams and visual assets for the learning materials. | Balanin Arsentii (Visual Design Lead) | Internal deadline pending confirmation | Planned — confirm current state | Visuals must support the approved content, use consistent terminology, and be checked for clarity and accuracy. |
-| VID-01 | Prepare video plan and scripts aligned with the learning objectives. | Kapiz Mirad (Video Lead) | Internal deadline pending confirmation | Planned — confirm current state | Scripts must align with the chapters and shared handwritten-digit example. Mini-lecture topic approval remains pending. |
-| SUB-01 | Check the required submission package against instructor rules. | Iatsenko Aleksandr, coordinating with the team | Final deadline pending confirmation | Planned — deadline pending | Verify required formats, deliverables, citations, contribution evidence, and any required submission procedure before declaring readiness. |
+## Stage 1 — historical checkpoint
 
-## Team Responsibilities
+Stage 1 planning, repository setup, first content, and the live status report were addressed in October 2026. Historical task details remain in Git history, the [Stage 1 plan](project-plan.md), [project log](project-log.md), and corresponding GitHub Issues. Those records are **not** evidence that every Stage 2 submission below is complete.
 
-| Member | Role | Primary task areas |
-|---|---|---|
-| Iatsenko Aleksandr | CEO / Project Coordinator | PM-01 to PM-05, SUB-01 |
-| Abdullayev Kamran | CIO / Repository & Technical Workflow | PM-04, PM-06, technical workflow and repository support |
-| Virin Grigorii | Content Lead | CT-01 to CT-06, coordination of REF-01 |
-| Kapiz Mirad | Video Lead | VID-01 |
-| Koldas Tamerlan | Quality Lead | QA-01, QA-02, quality support for CT-06 |
-| Balanin Arsentii | Visual Design Lead | VIS-01 |
+## Stage 2 — deliverable register
 
-All team members should make identifiable, substantive contributions and be able to explain their own work. Shared contributions must be recorded accurately.
+The professor's six Stage 2 assignments are distinct: **Markdown Content V2.0, Study Guide & Test Bank V1.0, PPT Slides V1.0, Video Tutorials V1.0, Project Log & Meeting Summaries V2, and Personal Learning & Work Logs V2**. Each is submitted to its matching **Lexue assignment**; GitHub and Drive hold working copies or supplementary evidence.
 
-## Coordination and Review Workflow
+| ID | Task / owner | Verified current state | Remaining verification / acceptance | Issue |
+| --- | --- | --- | --- | --- |
+| S2-01 | **Markdown Content V2.0** — Grigory; QA Tamerlan | Introduction, four core chapters, module map, extra instructional material, diagrams, and references are present on `main`. Substantive Chapter 1–4 review entries appear in [QA log](qa-log.md). | Produce the self-contained ZIP defined below; verify PDF, report, all referenced assets, and commit snapshot; confirm Lexue receipt. | [#38](https://github.com/Voryalis/aleksandria/issues/38) |
+| S2-02 | **Study Guide V1.0** — Grigory; QA Tamerlan | [Study Guide v1.1 PDF](../guide/Big%20Data%20and%20Connectionist%20AI%20-%20Study%20Guide%20v1.1.pdf) is on `main` and in Drive. QA records a 38-page version, worked-activity checks, and remaining link/learner-trial questions. | Verify final guide citations, beginner trial, and inclusion in the Study Guide/Test Bank ZIP. Confirm Lexue receipt. | [#39](https://github.com/Voryalis/aleksandria/issues/39) |
+| S2-03 | **Editable Test Bank** — Grigory; QA Tamerlan | **Owner reports the editable Test Bank is on their computer. It is not required to be uploaded to GitHub or Drive.** QA log describes an *earlier* short version; it does not verify the current local file. | For the required Lexue Study Guide/Test Bank ZIP, verify that the local final DOCX has **20 True/False, 20 MCQ, 6 open-ended questions** and explained answers, plus independent review. Do not treat local storage as missing work or as proof of final submission. | [#40](https://github.com/Voryalis/aleksandria/issues/40) |
+| S2-04 | **PPT Slides V1.0** — Arseniy; QA Tamerlan | [Editable PPTX](../slides/Aleksandria_Stage2_PPT_V1.pptx) and [PDF](../slides/Aleksandria_Stage2_PPT_V1.pdf) are on `main`. QA log reports 42 slides, presenter notes and a light theme. | Verify classroom rehearsal and final PPTX opening/notes; confirm direct Lexue upload and receipt. | [#41](https://github.com/Voryalis/aleksandria/issues/41) |
+| S2-05 | **Video Tutorial 01** — Mirad | MP4 available in [Drive video folder](https://drive.google.com/drive/folders/1HiRhWs-aYyQZ593uUMG1T8ILDS31R6ww); 33,368,414 bytes, below the 250 MB limit. QA log records full video review. | Drive filename currently ends in `.mp4.mp4`; clean the double extension for submission copy. Video background is dark despite the issue's light-theme instruction; document disposition. Lexue status is team-reported, not receipt-verified. | [#42](https://github.com/Voryalis/aleksandria/issues/42) |
+| S2-06 | **Video Tutorial 02** — Mirad | MP4 available in same Drive folder; 25,226,549 bytes, below limit. QA log records full video review. | Correct double `.mp4.mp4` filename in submission copy; confirm Lexue upload receipt. | [#43](https://github.com/Voryalis/aleksandria/issues/43) |
+| S2-07 | **Video Guide and scripts** — Mirad / Kamran | [Video Tutorial Guide](../videos/Aleksandria_Stage2_VideoGuide.md), storyboards and plan are on `main`. | Submit the guide as Word/PDF, including video metadata and detailed narration outlines; check external-link markup and final filenames, and confirm receipt. | [#44](https://github.com/Voryalis/aleksandria/issues/44) |
+| S2-08 | **Cross-resource QA and beginner testing** — Tamerlan; all members | [QA log](qa-log.md) contains specific reviews of chapters, slides, videos, Study Guide, and an earlier Test Bank. | Verify final local Test Bank, independent learner trial, remaining citation links, consistency, and extracted ZIPs; document real results, not placeholders. | [#45](https://github.com/Voryalis/aleksandria/issues/45) |
+| S2-09 | **Project Log and Meeting Summaries V2** — Kamran / Aleksandr | [Stage 2 Project Log DOCX](https://docs.google.com/document/d/1KoSmc0rTZ13_qUymvgTGHPT8ohMDcQCs/edit) and [Meeting 02 Summary](https://docs.google.com/document/d/1m8yDJysPHSrzNCbQsulkfjERNScI79ro/edit) exist in shared Drive. | Verify inline evidence, significant AI-use records and complete content; confirm required Word/PDF Lexue submission and receipt. | [#46](https://github.com/Voryalis/aleksandria/issues/46) |
+| S2-10 | **Personal Learning and Work Logs V2** — each member; Aleksandr coordinates | Six separate Stage 2 personal logs exist in their Drive member folders. | Verify each member's actual dated contributions and evidence. Confirm the required Lexue submission; personal logs should not be published in the public repository or Learning Center. | [#47](https://github.com/Voryalis/aleksandria/issues/47) |
+| S2-11 | **Final package / Lexue audit** — Aleksandr / Kamran | All six GitHub issue groups were closed on 7 November; that is only an administrative issue state. The shared [04_Final_Submissions](https://drive.google.com/drive/folders/1QB86qkOI5nc0jZ9fC5YcgJcym9LfllzI) folder currently contains the Study Guide PDF, not all final packages. | Compare each actual Lexue receipt with the six deliverables and check final file contents. The deadline shown in GitHub issue #48 differs across assignment pages: use the actual Lexue cutoff/receipt, not a guessed extension. | [#48](https://github.com/Voryalis/aleksandria/issues/48) |
+| S2-12 | **Optional interactive supplement** — team | [Python learning game](../interactive-learning/python-game/) and README, launch scripts and tests are on `main`. This is supplementary, not a Test Bank substitute. | Independent browser/learner trial still needed for any claim of full usability; link appropriately from Study Guide and Learning Center if shared. | — |
 
-1. Coordinate through WeChat and hold one team meeting each week.
-2. Use GitHub Issues to track assigned work and blockers.
-3. Make focused changes on branches where appropriate.
-4. Use descriptive commit messages and open pull requests linked to the relevant issue.
-5. Request review before merging into `main`.
-6. Record actual activities and evidence in `project-management/project-log.md`.
-7. Update each task's status only when the status is supported by actual progress.
-8. Escalate unresolved dependencies or access problems to the coordinator and CIO.
+**Note on Issue closure:** Issues #38–#48 may be closed even though their markdown task checkboxes remain unchecked. Treat the factual resource state and submission receipt—not closure alone—as the completion criterion.
 
-## Stage 1 Acceptance Checklist
+## Markdown Content V2.0 — required ZIP manifest
 
-- [ ] Project scope, objectives, and chapter sequence are confirmed.
-- [ ] `project-management/project-plan.md` is reviewed by the responsible owner.
-- [ ] `project-management/task-list.md` has concrete tasks, owners, deadlines, statuses, and acceptance criteria.
-- [ ] The five chapter files contain substantive teaching content rather than headings alone.
-- [ ] The shared handwritten-digit example connects data preparation and neural-network learning.
-- [ ] Learner activities include explained answers.
-- [ ] In-text citations and `references.md` have been verified.
-- [ ] Independent quality-review findings and their resolutions are documented.
-- [ ] The project log contains actual activities, decisions, contributors, and evidence.
-- [ ] Remaining blockers and pending decisions are explicitly documented.
-- [ ] The final submission requirements and deadline have been confirmed.
+**Exact assignment package name:** `ALEKSANDRIA_Stage2_Markdown_V2.zip`  
+**Lexue assignment:** Markdown Content V2.0
 
-## Pending Items
+Include all three assessment components, in a working folder structure:
 
-- Confirm current status of every task before changing any item to In progress, In review, or Done.
-- Confirm intermediate deadlines with the team.
-- Confirm the owner of the separate reference-consolidation task.
-- Confirm the mini-lecture topic.
-- Confirm GitHub access and assignment blockers.
-- Confirm the final submission deadline and exact required package.
+1. **Complete source snapshot** — `README.md`, every module Markdown file in `docs/`, `references.md`, and supporting diagrams/other referenced assets (for example `assets/diagrams/` and `assets/visual-style-guide.md`). Include other source files only when actually needed to render the content. Use the coherent current set of four core teaching chapters rather than restoring obsolete placeholders.
+2. **Readable rendered PDF** — one complete V2.0 learning-content copy with rendered text, diagrams, examples, meaningful activities, answers and references. External links cannot replace its essential teaching content.
+3. **Submission Report, Word or PDF** — team/module, repository URL, snapshot date and **actual latest commit SHA**; specific Stage 1 feedback/problem → improvement → Markdown filename and heading; summary of independent review and learner tests; mapping of Markdown sections to Study Guide/Test Bank, PPT, and videos; selected GitHub commits and readable evidence of changes; remaining gaps/next steps.
+
+**Pre-upload acceptance checks:** Extract into a different folder; open Markdown, PDF and report; inspect diagrams, links, answers and references; verify that the ZIP is complete without GitHub access; record the actual commit SHA used when the package is frozen. Keep evidence screenshots in light mode.
+
+**Do not duplicate** the separate final Study Guide/Test Bank package, classroom PPTX, or MP4 collection inside this Markdown ZIP. Those have their own Lexue assignments.
+
+## Study Guide / Test Bank submission reminder
+
+**Package:** `ALEKSANDRIA_Stage2_StudyGuide_TestBank_V1.zip`
+
+- Study Guide: complete Word or PDF.
+- Test Bank: **separate editable DOCX**, from the owner's computer, with questions and answer key.
+- Include any activity source files/setup information needed for submitted interactive supplements.
+
+There is **no need to upload the editable Test Bank to GitHub**. The professor does require it inside the **Lexue ZIP submission**.
+
+## Video submission reminder
+
+Upload **actual individual MP4s**, not a combined video ZIP or cloud link, each at most 250 MB. Include the tutorial guide as Word/PDF and necessary supporting files. Both source videos are held on Drive; the team-reported Lexue upload should be verified against a receipt.
+
+## Publishing and evidence locations
+
+- **GitHub:** Source, README, issues, slide deck, supporting public QA/project documentation and optional game.
+- **Google Drive:** Team working copies, video masters, project and private personal logs, final-package backup.
+- **Lexue assignment pages:** Six independently submitted Stage 2 assignment packages/files. File existence elsewhere does not constitute submission.
+- **Lexue Learning Center:** Update the existing team thread with project deliverables and access paths; **exclude personal logs**.
+
+## Stage 3 — separate, forthcoming work
+
+Stage 3 is not a substitute for missing Stage 2 files. The selected mini-lecture direction is **“How Does a Neural Network Learn to Recognize a Handwritten Digit?”**. The relevant tracked work is:
+
+| Workstream | Owner | Issue |
+| --- | --- | --- |
+| Topic / professor approval, timing, roles | Aleksandr | [#49](https://github.com/Voryalis/aleksandria/issues/49) |
+| Eight-minute teaching outline | Grigory | [#50](https://github.com/Voryalis/aleksandria/issues/50) |
+| Projector-ready slides and offline visuals | Arseniy | [#51](https://github.com/Voryalis/aleksandria/issues/51) |
+| Focused demo / optional support clip | Mirad | [#52](https://github.com/Voryalis/aleksandria/issues/52) |
+| Independent QA | Tamerlan | [#53](https://github.com/Voryalis/aleksandria/issues/53) |
+| Rehearsal and presentation | Aleksandr and presenters | [#54](https://github.com/Voryalis/aleksandria/issues/54) |
+| Final teaching package and USB | Kamran | [#55](https://github.com/Voryalis/aleksandria/issues/55) |
+| Contribution, AI-use and feedback documentation | Kamran; all members | [#56](https://github.com/Voryalis/aleksandria/issues/56) |
+
+## Review record for this status update
+
+- **Sources inspected:** Current `main` tree and README, QA log, repository issue records, shared Google Drive folder listings, and professor's Stage 2 assignment requirements.
+- **Owner confirmation incorporated:** The editable Test Bank is on the owner's local computer and is **not required in GitHub**.
+- **Not verified here:** Lexue receipts, contents of the local Test Bank, complete independent learner trials, successful extracted submission ZIPs, and final live classroom rehearsal.
+- **Next maintenance:** When receipt evidence is available, update the relevant status row with the actual file/version/date rather than simply checking every box or relying on issue closure.
