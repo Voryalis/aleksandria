@@ -176,3 +176,14 @@ This summarizes Stage 1 roles and evidence in the Word log. **The relative contr
 - [ ] Check that every member's personal learning/work log is included in the *separate* private submission and that personal logs are not published here.
 
 **Maintenance rule:** Append dated, real events with their authors, concrete outputs, evidence, review decisions, and follow-up owners. Do not retrospectively mark future work complete without verifiable support.
+
+
+## 7 November 2026 — Optional interactive Python learning game (Stage 2 supplement)
+
+**Work and decision.** An educational Python game was added to the repository in [`interactive-learning/python-game/`](../interactive-learning/python-game/). The [game README](../interactive-learning/python-game/README.md) discloses that its initial code and tests were AI-generated at the Quality Lead's request. The visible repository evidence does not establish a unique individual developer for every part of the game; this is recorded as an ALEKSANDRIA team supplement.
+
+**Educational scope.** Learners complete four missions concerning data preparation, predictions, single-neuron updates, and responsible generalization. The game includes seven questions and a neuron challenge worth three points, with a maximum game score of ten. The computational component implements one **synthetic sigmoid neuron** with an illustrative binary cross-entropy loss and gradient descent; it is **not** a trained MNIST digit classifier, and the game score is not model accuracy. This supplement does not replace the required editable Test Bank.
+
+**Evidence beside entry.** Current repository files: [`game.py`](../interactive-learning/python-game/game.py), [`test_game.py`](../interactive-learning/python-game/test_game.py), [`README.md`](../interactive-learning/python-game/README.md), [`Start-Windows.bat`](../interactive-learning/python-game/Start-Windows.bat), and [`Start-Mac.command`](../interactive-learning/python-game/Start-Mac.command). Relevant commit: [d979910](https://github.com/Voryalis/aleksandria/commit/d979910e440c3e58facbaa408ba332732470a8d2) (game.py revision). These are actual file and commit references, **not** purported screenshots of a browser.
+
+**Verification and remaining action.** The game README reports three automated local tests for gradient calculation, learning-goal reachability and HTTP handlers. It also explicitly states that a complete independent browser playthrough remains unverified. A team member should launch the program on a student computer, have a non-author complete all four missions, record outcomes and corrections, and preserve readable light-theme evidence if the supplement is submitted. The AI-assisted creation, review and learning should be reflected in the relevant personal logs.
