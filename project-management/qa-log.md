@@ -754,3 +754,10 @@ Reviewed all 42 PDF pages and the editable PPTX at commit `7469fec`. Confirmed p
 - **Study Guide v1.1 (#39).** Reviewed all 38 pages and checked Activities A–C against the worked answers. The results matched: two usable scans, ReLU outputs of 0.45 and 0, and an updated weight of 0.43. Confirmed the corrections to backpropagation and gradient descent. Remaining checks are the internal citation links on pages 31–32, the scope of the supervised-learning statement on page 32, and a teammate learner trial.
 - **Presenter notes (PR #79).** Compared the revised PowerPoint with the previous version. Only the notes for slides 12, 17, and 42 changed. Verified both chapter references and the closing question about unseen handwriting. QA recommendation: approve and merge.
 - **Stage 2 verification (#45).** The classroom rehearsal and final ZIP check are pending. This follow-up covered the Study Guide and presenter notes. The Test Bank requires a separate review of its revised version.
+
+### Learner Trial for Study Guide v1.1 (#39)
+
+[Date] — [Teammate name], who did not write Activity C, completed it using the instructions on page 37 and then checked the worked answer on page 38.
+
+- **Outcome:** [What the learner calculated and how they explained the difference between training and testing.]
+- **Feedback and follow-up:** [Where they needed help and what was revised, if applicable.]
