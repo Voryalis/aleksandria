@@ -1,35 +1,6 @@
-THE LIBRARY OF ALEKSANDRIA
-CONNECTIONIST AI
-Study guide — working skeleton
-Part 2/3
+# Chapter 2 — Connectionist AI
 
-### Notes for ppt and video: parts 1-2-3 are for you +- .        for ppt also modern stuff (part 4)
-
-SCOPE AND EDITORIAL NOTES
-
-This document develops the Connectionist AI section of the study guide. It follows the structure and writing conventions of the preceding Big Data chapter.
-
-Audience: first-year engineering students. Assume no prior knowledge of neural networks or specialised mathematics.
-
-Theme: The Library of ALEKSANDRIA is an imaginary institution. Library analogies are welcome when they make an idea easier to understand, but should not be forced into every explanation.
-
-
-
-Writing approach:
-- The main body is a continuous narrative. It should read as one explanation that develops from one idea to the next.
-- Introduce terms naturally in the narrative. Follow important terms with a separate, precise textbook-style definition.
-- Use an "Elaboration" section when a concept needs a second explanation, example, analogy, or clarification.
-- Use short sidenotes for synonymous terms, cautions, or brief information that does not need a full explanation.
-- Keep language simple and accessible to students who may not be native English speakers.
-- Avoid repeating an idea in the narrative, definition, elaboration, and review.
-- In the final guide, aim for roughly one main idea per page. A page should usually contain one or two paragraphs plus definitions, notes, or an illustration.
-
-Important chapter boundaries:
-- BIG DATA is the previous chapter. Refer to it where relevant, especially when discussing data used by neural networks. Do not repeat its explanations.
-- NEURAL NETWORK TRAINING is the next chapter. This chapter explains what neural networks are, how they are organised, and what they are used for. It does not teach the mechanics of training.
-- Forward propagation, loss functions, backpropagation, gradient descent, optimisation, learning rates, epochs, batches, dataset splits, overfitting, and underfitting belong in the next chapter. If one must be mentioned, add a short note that it is explained thoroughly in the next chapter.
-
-The supplied outline is the authority for scope. The technical references at the end support explanations and terminology. Confirm course-specific emphasis against lecture materials when they become available.
+**Module:** Big Data & Connectionist AI · ALEKSANDRIA · Stage 2 source chapter
 
 ============================================================
 1. INTRODUCTION TO CONNECTIONIST AI
