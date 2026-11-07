@@ -1,18 +1,7 @@
+# Chapter 1 — Big Data
 
-## Study guide --- working skeleton
+**Module:** Big Data & Connectionist AI · ALEKSANDRIA · Stage 2 source chapter
 
-> **Scope note:** The supplied brief contains the outline for the **Big
-> Data** section and identifies Connectionist AI as part of the wider
-> study guide, but it does not include the Connectionist AI outline.
-> This document therefore develops the complete Big Data section without
-> inventing the missing second part.
-
-# note to ppt it is NOT reqiered to cover everything in this doc. A bunch of it is FOR PDF study guide.
-# note to video A LOT of it is not for video. 
-
-------------------------------------------------------------------------
-
-# 1. Big Data
 
 ## 1.1 Introduction
 
