@@ -95,6 +95,24 @@ This simulation updates **one synthetic sigmoid neuron**, not an MNIST handwriti
 | [`references.md`](references.md) | Research references |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | Contribution instructions |
 
+## Licensing
+
+This repository uses separate licenses for software and educational content:
+
+- **Software — [MIT License](LICENSE):** Original source code, tests, and launch
+  scripts in `interactive-learning/python-game/`, plus any other original code
+  specifically identified as MIT-licensed. Commercial use, modification, and
+  redistribution are permitted under the MIT terms.
+- **Educational content — [CC BY 4.0](LICENSE-CONTENT.md):** Original teaching
+  materials in `docs/`, `guide/`, `slides/`, `videos/`, original visuals in
+  `assets/`, and original explanatory text in this README. Reuse and adaptation,
+  including commercially, require appropriate attribution and indication of changes.
+
+**Third-party content is not relicensed.** External sources, datasets, images,
+and other third-party materials remain under their own terms. The CC BY 4.0
+notice also excludes internal `project-management/` records. See the two
+license files for scope and attribution instructions.
+
 ## Collaboration and Stage 3
 
 Work is coordinated through [GitHub Issues](https://github.com/Voryalis/aleksandria/issues), branches, pull requests, and recorded review. The [shared Google Drive](https://drive.google.com/drive/folders/1Itr4fr4STo3VSAMMnOjuk-1wPruCGBS3) holds team submission files and videos.
