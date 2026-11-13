@@ -1,210 +1,101 @@
-ALEKSANDRIA Stage 2 Video Tutorial Guide
+# ALEKSANDRIA Stage 2 Video Tutorial Guide
 
-Big Data and Connectionist AI<br/>Video Lead Mirad Kapiz<br/>Version 1.0 | 6 November 2026
+**Big Data and Connectionist AI** · Video lead Mirad Kapiz
 
-This collection explains how a handwritten digit becomes numerical input and how supervised training uses a known answer to guide parameter updates. Watch Video 01 before Video 02. Both tutorials are intended for beginners and can be viewed offline.
+**Version 1.1** · 14 November 2026 · Visual novel revision
 
-Video collection
+A library parcel marked **5** sets up both tutorials. The scanner guesses **3**, so the Future Gadget Lab traces what the model received and how a checked label can help a network learn. Watch Video 01 before Video 02. Both tutorials are intended for beginners and can be viewed offline.
 
-Video 01  From Digit Image to Training Data
+## Video collection
 
-Aleksandria_Video01_From_Digit_Image_to_Training_Data.mp4
+| Video | MP4 filename | Duration | File size |
+| --- | --- | ---: | ---: |
+| 01 · From Digit Image to Training Data | `ALEKSANDRIA_Tutorial_1.mp4` | 5:00 | 27.90 MB (27,897,236 bytes) |
+| 02 · How a Neural Network Learns | `ALEKSANDRIA_Tutorial_2.mp4` | 5:00 | 27.34 MB (27,335,184 bytes) |
 
-Duration **6:54.87** | Size **33.37 MB** (33,368,414 bytes).
+**Total viewing time** · 10:00. Both files contain 1920 × 1080 H.264 video at 24 fps and stereo AAC audio at 48 kHz. Each file is below 250 MB.
 
-Video 02  How a Neural Network Learns
+### How to use the collection
 
-Aleksandria_Video02_How_a_Neural_Network_Learns.mp4
+Video 01 assumes no previous AI knowledge. Before Video 02, viewers should be able to distinguish the prepared pixel values from the checked label. [Chapter 2, Artificial Neural Networks](../docs/02-connectionist-ai.md#2-artificial-neural-networks) provides optional preparation on weights and layers.
 
-Duration **5:36.28** | Size **25.23 MB** (25,226,549 bytes).
+Read the English dialogue as it appears in the visual novel text box. The current exports contain quiet instrumental music and sound effects. The team’s voice recordings are pending. Each quiz gives viewers five seconds to choose before the answer appears. Pause for longer if needed. Paper and a calculator are optional. The activities can be completed from the videos.
 
-Total viewing time is approximately **12 minutes 31 seconds**. Each individual file is below the teacher's 250 MB limit. Both reviewed files contain H.264 video at 960 x 544 pixels and AAC mono audio at 44.1 kHz.
+## Video 01 · From Digit Image to Training Data
 
-How to use the collection
+*The Shelf Five Incident*
 
-Watch the demonstrations in order. Pause at each question, choose an answer, and then continue to the explanation. Paper and a calculator are optional; no code, software installation or dataset download is needed. No additional supporting files are required for the activities shown.
+By the end, viewers should be able to read grayscale intensities, divide by 255, flatten an image in row order, and explain the role of a separate checked label.
 
-Viewing notes
+| Time | Teaching outline |
+| --- | --- |
+| 00:00-00:35 | A parcel tag says **5** and the scanner displays an illustrative prediction of **3**. Kurisu opens the scan to inspect the input. |
+| 00:35-01:15 | The digit appears on a **28 × 28** grid with **784** pixel positions. The display shows black as **0**, white as **255**, and mid-gray as **128**. |
+| 01:15-02:10 | The Study Guide’s 2 × 2 crop has rows `[0, 255]` and `[128, 0]`. Dividing each value by 255 produces `[0, 1]` and `[0.502, 0]`, rounded to three decimals where needed. |
+| 02:10-02:58 | Read each row from left to right, then move down. The crop becomes `[0, 1, 0.502, 0]`. Repeating the same ordering across the full grid gives this model a list of **784** values. |
+| 02:58-03:45 | Mayuri checks the tag. The **checked label 5** stays on its own card. The pixel list goes into the model and the label supplies the target during supervised training. |
+| 03:45-04:24 | Compare full and clipped scans of the same tag. The choices appear at **03:55**, the thinking pause runs **04:07-04:12**, and the explanation starts at **04:12**. |
+| 04:24-05:00 | The group rescans the full digit and recaps the preparation steps. Credits begin at **04:41**, followed by the PhoneWave and Gelbana scene at **04:48**. |
 
-Video 01 assumes no previous AI knowledge. Before Video 02, learners should understand numerical pixel inputs and separate target labels; Chapter 2 provides optional preparation on weights and network layers. Navigation times in the following outlines are approximate visual topic locations, rather than word-for-word transcript timestamps.
+### Learner check
 
+**What changed when the scan clipped the stroke?** A. Pixel input · B. Checked label · C. Both
 
----
+**Answer A.** The clipped scan changes the raw brightness at row 5, column 18 from **255** to **0**. Both scans use a 28 × 28 canvas. The original tag and checked label still say **5**.
 
-Video 01 teaching outline
+## Video 02 · How a Neural Network Learns
 
-Learning goals: identify pixel values, calculate the illustrated normalization, describe ordered model inputs, and distinguish inputs from the correct training label. The video uses a digit 5; the 5 x 5 grid is a toy illustration, while the full image format has 28 x 28 positions.
+*The Wrong Answer Experiment*
 
-00:00  From a drawing to data
+By the end, viewers should be able to interpret a prediction and its loss, distinguish backpropagation from the optimizer update, and explain why held-out examples matter.
 
-The opening asks what a computer receives when it sees a digit. A handwritten 5 establishes the difference between a recognizable picture and the numerical representation needed by a model.
+| Time | Teaching outline |
+| --- | --- |
+| 00:00-00:28 | The lab reopens the case. The same **784** prepared pixel values feed the network. The checked **5** is available for the training comparison. |
+| 00:28-01:02 | The forward pass uses the current weights to calculate outputs. In the illustrated example, digit **3** gets **60%**, digit **5** gets **30%**, and the other eight digits share **10%**. The highest individual probability gives prediction **3**. |
+| 01:02-01:52 | Cross-entropy uses the probability assigned to the checked digit **5**. The example gives `−ln(0.30) ≈ 1.20`. Giving the correct digit a higher probability lowers this loss. |
+| 01:52-02:38 | Backpropagation works backward through the network’s calculations to find gradients. A gradient describes how a small change in a weight would affect loss. The weights stay fixed during this calculation. |
+| 02:38-03:30 | The optimizer applies the update. A standalone gradient descent example uses `0.40 − (0.10 × 0.20) = 0.38`. Its learning rate is **0.10** and its supplied gradient is **+0.20**. |
+| 03:30-04:18 | The training loop repeats across labeled examples. Evaluation uses held-out images with weights fixed. Inference makes a prediction from a fresh parcel scan, which can then be checked by hand if needed. |
+| 04:18-05:00 | The learner chooses what backpropagation does. The thinking pause runs **04:28-04:33** and the answer appears at **04:33**. The training loop recap leads into credits at **04:53**. |
 
-About 00:20  Pixel positions
+### Learner check
 
-The image is shown as a 28 x 28 grayscale grid, giving 784 positions. Magnified cells and a moving scan direct attention to individual pixel locations and their brightness values.
+**What does backpropagation do?** A. Update the weights · B. Calculate the gradients
 
-About 01:40  The picture written as numbers
+**Answer B.** Backpropagation calculates the gradients. The optimizer uses those gradients to update the weights. The training cycle then repeats on more examples.
 
-A small 5 x 5 image is paired with its numerical grid. In the displayed convention, bright marks are 255 and dark background cells are 0. Matching positions are highlighted to show that each number belongs to a particular cell.
+The probabilities and weight update are separate illustrations. The video supplies the gradient for the update.
 
-About 02:30  Normalize brightness values
+## Learning activities and resource connections
 
-The demonstration divides intensities by 255: 0 becomes 0, 128 becomes approximately 0.50, and 255 becomes 1. This changes the numerical scale, not the number of pixels or the digit label. The gray swatch is a separate grayscale illustration.
+| Video | Study Guide v1.1 | Shared Markdown | Stage 2 slide deck |
+| --- | --- | --- | --- |
+| 01 | Activity C, pp. 37-38, especially step 1 | [Chapter 4 §§4.2-4.3](../docs/04-case-study.md#42-meet-the-mnist-dataset) · MNIST and preparing the image | Slides 17 and 25-26 for image preparation. Slides 39-40 for the clipped parcel scan. |
+| 02 | Activity C, pp. 37-38, especially steps 2-3 and the held-out question | [Chapter 3 §§3.2-3.6](../docs/03-neural-networks-learning.md#32-a-prediction-is-not-the-correct-answer) · prediction through evaluation. [Chapter 4 §§4.4-4.7](../docs/04-case-study.md#44-how-the-network-makes-a-prediction) · digit case study. | Slides 28-29 and 31-34 for prediction, loss, training, and evaluation. |
 
-About 03:40  Arrange the prepared input
+[Study Guide v1.1, Activity C](../guide/Big%20Data%20and%20Connectionist%20AI%20-%20Study%20Guide%20v1.1.pdf#page=37) · [Stage 2 slides, PDF](../slides/Aleksandria_Stage2_PPT_V1.pdf)
 
-A row scan illustrates arranging 784 values in a consistent order for one simple model. Flattening rearranges the values; other architectures can keep the grid shape.
+### Follow-up practice
 
-About 04:30  Keep the correct answer separate
+1. **Prepare another pixel.** Divide **64** by **255**, then explain where that result belongs in the training example. It is approximately **0.251** and belongs in the pixel input list.
+2. **Try the Study Guide update.** Activity C supplies a different gradient of **−0.30** and a learning rate of **0.10**. Starting from **0.40**, the updated weight is **0.43**. For a held-out test image, record the prediction error and keep the weight fixed.
 
-The model input and correct label 5 appear in separate cards. The label supplies the known training target; it is not another pixel or a replacement for the image.
+## Sources and production acknowledgments
 
-About 05:10  Connect the preparation steps
+**Video production** · Team ALEKSANDRIA. **Video lead** · Mirad Kapiz. ChatGPT assisted with drafting dialogue, assembling the visual novel scenes, generating the explanatory animations, and editing and checking the exports.
 
-The complete pipeline links the handwritten image, pixel grid, numerical values and prepared input. The label remains a separate item paired with that input during supervised learning.
+**Instructional sources** · [Keras MNIST dataset documentation](https://keras.io/api/datasets/mnist/) · [TensorFlow Quickstart for Beginners](https://www.tensorflow.org/tutorials/quickstart/beginner) · [Google Machine Learning Crash Course, Neural Networks](https://developers.google.com/machine-learning/crash-course/neural-networks)
 
-About 05:50 to 06:54.87  Learner question and explained answer
+**Game art** · *STEINS;GATE* visual novel, Steam HD edition. MAGES. / 5pb. / Nitroplus. Character sprites, lab backgrounds, event art, and interface artwork are from [The Spriters Resource archive](https://www.spriters-resource.com/pc_computer/steinsgatesteamhdedition/).
 
-The learner chooses between A, 784 pixel values, and B, correct label 5, to identify the supplied correct answer. The answer screen identifies B: the pixel values describe the image, while the label supplies its checked target. The closing screen introduces the next question: how does the network learn?
+**Music** · “Laboratory,” “Explanation,” and “Quiet Air” by Takeshi Abo, from the [*STEINS;GATE Original Soundtrack*](https://ototoy.jp/_/default/p/55330). Both videos include a source credit card.
 
+## Verification and submission
 
----
+- **Technical checks, 14 November 2026** · Both listed exports decoded from start to finish. Sampled frames confirm the cream teaching panels, English dialogue, question and answer screens, and the visible source credits.
+- **Audio** · Integrated music and effects measure approximately **−31.6 LUFS** in Video 01 and **−32.0 LUFS** in Video 02. After the team records the dialogue, check the mix, pronunciation, synchronization, and file details against the voiced exports.
+- **Independent review** · A teammate’s full viewing and a non-author’s attempt at the learner checks remain pending for this revision. The teaching panels are light. The shaded game backgrounds and dark dialogue box still need review against the team’s light-theme requirement.
+- **Submission package** · Submit both individual MP4s with the PDF or Word guide. Update the listed file details if the recordings change the exports. Record the revision and AI assistance in the project and personal logs.
 
-Video 02 teaching outline
-
-Learning goals: distinguish prediction and target, explain loss, separate backpropagation from optimizer updates, and explain repeated training and evaluation on separate data. The displayed probabilities, loss example and weight calculation are illustrative, not measured model performance.
-
-00:00  Prepared input and separate target
-
-The digit 5 is represented by 784 numerical pixel values. The network receives the pixel input; correct label 5 stays outside that input pathway and is available for the training comparison.
-
-About 00:40  A prediction can be wrong
-
-Animated probability bars show 60% for digit 3, 30% for digit 5 and 10% for the other eight classes combined. Digit 3 has the largest individual probability, so it is selected even though the checked label is 5.
-
-About 01:10  Compare prediction and label
-
-Prediction 3 and correct label 5 are shown side by side. Their mismatch leads to a loss box, distinguishing the model's answer, the supplied target and the numerical comparison.
-
-About 01:40  Give loss a numerical value
-
-The example uses cross-entropy for the correct-class probability 0.30: loss = -ln(0.30), approximately 1.20. This is a particular classification loss; it is not an accuracy percentage or a subtraction of digit class numbers.
-
-About 02:20  Backpropagation calculates gradients
-
-Backward-moving markers illustrate gradient calculation through the connected layers. Gradients describe how small parameter changes would locally affect loss. The visual explicitly states that weights have not changed yet and that only selected units are shown schematically.
-
-About 03:10  The optimizer updates parameters
-
-The separate toy update reveals 0.40 - (0.10 x 0.20) = 0.38. The learning rate controls step size. These supplied values illustrate the update rule; they were not derived from the displayed digit probabilities.
-
-About 04:10  Repeat and evaluate
-
-The training sequence repeats: input, prediction, loss, gradients and weight update. Separate test images move toward evaluation. One update does not guarantee a correct prediction, and performance on familiar training examples does not establish performance on new data.
-
-About 05:00 to 05:36.28  Learner question and explained answer
-
-The video asks whether backpropagation updates weights or calculates gradients. The answer is revealed: it calculates gradients; the optimizer updates weights. The final sequence reinforces the order of the learning steps.
-
-
----
-
-Learning activities and resource connections
-
-Video 01 learner check
-
-**Question:** Which element supplies the known correct digit: A, 784 pixel values, or B, correct label 5?<br/>**Answer:** B. Pixel values are input features; the checked label is the separate target used to judge the output during supervised training.
-
-Video 02 learner check
-
-**Question:** Does backpropagation update weights or calculate gradients?<br/>**Answer:** It calculates gradients. The optimizer uses them to update parameters. The sequence is prediction, loss, gradient calculation, parameter update, then repetition.
-
-Follow up practice
-
-For numerical preparation, complete Chapter 1 Section 1.5 Questions 1 and 3: scale a value of 64 using division by 255 and identify features, target and model output. The scaled value is approximately 0.251. For a new training example, put prediction, loss, backpropagation and optimizer update in order and explain why test images must be separate from training updates.
-
-Shared written content
-
-Video 01 connects to Chapter 1 Section 1.3, the worked image-to-input example, and Chapter 4 Sections 4.2 and 4.3, MNIST dimensions and image preparation. Chapter 1 uses a toy digit 7; the videos and revised Chapter 4 use digit 5. These are separate teaching illustrations.
-
-Video 02 connects to Chapter 3 Sections 3.2 through 3.6 and Chapter 4 Sections 4.4 through 4.7. The revised Stage 2 chapters explicitly include the video's digit-5 probabilities, cross-entropy calculation and separate 0.40-to-0.38 update.
-
-<link href="https://github.com/Voryalis/aleksandria/blob/main/docs/01-big-data.md" color="#125577">Chapter 1 Big Data</link>
-
-<link href="https://github.com/Voryalis/aleksandria/blob/main/docs/03-neural-networks-learning.md" color="#125577">Chapter 3 How a Neural Network Learns</link>
-
-<link href="https://github.com/Voryalis/aleksandria/blob/main/docs/04-case-study.md" color="#125577">Chapter 4 Handwritten Digit Case Study</link>
-
-Presentation connections
-
-The repository's proposed slide outline links Video 01 to slide 5, A Digit Image Becomes Numbers. Video 02 connects to slides 8 and 9, Prediction Versus Correct Answer and How Training Changes a Network; slides 10 and 12 provide integration and review. These are proposed outline numbers, not verified pagination of the final slide deck.
-
-<link href="https://github.com/Voryalis/aleksandria/blob/main/slides/slide-outline.md" color="#125577">Repository slide outline</link>
-
-The precise final Study Guide page numbers and Test Bank question identifiers require the team's final versions. Until those cross-references are confirmed, the named chapter sections and practice questions above provide specific usable learning connections.
-
-
----
-
-Sources and production acknowledgments
-
-Video production and editing: Mirad Kapiz, Video Lead. Team identity: Aleksandria. The supplied educational graphics and animations use digit-recognition illustrations; no trained-model experiment or benchmark result is claimed.
-
-Content references
-
-<link href="https://github.com/Voryalis/aleksandria/blob/main/videos/first-video-storyboard.md" color="#125577">ALEKSANDRIA Tutorial 1 storyboard</link>
-
-<link href="https://github.com/Voryalis/aleksandria/blob/main/videos/second-video-storyboard.md" color="#125577">ALEKSANDRIA Tutorial 2 storyboard</link>
-
-<link href="https://keras.io/api/datasets/mnist/" color="#125577">Keras MNIST dataset documentation</link>
-
-<link href="https://www.tensorflow.org/tutorials/quickstart/beginner" color="#125577">TensorFlow Quickstart for Beginners</link>
-
-<link href="https://developers.google.com/machine-learning/crash-course/neural-networks" color="#125577">Google Machine Learning Crash Course Neural Networks</link>
-
-<link href="https://developers.google.com/machine-learning/crash-course/overfitting" color="#125577">Google Machine Learning Crash Course Overfitting</link>
-
-AI assistance
-
-ChatGPT assisted with narration drafting and simplification, image editing and selected explanatory animations. In Tutorial 2, Scenes 02, 05, 06 and 07 use locally rendered diagram motion; an image-editing tool removed the production pause instruction from the quiz slide. This assistance does not constitute independent teammate review or evidence of a trained network.
-
-The team should record the actual assistance and revision evidence in its project and personal logs. Additional borrowed media, music or synthetic narration, if used in the finished edits, require their actual source credits; none are invented in this guide.
-
-Submission package
-
-Submit the two individually named MP4 files and this guide. The teaching outlines above satisfy the guide's outline component. No external link replaces the required video uploads. Keep editable production files for revision; no extra learner data or software is needed for the activities shown.
-
-
----
-
-Verification and remaining review
-
-Review date: 6 November 2026. The checked source exports were tutorial 1.mp4 and tutorial 2.mp4 from Mirad's Videos folder. The named submission copies have identical contents; only their filenames differ.
-
-Completed technical checks
-
-Both complete audio and video streams decoded without errors. Video 01 is 33,368,414 bytes and Video 02 is 25,226,549 bytes, below 250 MB each. Both contain AAC audio. Measured mean levels are approximately -20.3 dBFS and -20.9 dBFS respectively, with peaks near 0 dBFS. These measurements establish audio presence and levels, not intelligibility or correct pronunciation.
-
-Visual and content checks
-
-Frames sampled throughout both videos show the preparation sequence in Video 01 and the prediction-loss-gradient-update sequence in Video 02. The numerical examples shown are arithmetically consistent. Both learner questions have visible explained answer screens. Video 02 includes the hypothetical-example disclosure and keeps backpropagation and optimizer updates distinct.
-
-Outstanding items
-
-**Theme:** Video 01 uses dark teaching backgrounds. This conflicts with the white/light-theme requirement in GitHub issue 42. Video 02 uses light backgrounds. Revise Video 01 or obtain an explicit team decision before treating the theme check as passed.
-
-**Independent review:** A teammate must still watch each entire final compressed export and a non-author must attempt the learner questions. No completed peer review or learner-test result is claimed here.
-
-**Audio and accessibility:** Full listening review of intelligibility, pronunciation, noise, synchronization and pacing remains necessary. No captions are visible in the sampled frames and no separate subtitle stream is listed. Add or check captions where needed for understanding and accessibility.
-
-**Presentation:** Video 01 shows an editor watermark and a blue mark below the learner question in sampled frames. Check whether these should be removed. The exports are 960 x 544, so inspect smaller explanatory labels at normal playback size before submission.
-
-**Credits and cross references:** Confirm any borrowed media credits, log the actual AI use, and replace provisional slide-outline mappings with final Study Guide, Test Bank and slide references when those files are available.
-
-These review findings distinguish verified file and visual properties from required human checks. Completion of the guide does not mark pending acceptance checks as passed.
-
-<link href="https://github.com/Voryalis/aleksandria/issues/42" color="#125577">Video 01 production requirements issue 42</link>
-
-<link href="https://github.com/Voryalis/aleksandria/issues/43" color="#125577">Video 02 production requirements issue 43</link>
-
-<link href="https://github.com/Voryalis/aleksandria/issues/44" color="#125577">Collection guide requirements issue 44</link>
+[Video 01 requirements #42](https://github.com/Voryalis/aleksandria/issues/42) · [Video 02 requirements #43](https://github.com/Voryalis/aleksandria/issues/43) · [Collection guide requirements #44](https://github.com/Voryalis/aleksandria/issues/44)
