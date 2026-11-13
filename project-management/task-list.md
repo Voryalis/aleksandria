@@ -27,8 +27,8 @@ The professor's six Stage 2 assignments are distinct: **Markdown Content V2.0, S
 | ID | Task / owner | Verified current state | Remaining verification / acceptance | Issue |
 | --- | --- | --- | --- | --- |
 | S2-01 | **Markdown Content V2.0** — Grigory; QA Tamerlan | Introduction, four core chapters, module map, extra instructional material, diagrams, and references are present on `main`. Substantive Chapter 1–4 review entries appear in [QA log](qa-log.md). | Produce the self-contained ZIP defined below; verify PDF, report, all referenced assets, and commit snapshot; confirm Lexue receipt. | [#38](https://github.com/Voryalis/aleksandria/issues/38) |
-| S2-02 | **Study Guide V1.0** — Grigory; QA Tamerlan | [Study Guide v1.1 PDF](../guide/Big%20Data%20and%20Connectionist%20AI%20-%20Study%20Guide%20v1.1.pdf) is on `main` and in Drive. QA records a 38-page version, worked-activity checks, and remaining link/learner-trial questions. | Verify final guide citations, beginner trial, and inclusion in the Study Guide/Test Bank ZIP. Confirm Lexue receipt. | [#39](https://github.com/Voryalis/aleksandria/issues/39) |
-| S2-03 | **Editable Test Bank** — Grigory; QA Tamerlan | **Owner reports the editable Test Bank is on their computer. It is not required to be uploaded to GitHub or Drive.** QA log describes an *earlier* short version; it does not verify the current local file. | For the required Lexue Study Guide/Test Bank ZIP, verify that the local final DOCX has **20 True/False, 20 MCQ, 6 open-ended questions** and explained answers, plus independent review. Do not treat local storage as missing work or as proof of final submission. | [#40](https://github.com/Voryalis/aleksandria/issues/40) |
+| S2-02 | **Study Guide V1.0** — Grigory; QA Tamerlan | [Study Guide v1.2 PDF](../guide/Aleksandria_Stage2_Study_Guide.pdf) and [Markdown](../guide/Aleksandria_Stage2_Study_Guide.md). Includes four structured activities and a verified two-run Playground worksheet. | Record a beginner trial and verify Lexue receipt. | [#39](https://github.com/Voryalis/aleksandria/issues/39) |
+| S2-03 | **Editable Test Bank** — Grigory; QA Tamerlan | The v1.2 bank has 20 True/False, 20 MCQ and 6 open-ended questions with explained answers. [Markdown working copy](../guide/Aleksandria_Stage2_Test_Bank.md). | A non-author attempts every item and records findings. Use the separate editable DOCX in the Lexue ZIP and verify receipt. | [#40](https://github.com/Voryalis/aleksandria/issues/40) |
 | S2-04 | **PPT Slides V1.0** — Arseniy; QA Tamerlan | [Editable PPTX](../slides/Aleksandria_Stage2_PPT_V1.pptx) and [PDF](../slides/Aleksandria_Stage2_PPT_V1.pdf) are on `main`. QA log reports 42 slides, presenter notes and a light theme. | Verify classroom rehearsal and final PPTX opening/notes; confirm direct Lexue upload and receipt. | [#41](https://github.com/Voryalis/aleksandria/issues/41) |
 | S2-05 | **Video Tutorial 01** — Mirad | MP4 available in [Drive video folder](https://drive.google.com/drive/folders/1HiRhWs-aYyQZ593uUMG1T8ILDS31R6ww); 33,368,414 bytes, below the 250 MB limit. QA log records full video review. | Drive filename currently ends in `.mp4.mp4`; clean the double extension for submission copy. Video background is dark despite the issue's light-theme instruction; document disposition. Lexue status is team-reported, not receipt-verified. | [#42](https://github.com/Voryalis/aleksandria/issues/42) |
 | S2-06 | **Video Tutorial 02** — Mirad | MP4 available in same Drive folder; 25,226,549 bytes, below limit. QA log records full video review. | Correct double `.mp4.mp4` filename in submission copy; confirm Lexue upload receipt. | [#43](https://github.com/Voryalis/aleksandria/issues/43) |
@@ -61,10 +61,10 @@ Include all three assessment components, in a working folder structure:
 **Package:** `ALEKSANDRIA_Stage2_StudyGuide_TestBank_V1.zip`
 
 - Study Guide: complete Word or PDF.
-- Test Bank: **separate editable DOCX**, from the owner's computer, with questions and answer key.
+- Test Bank: **separate editable DOCX**, with questions and an explained answer key.
 - Include any activity source files/setup information needed for submitted interactive supplements.
 
-There is **no need to upload the editable Test Bank to GitHub**. The professor does require it inside the **Lexue ZIP submission**.
+The repository holds the Markdown working copy. Include the separate editable Word file in the **Lexue ZIP submission**.
 
 ## Video submission reminder
 

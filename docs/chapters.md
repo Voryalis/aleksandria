@@ -45,7 +45,7 @@ After studying the complete module, learners should be able to:
 
 ## Chapter 3 — How a neural network learns
 
-**Status:** Structured for later content development; not represented as a completed chapter.
+**Current source:** [03-neural-networks-learning.md](03-neural-networks-learning.md).
 
 - **3.1 Supervised examples:** pixel vectors plus correct digit labels; training, validation, and test sets.
 - **3.2 Prediction versus expected answer:** a hypothetical model outputs scores for digit classes; distinguish a model output from a reference label.
@@ -59,7 +59,7 @@ After studying the complete module, learners should be able to:
 
 ## Chapter 4 — Case study: recognizing handwritten digits
 
-**Status:** Structured for later content development; not represented as a completed chapter.
+**Current source:** [04-case-study.md](04-case-study.md).
 
 - **4.1 The question and input:** identify a handwritten digit image and its known label.
 - **4.2 Preparation:** grayscale representation, scale, dimensions, flattening, and checking labels.
@@ -71,10 +71,11 @@ After studying the complete module, learners should be able to:
 
 **Media plan:** One recurring digit example appears in the study guide, slides, and two tutorials so their explanations can be checked against the same Markdown.
 
-## Stage 1 completion and later production
+## Stage 2 learning resources
 
-- **Written instructional sample:** Chapter 2 contains a full, non-introductory passage with definitions, a diagram, arithmetic, learner activity, explained answers, and sources; Chapter 1 establishes and illustrates the preceding data concepts.
-- **Remaining material:** Chapters 3 and 4 are outlined, not falsely claimed complete.
+- [Study Guide v1.2](../guide/Aleksandria_Stage2_Study_Guide.md) · A beginner route, lab activities and worked answers.
+- [Test Bank v1.2](../guide/Aleksandria_Stage2_Test_Bank.md) · 46 questions linked to the guide.
+- [Operation World Line](../interactive-learning/python-game/) · Optional practice game.
 - **Review before merge:** Content Lead checks scope and consistency with the project plan; QA Lead verifies terminology, worked examples, source support, and beginner readability; CIO verifies relative links and structure.
 - **Production rule:** The study guide, slides, and tutorials must be adapted from the reviewed Markdown, not independently invented.
 
