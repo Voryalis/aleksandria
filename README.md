@@ -109,21 +109,14 @@ The neuron exercise calculates updates for one synthetic example. Evaluation on 
 
 ## Licensing
 
-This repository uses separate licenses for software and educational content:
-
-- **Software — [MIT License](LICENSE):** Original source code, tests, and launch
-  scripts in `interactive-learning/python-game/`, plus any other original code
-  specifically identified as MIT-licensed. Commercial use, modification, and
-  redistribution are permitted under the MIT terms.
-- **Educational content — [CC BY 4.0](LICENSE-CONTENT.md):** Original teaching
-  materials in `docs/`, `guide/`, `slides/`, `videos/`, original visuals in
-  `assets/`, and original explanatory text in this README. Reuse and adaptation,
-  including commercially, require appropriate attribution and indication of changes.
-
-**Third-party content is not relicensed.** External sources, datasets, images,
-and other third-party materials remain under their own terms. The CC BY 4.0
-notice also excludes internal `project-management/` records. See the two
-license files for scope and attribution instructions.
+- **Original software** uses the [MIT License](LICENSE), including the game
+  code, tests, launchers, and web interface code.
+- **Original teaching materials** use [CC BY 4.0](LICENSE-CONTENT.md), including
+  the chapters, Study Guide, Test Bank, slide content, tutorial guides, and
+  original diagrams.
+- **Third-party material** follows its source terms. See the
+  [asset credits and license notices](LICENSE-CONTENT.md#third-party-material)
+  for the Steins;Gate artwork and music, fonts, and Wikimedia Commons images.
 
 ## Collaboration and Stage 3
 

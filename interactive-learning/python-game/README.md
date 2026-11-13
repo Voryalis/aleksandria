@@ -75,11 +75,11 @@ Use **Backlog** to reread dialogue and **D-Mail** to reopen the phone. The simul
 
 ## Art and font credits
 
-The artwork retains its original rights and falls outside the repository's MIT and CC BY 4.0 licenses. The Spriters Resource archives the source images below.
+The [MIT License](../../LICENSE) covers the original game code, tests, launchers, and web interface code. The Steins;Gate artwork follows its rights holders’ terms. The Spriters Resource archives the source images below.
 
 - *Steins;Gate (Steam HD Edition)*, archived by Adrot. [Future Gadget Laboratory](https://www.spriters-resource.com/pc_computer/steinsgatesteamhdedition/asset/107557/), [Kurisu](https://www.spriters-resource.com/pc_computer/steinsgatesteamhdedition/asset/107532/), [Daru](https://www.spriters-resource.com/pc_computer/steinsgatesteamhdedition/asset/107534/), [Mayuri](https://www.spriters-resource.com/pc_computer/steinsgatesteamhdedition/asset/107547/), [phone](https://www.spriters-resource.com/pc_computer/steinsgatesteamhdedition/asset/107517/), and [divergence meter](https://www.spriters-resource.com/pc_computer/steinsgatesteamhdedition/asset/107527/).
 - *Steins;Gate: Linear Bounded Phenogram*, archived by delta. [Okabe](https://www.spriters-resource.com/pc_computer/steinsgatelinearboundedphenogram/asset/153185/).
-- [Instrument Serif license](web/assets/instrument-serif-OFL.txt), [Instrument Sans license](web/assets/instrument-sans-OFL.txt), and [IBM Plex Mono license](web/assets/ibm-plex-OFL.txt).
+- The bundled fonts use the SIL Open Font License 1.1. [Instrument Serif](web/assets/instrument-serif-OFL.txt) · [Instrument Sans](web/assets/instrument-sans-OFL.txt) · [IBM Plex Mono](web/assets/ibm-plex-OFL.txt)
 
 ## What is actually calculated?
 
