@@ -1,13 +1,13 @@
-# Aleksandria — From Data to Learning
+# Aleksandria — Operation World Line
 
-An English-language Python learning game for university beginners studying Big Data and Connectionist AI.
+An English-language Python learning game for university beginners studying Big Data and Connectionist AI. A D-Mail dated tomorrow arrives at the Future Gadget Lab. Read it on Okabe’s phone, then help the lab check a handwriting model before sending a reply.
 
 ## Run
 
 Requires Python 3.9 or newer. No pip packages, account, or internet connection are needed.
 
-1. Extract the ZIP.
-2. Open a terminal in the extracted folder.
+1. Extract the ZIP or clone the repository.
+2. Open a terminal in the `python-game` folder. Keep the bundled `web/` folder beside `game.py`.
 3. Run `python3 game.py` on macOS/Linux, or `py game.py` on Windows.
 4. The game opens in your browser. If it does not, copy the local URL printed in the terminal into your browser.
 5. Keep the terminal running while playing. Press Ctrl+C to stop it.
@@ -18,12 +18,22 @@ The server listens only on your own computer (127.0.0.1), with an automatically 
 
 ## Gameplay
 
-- Mission 1: remove training/test overlap, separate labels, normalize pixels.
-- Mission 2: interpret a mistaken digit prediction and order the learning steps.
-- Mission 3: adjust the learning rate and run real gradient-descent updates.
-- Mission 4: reason about generalization, data representativeness, and human oversight.
+- **The duplicate.** Remove training/test overlap, separate labels, and normalize pixels.
+- **The wrong digit.** Interpret a mistaken digit prediction and order the learning steps.
+- **PhoneWave.** Adjust the learning rate and run gradient-descent updates.
+- **One last check.** Reason about generalization, data representativeness, and human oversight.
 
 Seven questions award one point each on the first correct attempt. Wrong answers show explanations and permit retries. Completing the neuron challenge awards three points. Maximum: 10. At the end, download a plain-text learning summary or replay.
+
+Use **Backlog** to reread dialogue and **D-Mail** to reopen the phone. The simulated divergence meter follows the story through the eight checks. The score records quiz and neuron challenge results.
+
+## Art and font credits
+
+The artwork retains its original rights and falls outside the repository's MIT and CC BY 4.0 licenses. The Spriters Resource archives the source images below.
+
+- *Steins;Gate (Steam HD Edition)*, archived by Adrot. [Future Gadget Laboratory](https://www.spriters-resource.com/pc_computer/steinsgatesteamhdedition/asset/107557/), [Kurisu](https://www.spriters-resource.com/pc_computer/steinsgatesteamhdedition/asset/107532/), [Daru](https://www.spriters-resource.com/pc_computer/steinsgatesteamhdedition/asset/107534/), [Mayuri](https://www.spriters-resource.com/pc_computer/steinsgatesteamhdedition/asset/107547/), [phone](https://www.spriters-resource.com/pc_computer/steinsgatesteamhdedition/asset/107517/), and [divergence meter](https://www.spriters-resource.com/pc_computer/steinsgatesteamhdedition/asset/107527/).
+- *Steins;Gate: Linear Bounded Phenogram*, archived by delta. [Okabe](https://www.spriters-resource.com/pc_computer/steinsgatelinearboundedphenogram/asset/153185/).
+- [Instrument Serif license](web/assets/instrument-serif-OFL.txt), [Instrument Sans license](web/assets/instrument-sans-OFL.txt), and [IBM Plex Mono license](web/assets/ibm-plex-OFL.txt).
 
 ## What is actually calculated?
 
@@ -48,9 +58,10 @@ Checks performed:
 
 - Gradient agrees with a numerical finite-difference calculation.
 - The training goal is reachable at every slider setting, with decreasing loss in this example.
-- HTTP handlers serve the game, score all question answers, calculate updates, and reject invalid learning rates. This is tested with in-memory requests.
+- HTTP handlers serve the game and its sprite assets, score all question answers, calculate updates, and reject invalid learning rates. This is tested with in-memory requests.
+- Automated Chromium playthroughs covered all four missions, scoring, reset, replay, and summary downloads at desktop and phone widths.
 
-The development environment blocked opening a local server port, so a complete browser playthrough remains pending. Before submission, play all four missions on your computer and ask another teammate to try the game. Record actual feedback and any corrections in the QA log. Downloaded summaries are not a substitute for an independent learner trial.
+Before submission, play all four missions on your computer and ask another teammate to try the game. Record feedback and any corrections in the QA log. Downloaded summaries are not a substitute for an independent learner trial.
 
 ## Repository location
 
@@ -58,4 +69,4 @@ This game lives at `interactive-learning/python-game/` in the Aleksandria reposi
 
 ## AI-use disclosure
 
-This initial implementation and its tests were generated with AI assistance at the Quality Lead's request. Team review, adaptation, and the independent learner trial should be documented before submission. Do not describe this initial version as independently tested by a teammate until that has happened.
+The initial implementation and its tests were generated with AI assistance at the Quality Lead's request. The Operation World Line interface and mission framing also used AI assistance. Team review, adaptation, and the independent learner trial should be documented before submission.
