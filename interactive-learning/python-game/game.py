@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Aleksandria Learning Lab. Python 3.9+, standard library only."""
+"""Operation World Line - Aleksandria Learning Lab. Python 3.9+, standard library only."""
 import argparse
 import json
 import math
@@ -116,7 +116,7 @@ def main():
     args = parser.parse_args()
     server = ThreadingHTTPServer(('127.0.0.1', args.port), Handler)
     url = 'http://127.0.0.1:%s' % server.server_port
-    print('Aleksandria Learning Lab is running at ' + url, flush=True)
+    print('Operation World Line is running at ' + url, flush=True)
     print('Keep this window open. Press Ctrl+C to stop.', flush=True)
     if not args.no_browser:
         threading.Timer(0.5, lambda: webbrowser.open(url)).start()

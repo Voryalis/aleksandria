@@ -2,19 +2,65 @@
 
 An English-language Python learning game for university beginners studying Big Data and Connectionist AI. A D-Mail dated tomorrow arrives at the Future Gadget Lab. Read it on Okabe’s phone, then help the lab check a handwriting model before sending a reply.
 
-## Run
+## Installation
 
-Requires Python 3.9 or newer. No pip packages, account, or internet connection are needed.
+Requires **Python 3.9 or newer** and a current web browser. The server uses Python’s standard library. The included `web/` folder contains the interface, art, and fonts, so the downloaded game works offline.
 
-1. Extract the ZIP or clone the repository.
-2. Open a terminal in the `python-game` folder. Keep the bundled `web/` folder beside `game.py`.
-3. Run `python3 game.py` on macOS/Linux, or `py game.py` on Windows.
-4. The game opens in your browser. If it does not, copy the local URL printed in the terminal into your browser.
-5. Keep the terminal running while playing. Press Ctrl+C to stop it.
+### Get the files
 
-On Windows you can also double-click `Start-Windows.bat`. On macOS, `Start-Mac.command` is provided; if macOS refuses to open it, use the terminal command above.
+Download and extract the [repository ZIP](https://github.com/Voryalis/aleksandria/archive/refs/heads/main.zip), then open `aleksandria-main/interactive-learning/python-game/`.
 
-The server listens only on your own computer (127.0.0.1), with an automatically selected available port. It is a local teaching tool, not a public web service.
+Alternatively, clone the repository with Git and enter the game folder.
+
+```bash
+git clone https://github.com/Voryalis/aleksandria.git
+cd aleksandria/interactive-learning/python-game
+```
+
+For an existing Git checkout, run `git pull` from the repository before launching. When using a ZIP download, extract the complete updated folder so that `game.py` and `web/` come from the same version.
+
+### Windows
+
+Install Python from [python.org](https://www.python.org/downloads/). Open `Start-Windows.bat` in the game folder, or run the following command in PowerShell or Command Prompt from that folder.
+
+```powershell
+py -3 game.py
+```
+
+The launcher also accepts a Python 3 installation available as `python`.
+
+### macOS
+
+Install Python 3 from [python.org](https://www.python.org/downloads/) if needed. Double-click `Start-Mac.command` in the game folder. You can also open a terminal in that folder and run the following command.
+
+```bash
+python3 game.py
+```
+
+If a ZIP extraction leaves the launcher without execute permission, run `chmod +x Start-Mac.command` from the game folder, or use the Python command above.
+
+### Linux
+
+Install Python 3 through your distribution’s package manager if needed. Open a terminal in the game folder and run the following command.
+
+```bash
+python3 game.py
+```
+
+### During play
+
+The game opens in your browser. If it stays closed, copy the local address printed in the terminal. Keep the terminal running during play and press Ctrl+C to stop the game.
+
+The server listens on your own computer at `127.0.0.1` and automatically selects an available port. To select a port or open the browser yourself, run `python3 game.py --port 8000 --no-browser` and visit `http://127.0.0.1:8000`. Use `py -3` in place of `python3` on Windows.
+
+### Troubleshooting
+
+| Symptom | Action |
+| --- | --- |
+| Python command unavailable or version below 3.9 | Install Python 3.9 or newer, reopen the terminal, and check `python3 --version` on macOS/Linux or `py -3 --version` on Windows |
+| Missing interface, artwork, or fonts | Extract or clone the full game folder, including `web/` and `web/assets/` |
+| Browser cannot reconnect during play | Keep the Python terminal running and use its printed address |
+| A chosen port is already in use | Omit `--port` to let the game choose an available port |
 
 ## Gameplay
 
@@ -59,7 +105,7 @@ Checks performed:
 - Gradient agrees with a numerical finite-difference calculation.
 - The training goal is reachable at every slider setting, with decreasing loss in this example.
 - HTTP handlers serve the game and its sprite assets, score all question answers, calculate updates, and reject invalid learning rates. This is tested with in-memory requests.
-- Automated Chromium playthroughs covered all four missions, scoring, reset, replay, and summary downloads at desktop and phone widths.
+- Automated Chromium playthroughs covered the prologue, D-Mail phone, backlog, all four missions, scoring, reset, replay, and summary downloads at desktop and phone widths.
 
 Before submission, play all four missions on your computer and ask another teammate to try the game. Record feedback and any corrections in the QA log. Downloaded summaries are not a substitute for an independent learner trial.
 
