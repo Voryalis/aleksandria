@@ -1,10 +1,5 @@
 import json
-import math
-import threading
 import unittest
-import urllib.request
-import urllib.error
-from http.server import ThreadingHTTPServer
 from game import Handler, QUESTIONS, neuron
 
 class GameTests(unittest.TestCase):
@@ -36,7 +31,7 @@ class GameTests(unittest.TestCase):
                 return io.BytesIO(self.raw)
             def sendall(self, data):
                 self.output += data
-        def request(path, data=None):
+        def request(path, data=None, content_type=None):
             body = json.dumps(data).encode() if data is not None else b''
             method = 'POST' if data is not None else 'GET'
             head = f'{method} {path} HTTP/1.0\r\nContent-Length: {len(body)}\r\n\r\n'.encode()
@@ -44,10 +39,17 @@ class GameTests(unittest.TestCase):
             Handler(connection, ('127.0.0.1', 1), None)
             headers, payload = connection.output.split(b'\r\n\r\n', 1)
             status = int(headers.split()[1])
+            if content_type is not None:
+                self.assertIn(f'Content-Type: {content_type}\r\n'.encode(), headers + b'\r\n')
             return status, payload
-        status, html = request('/')
+        status, html = request('/', content_type='text/html; charset=utf-8')
         self.assertEqual(status, 200)
-        self.assertIn(b'From Data to Learning', html)
+        self.assertIn(b'Operation World Line', html)
+        status, sprite = request('/assets/lab-evening.webp', content_type='image/webp')
+        self.assertEqual(status, 200)
+        self.assertTrue(sprite.startswith(b'RIFF'))
+        self.assertEqual(sprite[8:12], b'WEBP')
+        self.assertEqual(request('/assets/../game.py')[0], 404)
         status, raw = request('/questions')
         public = json.loads(raw)
         self.assertEqual(len(public), 7)

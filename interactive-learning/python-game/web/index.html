@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171412">
+  <title>Operation World Line · Aleksandria</title>
+  <link rel="stylesheet" href="game.css">
+  <script src="game.js" defer></script>
+</head>
+<body>
+  <main class="game" id="game" data-view="title">
+    <header class="game-header" aria-label="Scene information">
+      <p class="scene-place" id="scene-place">Future Gadget Lab <span class="scene-divider"> / </span> <span id="scene-room">Akihabara</span></p>
+      <p class="scene-date"><span id="scene-date">28 JUL 2010</span> <span class="scene-divider"> / </span> <span id="scene-time">18:52</span></p>
+    </header>
+
+    <div class="stage" aria-hidden="true">
+      <div class="backdrop" id="backdrop"></div>
+      <img class="portrait" id="portrait" src="assets/okabe.webp" alt="" fetchpriority="high">
+      <div class="stage-shade"></div>
+    </div>
+
+    <section class="divergence" aria-labelledby="divergence-label">
+      <p class="caption" id="divergence-label">Divergence <span class="world-line">α</span></p>
+      <div class="nixie" id="divergence" role="img" aria-label="0.571046"></div>
+    </section>
+
+    <div class="scene-ui">
+      <section class="screen title-screen" id="screen" aria-labelledby="screen-title">
+        <p class="caption title-credit">Aleksandria <span></span> A Steins;Gate side story</p>
+        <h1 id="screen-title" tabindex="-1">Operation<br><em>World Line</em></h1>
+        <p class="title-rule" aria-hidden="true"></p>
+        <p class="title-premise">A D-Mail arrives before anyone at the lab has sent it.</p>
+        <div class="title-actions">
+          <button class="scene-button begin" id="start" type="button">Begin story <span aria-hidden="true">▸</span></button>
+          <button class="text-button" id="title-credits" type="button">Credits</button>
+        </div>
+      </section>
+      <p class="error" id="error" role="alert"></p>
+    </div>
+
+    <footer class="scene-footer" id="scene-footer">
+      <span class="caption" id="footer-context">Big Data &amp; Connectionist AI</span>
+      <span class="footer-controls" id="footer-controls" hidden>
+        <button class="text-button" id="open-log" type="button">Backlog</button>
+        <button class="text-button" id="open-mail" type="button" hidden>D-Mail</button>
+      </span>
+      <span class="footer-status" id="footer-status" hidden>
+        <span id="check-count">0 / 8 checks</span>
+        <span id="score" aria-live="polite">Score 0 / 10</span>
+      </span>
+    </footer>
+
+    <dialog class="text-dialog" id="log" aria-labelledby="log-title">
+      <div class="dialog-header">
+        <h2 id="log-title">Backlog</h2>
+        <form method="dialog"><button class="text-button" autofocus>Close</button></form>
+      </div>
+      <ol class="log-list" id="log-list"></ol>
+    </dialog>
+
+    <dialog class="text-dialog" id="credits" aria-labelledby="credits-title">
+      <div class="dialog-header">
+        <h2 id="credits-title">Credits</h2>
+        <form method="dialog"><button class="text-button" autofocus>Close</button></form>
+      </div>
+      <p>Written for Team Aleksandria’s Big Data &amp; Connectionist AI learning supplement.</p>
+      <p>The Future Gadget Lab, Kurisu, Daru, Mayuri, phone, and divergence meter art are from <a href="https://www.spriters-resource.com/pc_computer/steinsgatesteamhdedition/" target="_blank" rel="noopener noreferrer">Steins;Gate (Steam HD Edition)</a>, archived by Adrot. Okabe’s sprites are from <a href="https://www.spriters-resource.com/pc_computer/steinsgatelinearboundedphenogram/asset/153185/" target="_blank" rel="noopener noreferrer">Linear Bounded Phenogram</a>, archived by delta. The artwork retains its original rights.</p>
+      <p>Instrument Serif, Instrument Sans, and IBM Plex Mono are included under the SIL Open Font License.</p>
+    </dialog>
+
+    <dialog class="phone-dialog" id="mail" aria-labelledby="mail-title">
+      <div class="phone">
+        <img src="assets/dm-phone.webp" alt="" aria-hidden="true">
+        <div class="phone-screen">
+          <div class="phone-bar"><h2 id="mail-title">Received mail</h2><span aria-hidden="true">✉︎</span></div>
+          <div class="phone-message" tabindex="0">
+            <p class="phone-sender" id="mail-from"></p>
+            <p class="phone-subject" id="mail-subject"></p>
+            <p class="phone-body" id="mail-body"></p>
+          </div>
+          <form method="dialog"><button class="phone-back" autofocus>Back</button></form>
+        </div>
+      </div>
+    </dialog>
+  </main>
+</body>
+</html>

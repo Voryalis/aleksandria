@@ -27,7 +27,7 @@ Stage 2 expands the initial Markdown foundation into a connected set of teaching
 | Test Bank | See the team's [shared Google Drive](https://drive.google.com/drive/folders/1Itr4fr4STo3VSAMMnOjuk-1wPruCGBS3) | Separate final Test Bank file not verified in the repository snapshot |
 | PPT Slides | [`slides/Aleksandria_Stage2_PPT_V1.pptx`](slides/Aleksandria_Stage2_PPT_V1.pptx) | Editable PPT and [PDF](slides/Aleksandria_Stage2_PPT_V1.pdf) available in the repository |
 | Video Tutorials | [Video Guide](videos/Aleksandria_Stage2_VideoGuide.md) · [Storyboards and video plan](videos/) | Video files are stored in shared Google Drive and have been submitted, as confirmed by the team; this repository contains their documentation rather than the MP4 files |
-| Supplementary Python learning game | [`interactive-learning/python-game/`](interactive-learning/python-game/) | Source, tests, launch scripts, and independent instructions available; automated tests passed locally |
+| Operation World Line learning game | [`interactive-learning/python-game/`](interactive-learning/python-game/) | Steins;Gate visual novel supplement with bundled art, local Python launcher, and installation instructions |
 | QA and project records | [`project-management/`](project-management/) | Project log, QA checklist/log, tasks, and review files available |
 | References | [`references.md`](references.md) | Source list |
 
@@ -44,31 +44,45 @@ Stage 2 expands the initial Markdown foundation into a connected set of teaching
 
 The Markdown content is the shared source for the Study Guide, slides, and tutorials. Corrections should be carried through to all affected resources.
 
-## Interactive supplement — From Data to Learning
+## Interactive supplement — Operation World Line
 
-[**Open the Python learning game folder**](interactive-learning/python-game/).
+[**Open the game and installation guide**](interactive-learning/python-game/).
 
-This optional local browser game lets learners work through **four missions**: prepare data, interpret predictions, update a sigmoid neuron's parameters, and assess generalization and responsible AI. Seven questions and a neuron challenge provide feedback and a score out of 10.
+**Operation World Line** is a Steins;Gate visual novel set in the Future Gadget Lab. Read a D-Mail on Okabe’s phone, check handwriting data with Daru, interpret predictions with Kurisu, train a sigmoid neuron at the PhoneWave workbench, and evaluate unseen handwriting with Mayuri. Seven questions and a neuron challenge provide feedback and a score out of 10.
 
-**Requirements:** Python 3.9+; no third-party packages or internet connection.
+### Download and run
+
+Install **Python 3.9 or newer** and use a current web browser. Download and extract the [repository ZIP](https://github.com/Voryalis/aleksandria/archive/refs/heads/main.zip), or clone the repository with Git. The art, fonts, and interface are bundled. The game uses Python’s standard library and works offline after download.
+
+From the extracted or cloned repository, open `interactive-learning/python-game/` and use the launcher for your system.
+
+| System | Launch |
+| --- | --- |
+| Windows | Double-click `Start-Windows.bat`, or run `py -3 game.py` in that folder |
+| macOS | Double-click `Start-Mac.command`, or run `python3 game.py` in that folder |
+| Linux | Run `python3 game.py` in that folder |
+
+For a terminal launch from the repository root on macOS or Linux, run the following commands.
 
 ```bash
 cd interactive-learning/python-game
 python3 game.py
 ```
 
-On Windows use `py game.py`, or run `Start-Windows.bat`. On macOS use `Start-Mac.command` or the terminal command above. The Python process starts a server on `127.0.0.1` and opens the game in your web browser; keep it running during play.
+Keep the entire `python-game/` folder together, including `web/`. Python opens a local server on `127.0.0.1` and launches the browser. Keep the terminal open during play and press Ctrl+C to stop. If the browser stays closed, copy the address printed in the terminal. See the [installation and troubleshooting guide](interactive-learning/python-game/README.md#installation) for Python setup and launcher help.
 
-**Automated tests:**
+### Verification
+
+Run the supplied Python checks from the game folder.
 
 ```bash
 cd interactive-learning/python-game
 python3 -m unittest -v test_game.py
 ```
 
-The three supplied automated tests passed in a local Python run on 7 November 2026. A complete independent learner/browser trial is not established by these tests.
+The three Python tests passed locally. Automated Chromium playthroughs covered the prologue, phone, backlog, all four missions, scoring, reset, replay, and summary downloads at desktop and phone widths. An independent learner trial remains pending.
 
-This simulation updates **one synthetic sigmoid neuron**, not an MNIST handwriting classifier; its game score is not a model-accuracy measure. See the [game's own README](interactive-learning/python-game/README.md) for detailed instructions, technical limitations, verification notes, and AI-use acknowledgement.
+The neuron exercise calculates updates for one synthetic example. Evaluation on unseen data is required to measure model accuracy. The [game README](interactive-learning/python-game/README.md) documents the mathematics, artwork sources, font licenses, and AI assistance.
 
 ## Team
 
@@ -89,7 +103,7 @@ This simulation updates **one synthetic sigmoid neuron**, not an MNIST handwriti
 | [`guide/`](guide/) | Study Guide |
 | [`slides/`](slides/) | Module teaching slides and related files |
 | [`videos/`](videos/) | Video guide, scripts/storyboards, and plans |
-| [`interactive-learning/python-game/`](interactive-learning/python-game/) | Optional interactive Python game |
+| [`interactive-learning/python-game/`](interactive-learning/python-game/) | Operation World Line source, launchers, tests, and bundled interface assets |
 | [`assets/`](assets/) | Diagrams and visual guidance |
 | [`project-management/`](project-management/) | Plans, logs, task tracking, and QA |
 | [`references.md`](references.md) | Research references |
