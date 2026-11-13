@@ -2,7 +2,7 @@
 
 An educational project by **Team ALEKSANDRIA** for the university course *Foundations of Computer Science & AI*. We build connected, beginner-friendly teaching resources about Big Data, artificial neurons, neural networks, and learning from data.
 
-**Project timeline:** Stage 1 planning and first content (24 October 2026) → Stage 2 learning-resource development (7 November 2026) → Stage 3 revision and mini-lecture (planned for November 2026).
+**Project stages** · Stage 1 planning and initial content → Stage 2 learning resources → [Stage 3 live mini-lecture](#collaboration-and-stage-3).
 
 ## Learning goals
 
@@ -18,20 +18,18 @@ Learners should be able to:
 
 ## Stage 2 learning resources
 
-Stage 2 expands the initial Markdown foundation into a connected set of teaching materials.
-
-| Resource | Location | Stage 2 status / access |
+| Resource | Location | Contents |
 | --- | --- | --- |
-| Shared Markdown content V2 | [`docs/`](docs/) | Intro, four topic chapters, learning map, and end-of-guide information available in the repository |
-| Study Guide | [Markdown](guide/Aleksandria_Stage2_Study_Guide.md) · [PDF](guide/Aleksandria_Stage2_Study_Guide.pdf) | Version 1.2, including the TensorFlow Playground activity and offline worksheet |
-| Test Bank | [Markdown](guide/Aleksandria_Stage2_Test_Bank.md) | 46 questions with an explained key. The course ZIP contains the separate editable Word file. |
-| PPT Slides | [`slides/Aleksandria_Stage2_PPT_V1.pptx`](slides/Aleksandria_Stage2_PPT_V1.pptx) | Editable PPT and [PDF](slides/Aleksandria_Stage2_PPT_V1.pdf) available in the repository |
-| Video Tutorials | [Video Guide](videos/Aleksandria_Stage2_VideoGuide.md) · [Storyboards and video plan](videos/) | Video files are stored in shared Google Drive and have been submitted, as confirmed by the team; this repository contains their documentation rather than the MP4 files |
-| Operation World Line learning game | [`interactive-learning/python-game/`](interactive-learning/python-game/) | Steins;Gate visual novel supplement with bundled art, local Python launcher, and installation instructions |
-| QA and project records | [`project-management/`](project-management/) | Project log, QA checklist/log, tasks, and review files available |
+| Shared Markdown content V2 | [Module map](docs/chapters.md) | Introduction, four chapters, and additional learning material |
+| Study Guide v1.2 | [PDF](guide/Aleksandria_Stage2_Study_Guide.pdf) · [Markdown](guide/Aleksandria_Stage2_Study_Guide.md) | Four activities with worked answers, plus a glossary |
+| Test Bank v1.2 | [Markdown](guide/Aleksandria_Stage2_Test_Bank.md) | 20 true/false, 20 multiple-choice, and 6 open-ended questions with explained answers. The course ZIP includes the editable Word copy. |
+| PPT Slides | [PowerPoint](slides/Aleksandria_Stage2_PPT_V1.pptx) | Light-themed Operation World Line deck with 42 slides and presenter notes |
+| Video Tutorials | [Video Guide](videos/Aleksandria_Stage2_VideoGuide.md) · [Storyboards and video plan](videos/) | Two five-minute visual novel tutorials on preparing digit images and training a neural network. The course requires individual MP4 uploads to Lexue. |
+| Operation World Line learning game | [Game and installation guide](interactive-learning/python-game/README.md) | Steins;Gate visual novel supplement with bundled art and a local Python launcher |
+| QA and project records | [Task tracker](project-management/task-list.md) · [QA log](project-management/qa-log.md) | Course deliverables, review findings, and submission checks |
 | References | [`references.md`](references.md) | Source list |
 
-**Note:** Presence of a resource in GitHub is not, by itself, confirmation that every assignment package, link, answer key, peer review, or submission was independently verified. Use the submission records and QA logs for those checks.
+In the Study Guide, Activity C traces a handwritten-digit prediction. Activity D compares two networks in TensorFlow Playground and includes an offline worksheet with recorded results. [Activity C](guide/Aleksandria_Stage2_Study_Guide.md#activity-c-trace-a-digit-prediction) · [Activity D](guide/Aleksandria_Stage2_Study_Guide.md#activity-d-compare-two-networks) · [Offline worksheet](guide/Aleksandria_Stage2_Study_Guide.md#playground-offline-worksheet)
 
 ## Shared Markdown teaching sequence
 
@@ -129,8 +127,6 @@ license files for scope and attribution instructions.
 
 ## Collaboration and Stage 3
 
-Work is coordinated through [GitHub Issues](https://github.com/Voryalis/aleksandria/issues), branches, pull requests, and recorded review. The [shared Google Drive](https://drive.google.com/drive/folders/1Itr4fr4STo3VSAMMnOjuk-1wPruCGBS3) holds team submission files and videos.
+The team coordinates work through issues, branches, and pull requests. [GitHub Issues](https://github.com/Voryalis/aleksandria/issues) · [Team Google Drive](https://drive.google.com/drive/folders/1Itr4fr4STo3VSAMMnOjuk-1wPruCGBS3)
 
-The planned Stage 3 mini-lecture focuses on **“How Does a Neural Network Learn to Recognize a Handwritten Digit?”** The teaching aim is to follow a single labelled image through numeric representation, prediction, error measurement, and a learning update. Stage 3 deliverables and final review remain separate from Stage 2.
-
-**Stage 2 milestone:** 7 November 2026, 23:59 Beijing time. **Stage 3 planned checkpoint:** 28 November 2026.
+The professor approved **“How Does a Neural Network Learn to Recognize Voices?”** for the Stage 3 live mini-lecture. The lesson will use labelled audio examples to explain how a neural network identifies a speaker. [Stage 3 coordination](https://github.com/Voryalis/aleksandria/issues/49)
