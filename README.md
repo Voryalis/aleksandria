@@ -23,8 +23,8 @@ Stage 2 expands the initial Markdown foundation into a connected set of teaching
 | Resource | Location | Stage 2 status / access |
 | --- | --- | --- |
 | Shared Markdown content V2 | [`docs/`](docs/) | Intro, four topic chapters, learning map, and end-of-guide information available in the repository |
-| Study Guide | [`guide/Big Data and Connectionist AI - Study Guide v1.1.pdf`](guide/Big%20Data%20and%20Connectionist%20AI%20-%20Study%20Guide%20v1.1.pdf) | PDF available in the repository |
-| Test Bank | See the team's [shared Google Drive](https://drive.google.com/drive/folders/1Itr4fr4STo3VSAMMnOjuk-1wPruCGBS3) | Separate final Test Bank file not verified in the repository snapshot |
+| Study Guide | [Markdown](guide/Aleksandria_Stage2_Study_Guide.md) · [PDF](guide/Aleksandria_Stage2_Study_Guide.pdf) | Version 1.2, including the TensorFlow Playground activity and offline worksheet |
+| Test Bank | [Markdown](guide/Aleksandria_Stage2_Test_Bank.md) | 46 questions with an explained key. The course ZIP contains the separate editable Word file. |
 | PPT Slides | [`slides/Aleksandria_Stage2_PPT_V1.pptx`](slides/Aleksandria_Stage2_PPT_V1.pptx) | Editable PPT and [PDF](slides/Aleksandria_Stage2_PPT_V1.pdf) available in the repository |
 | Video Tutorials | [Video Guide](videos/Aleksandria_Stage2_VideoGuide.md) · [Storyboards and video plan](videos/) | Video files are stored in shared Google Drive and have been submitted, as confirmed by the team; this repository contains their documentation rather than the MP4 files |
 | Operation World Line learning game | [`interactive-learning/python-game/`](interactive-learning/python-game/) | Steins;Gate visual novel supplement with bundled art, local Python launcher, and installation instructions |
@@ -100,7 +100,7 @@ The neuron exercise calculates updates for one synthetic example. Evaluation on 
 | Path | Contents |
 | --- | --- |
 | [`docs/`](docs/) | Shared instructional Markdown content |
-| [`guide/`](guide/) | Study Guide |
+| [`guide/`](guide/) | Study Guide, Test Bank, and figures |
 | [`slides/`](slides/) | Module teaching slides and related files |
 | [`videos/`](videos/) | Video guide, scripts/storyboards, and plans |
 | [`interactive-learning/python-game/`](interactive-learning/python-game/) | Operation World Line source, launchers, tests, and bundled interface assets |
